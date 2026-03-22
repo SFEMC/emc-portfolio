@@ -52,7 +52,7 @@ type Person = {
 }
 
 const books: BookCard[] = [
-  { category: 'Public Digital', title: 'Digital Transformation at Scale', author: 'Greenway, Terrett, Bracken, Loosemore', description: 'Built from the experience of creating GDS.', url: 'https://public.digital/pd-books' },
+  { category: 'Public Digital', title: 'Digital Transformation at Scale', author: 'Greenway, Terrett, Bracken, Loosemore', description: 'Built from the experience of creating GDS. Second edition covers Covid response.', url: 'https://public.digital/pd-books' },
   { category: 'Public Digital', title: 'Test and Learn', author: 'Public Digital', description: 'How to adopt a test and learn mindset in transformation.', url: 'https://public.digital/pd-books/test-and-learn' },
   { category: 'Public Digital', title: 'Shaping Technology for Transformation', author: 'Public Digital', description: 'Paying down technical debt and building technological strength.', url: 'https://public.digital/pd-books/pd-technology-book' },
   { category: 'Public Digital', title: 'Competitive Advantage by Design', author: 'Public Digital', description: 'How design approaches shape how modern organisations operate.', url: 'https://public.digital/pd-insights/publications' },
@@ -65,15 +65,32 @@ const books: BookCard[] = [
   { category: 'Product & Delivery', title: 'Team Topologies', author: 'Skelton, Pais', description: 'How to organise teams for fast flow.', url: 'https://teamtopologies.com/book' },
   { category: 'Product & Delivery', title: 'Radical Focus', author: 'Christina Wodtke', description: 'OKRs done properly.', url: 'https://cwodtke.com/writing-2/' },
   { category: 'AI', title: 'Co-Intelligence', author: 'Ethan Mollick', description: "AI's practical implications for work and education.", url: 'https://www.penguinrandomhouse.com/books/741805/co-intelligence-by-ethan-mollick/' },
+]
+
+const articles: BookCard[] = [
+  { category: 'Articles', title: 'Adopting a Prototype Mindset', author: 'Public Digital', description: 'The case for prototyping as a way of thinking, not just a phase.', url: 'https://public.digital/pd-insights/blog/2024/03/adopting-a-prototype-mindset' },
+  { category: 'Articles', title: 'Doing User Research to Inform Strategy', author: 'Public Digital', description: 'How user research connects to strategic decisions, not just interface design.', url: 'https://public.digital/pd-insights/blog/2024/02/doing-user-research-to-inform-strategy' },
+  { category: 'Articles', title: 'Working in the Open', author: 'Public Digital', description: 'Why showing your working builds trust and invites useful feedback.', url: 'https://public.digital/pd-books/test-and-learn/working-in-the-open-why-showing-your-working-out-matters-for-test-and-learn' },
+  { category: 'Articles', title: 'Test and Learn as Competitive Advantage', author: 'Public Digital', description: 'The strategic case for test and learn as an organisational capability.', url: 'https://public.digital/pd-books/test-and-learn/why-test-and-learn-is-the-competitive-advantage-every-business-needs' },
+  { category: 'Articles', title: 'The GOV.UK Service Standard', author: 'GOV.UK', description: 'The 14-point standard for designing and delivering public services.', url: 'https://www.gov.uk/service-manual/service-standard' },
+  { category: 'Articles', title: 'Why We Created the Term Dynamic Operating Models', author: 'Public Digital', description: 'Why organisations need permanent feedback loops rather than a fixed future state.', url: 'https://public.digital/pd-insights/blog/2025/04/why-we-created-the-term-dynamic-operating-models' },
+  { category: 'Articles', title: 'Operating Model', author: 'Public Digital', description: "Public Digital's approach to building organisations that stay adaptable.", url: 'https://public.digital/our-services/operating-model' },
+  { category: 'Articles', title: 'Designing Operating Models That Deliver', author: 'Sullivan Stanley', description: 'What gets in the way of operating model change, and what helps.', url: 'https://www.sullivanstanley.com/insights/designing-operating-models-that-deliver-what-gets-in-the-way-and-what-helps/' },
+  { category: 'Newsletters', title: 'One Useful Thing', author: 'Ethan Mollick', description: 'Thoughtful takes on AI in work and education. No hype.', url: 'https://www.oneusefulthing.org/' },
+  { category: 'Newsletters', title: 'How to AI', author: 'Ruben Hassid', description: 'Practical AI workflows with screenshots. Step-by-step.', url: 'https://ruben.substack.com/' },
+  { category: 'Newsletters', title: 'Andrew Greenway', description: 'Public Digital founder on government and digital reform.', url: 'https://andrewgreenway.substack.com/' },
+  { category: 'Newsletters', title: "Lenny's Newsletter", author: 'Lenny Rachitsky', description: 'The biggest product management newsletter on Substack.', url: 'https://www.lennysnewsletter.com/' },
+  { category: 'Newsletters', title: 'SVPG Newsletter', author: 'Marty Cagan', description: 'Strategic product leadership from the author of Inspired.', url: 'https://www.svpg.com/articles/' },
+  { category: 'Blogs', title: 'GDS Blog', description: 'Official Government Digital Service blog. Policy, delivery, and the 2025-2030 digital roadmap.', url: 'https://gds.blog.gov.uk/' },
+  { category: 'Blogs', title: 'Technology in Government', description: 'Technical counterpart to the GDS blog.', url: 'https://technology.blog.gov.uk/' },
+  { category: 'Blogs', title: 'Government Digital and Data', description: 'Cross-government digital community blog.', url: 'https://cddo.blog.gov.uk/' },
+  { category: 'Blogs', title: 'Design in Government', description: 'For people designing public services.', url: 'https://designnotes.blog.gov.uk/' },
+  { category: 'Blogs', title: 'Digital People', description: 'Capability, careers, and the DDaT framework.', url: 'https://digitalpeople.blog.gov.uk/' },
+  { category: 'Blogs', title: 'Public Digital Insights', description: 'Dynamic operating models, test and learn, prototyping, user research.', url: 'https://public.digital/pd-insights' },
   { category: 'Higher Education', title: 'Wonkhe', description: 'UK higher education policy analysis and debate.', url: 'https://wonkhe.com/' },
   { category: 'Higher Education', title: 'Jisc', description: 'Digital, data and technology guidance for UK universities.', url: 'https://www.jisc.ac.uk/' },
   { category: 'Higher Education', title: 'UCISA', description: 'Digital practitioners across UK universities and colleges.', url: 'https://www.ucisa.ac.uk/' },
   { category: 'Higher Education', title: 'HEPI', description: 'Independent UK higher education policy research.', url: 'https://www.hepi.ac.uk/' },
-  { category: 'Newsletters', title: 'One Useful Thing', author: 'Ethan Mollick', description: 'Thoughtful takes on AI in work and education.', url: 'https://www.oneusefulthing.org/' },
-  { category: 'Newsletters', title: 'How to AI', author: 'Ruben Hassid', description: 'Practical AI workflows with screenshots.', url: 'https://ruben.substack.com/' },
-  { category: 'Newsletters', title: 'Andrew Greenway', description: 'Public Digital founder on government and digital reform.', url: 'https://andrewgreenway.substack.com/' },
-  { category: 'Newsletters', title: "Lenny's Newsletter", author: 'Lenny Rachitsky', description: 'The biggest product management newsletter on Substack.', url: 'https://www.lennysnewsletter.com/' },
-  { category: 'Newsletters', title: 'SVPG Newsletter', author: 'Marty Cagan', description: 'Strategic product leadership from the author of Inspired.', url: 'https://www.svpg.com/articles/' },
 ]
 
 type PersonWithCategory = Person & { category: string }
@@ -153,18 +170,12 @@ export default function Resources() {
         </p>
       </div>
 
-      {/* Reading */}
+      {/* Books */}
       <div className="mb-16">
-        <p className="text-xs text-muted uppercase tracking-widest font-body mb-8">Reading</p>
+        <p className="text-xs text-muted uppercase tracking-widest font-body mb-8">Books</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {books.map((book, i) => (
-            <a
-              key={i}
-              href={book.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex flex-col gap-2 border border-border p-5 rounded-lg hover:border-white transition-colors"
-            >
+            <a key={i} href={book.url} target="_blank" rel="noopener noreferrer" className="flex flex-col gap-2 border border-border p-5 rounded-lg hover:border-white transition-colors">
               <span className="text-xs font-body text-muted uppercase tracking-widest">{book.category}</span>
               <h3 className="font-body font-semibold text-ink text-base leading-snug">{book.title}</h3>
               {book.author && <p className="text-xs font-body text-muted">{book.author}</p>}
@@ -174,9 +185,24 @@ export default function Resources() {
         </div>
       </div>
 
+      {/* Articles, Newsletters & Blogs */}
+      <div className="mb-16">
+        <p className="text-xs text-muted uppercase tracking-widest font-body mb-8">Articles, Newsletters & Blogs</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {articles.map((item, i) => (
+            <a key={i} href={item.url} target="_blank" rel="noopener noreferrer" className="flex flex-col gap-2 border border-border p-5 rounded-lg hover:border-white transition-colors">
+              <span className="text-xs font-body text-muted uppercase tracking-widest">{item.category}</span>
+              <h3 className="font-body font-semibold text-ink text-base leading-snug">{item.title}</h3>
+              {item.author && <p className="text-xs font-body text-muted">{item.author}</p>}
+              <p className="text-sm font-body font-light text-muted leading-relaxed">{item.description}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+
       {/* People to follow */}
       <div className="mb-16">
-        <p className="text-xs text-muted uppercase tracking-widest font-body mb-8">People to Follow</p>
+        <p className="text-xs text-muted uppercase tracking-widest font-body mb-8">People to follow</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {people.map((person, i) => (
             <div key={i} className="flex flex-col gap-3 border border-border p-5 rounded-lg">
