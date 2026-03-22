@@ -66,7 +66,7 @@ const books: BookCard[] = [
   { category: 'AI', title: 'Co-Intelligence', author: 'Ethan Mollick', description: "AI's practical implications for work and education.", url: 'https://www.penguinrandomhouse.com/books/741805/co-intelligence-by-ethan-mollick/' },
 ]
 
-const articles: BookCard[] = [
+const articleCards: BookCard[] = [
   { category: 'Articles', title: 'Adopting a Prototype Mindset', author: 'Public Digital', description: 'The case for prototyping as a way of thinking, not just a phase.', url: 'https://public.digital/pd-insights/blog/2024/03/adopting-a-prototype-mindset' },
   { category: 'Articles', title: 'Doing User Research to Inform Strategy', author: 'Public Digital', description: 'How user research connects to strategic decisions, not just interface design.', url: 'https://public.digital/pd-insights/blog/2024/02/doing-user-research-to-inform-strategy' },
   { category: 'Articles', title: 'Working in the Open', author: 'Public Digital', description: 'Why showing your working builds trust and invites useful feedback.', url: 'https://public.digital/pd-books/test-and-learn/working-in-the-open-why-showing-your-working-out-matters-for-test-and-learn' },
@@ -188,7 +188,7 @@ export default function Resources() {
       <div className="mb-16">
         <p className="text-xs text-muted uppercase tracking-widest font-body mb-8">Articles, Newsletters & Blogs</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {articles.map((item, i) => (
+          {articleCards.map((item, i) => (
             <a key={i} href={item.url} target="_blank" rel="noopener noreferrer" className="flex flex-col gap-2 border border-border p-5 rounded-lg hover:border-white transition-colors">
               <span className="text-xs font-body text-muted uppercase tracking-widest">{item.category}</span>
               <h3 className="font-body font-semibold text-ink text-base leading-snug">{item.title}</h3>
