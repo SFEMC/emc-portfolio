@@ -80,13 +80,17 @@ async function fetchFeed(url: string, sourceName: string): Promise<Article[]> {
     const parser = new DOMParser()
     const xml = parser.parseFromString(text, 'text/xml')
     const items = Array.from(xml.querySelectorAll('item')).slice(0, 5)
-    return items.map((item) => ({
-      title: item.querySelector('title')?.textContent?.trim() ?? '',
-      link: item.querySelector('link')?.textContent?.trim() ?? '',
-      pubDate: item.querySelector('pubDate')?.textContent?.trim() ?? '',
-      description: item.querySelector('description')?.textContent?.replace(/<[^>]*>/g, '').trim().slice(0, 160) ?? '',
-      source: sourceName,
-    }))
+    return items.map((item) => {
+      const linkEl = item.getElementsByTagName('link')[0]
+      const link = linkEl?.textContent?.trim() || linkEl?.getAttribute('href') || ''
+      return {
+        title: item.getElementsByTagName('title')[0]?.textContent?.trim() ?? '',
+        link,
+        pubDate: item.getElementsByTagName('pubDate')[0]?.textContent?.trim() ?? '',
+        description: item.getElementsByTagName('description')[0]?.textContent?.replace(/<[^>]*>/g, '').trim().slice(0, 160) ?? '',
+        source: sourceName,
+      }
+    })
   } catch {
     return []
   }
