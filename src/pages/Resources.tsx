@@ -44,6 +44,13 @@ type BookCard = {
   url: string
 }
 
+type Person = {
+  name: string
+  description: string
+  url: string
+  linkLabel: string
+}
+
 const books: BookCard[] = [
   { category: 'Public Digital', title: 'Digital Transformation at Scale', author: 'Greenway, Terrett, Bracken, Loosemore', description: 'Built from the experience of creating GDS.', url: 'https://public.digital/pd-books' },
   { category: 'Public Digital', title: 'Test and Learn', author: 'Public Digital', description: 'How to adopt a test and learn mindset in transformation.', url: 'https://public.digital/pd-books/test-and-learn' },
@@ -67,10 +74,13 @@ const books: BookCard[] = [
   { category: 'Newsletters', title: 'Andrew Greenway', description: 'Public Digital founder on government and digital reform.', url: 'https://andrewgreenway.substack.com/' },
   { category: 'Newsletters', title: "Lenny's Newsletter", author: 'Lenny Rachitsky', description: 'The biggest product management newsletter on Substack.', url: 'https://www.lennysnewsletter.com/' },
   { category: 'Newsletters', title: 'SVPG Newsletter', author: 'Marty Cagan', description: 'Strategic product leadership from the author of Inspired.', url: 'https://www.svpg.com/articles/' },
-  { category: 'People to follow', title: 'Lou Downe', description: 'Founded service design in UK government. Author of Good Services.', url: 'https://loudowne.com/' },
-  { category: 'People to follow', title: 'Janet Hughes', description: 'Former GDS, former DEFRA Programme Director. Writes about delivery and digital transformation.', url: 'https://www.linkedin.com/in/janet-hughes/' },
-  { category: 'People to follow', title: 'Tom Loosemore', description: 'Co-founded GDS. Now at Public Digital.', url: 'https://public.digital/people/tom-loosemore' },
-  { category: 'People to follow', title: 'Emily Middleton', description: 'Director General for Digital Transformation at GDS.', url: 'https://www.gov.uk/government/people/emily-middleton' },
+]
+
+const people: Person[] = [
+  { name: 'Lou Downe', description: 'Founded service design in UK government. Author of Good Services.', url: 'https://loudowne.com/', linkLabel: 'Website' },
+  { name: 'Janet Hughes', description: 'Former GDS, former DEFRA Programme Director. Writes about delivery and digital transformation.', url: 'https://www.linkedin.com/in/janet-hughes/', linkLabel: 'LinkedIn' },
+  { name: 'Tom Loosemore', description: 'Co-founded GDS. Now at Public Digital.', url: 'https://public.digital/people/tom-loosemore', linkLabel: 'Public Digital' },
+  { name: 'Emily Middleton', description: 'Director General for Digital Transformation at GDS.', url: 'https://www.gov.uk/government/people/emily-middleton', linkLabel: 'GOV.UK' },
 ]
 
 async function fetchFeed(url: string, sourceName: string): Promise<Article[]> {
@@ -129,9 +139,9 @@ export default function Resources() {
         </p>
       </div>
 
-      {/* Books & Resources */}
+      {/* Reading */}
       <div className="mb-16">
-        <p className="text-xs text-muted uppercase tracking-widest font-body mb-8">Books & Resources</p>
+        <p className="text-xs text-muted uppercase tracking-widest font-body mb-8">Reading</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {books.map((book, i) => (
             <a
@@ -146,6 +156,27 @@ export default function Resources() {
               {book.author && <p className="text-xs font-body text-muted">{book.author}</p>}
               <p className="text-sm font-body font-light text-muted leading-relaxed">{book.description}</p>
             </a>
+          ))}
+        </div>
+      </div>
+
+      {/* People to follow */}
+      <div className="mb-16">
+        <p className="text-xs text-muted uppercase tracking-widest font-body mb-8">People to Follow</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {people.map((person, i) => (
+            <div key={i} className="flex flex-col gap-3 border border-border p-5 rounded-lg">
+              <h3 className="font-body font-semibold text-ink text-base">{person.name}</h3>
+              <p className="text-sm font-body font-light text-muted leading-relaxed flex-1">{person.description}</p>
+              <a
+                href={person.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs font-body font-semibold text-white border border-white rounded px-3 py-1.5 hover:opacity-70 transition-opacity self-start"
+              >
+                {person.linkLabel} ↗
+              </a>
+            </div>
           ))}
         </div>
       </div>
