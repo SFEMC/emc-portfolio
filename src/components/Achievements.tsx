@@ -2,7 +2,7 @@ const stats = [
   { value: '£10m+', label: 'Programme delivered at DEFRA' },
   { value: 'RITA', label: 'Award winner for operational efficiencies at HM Land Registry' },
   { value: '40%', label: 'Efficiency gain at HM Land Registry' },
-  { value: 'Global', label: 'Supporting foreign governments to scale delivery teams and recruit top talent' },
+  { value: 'Global', label: 'Supporting a foreign government to scale delivery teams and recruit top talent' },
 ]
 
 export default function Achievements() {

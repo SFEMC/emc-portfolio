@@ -1,7 +1,7 @@
 const roles = [
   {
     date: 'Sept 2025 – Present',
-    title: 'Independent Consultant',
+    title: 'Technology Consultant',
     org: 'Eddystone Mersey Consulting',
     via: null,
     body: 'I deliver senior-level digital transformation, product delivery, and service design across public sector and higher education. I work with clients directly, no account managers or layers between me and the work.',
