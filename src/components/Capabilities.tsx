@@ -13,7 +13,7 @@ const capabilities = [
   },
   {
     title: 'Technical Delivery',
-    description: 'I write the requirements, shape the solution, and bridge the gap between technical teams and the business. I work hands-on with Power Automate, Power BI, and Salesforce.',
+    description: 'My role focuses on driving successful technical delivery, encompassing requirements definition, solution design, and the crucial connection between technical expertise and business needs. I\'m committed to hands-on experience with sophisticated technologies, investing significant time outside of core hours to maintain a deep understanding and consistently expand my skillset – ensuring I remain ahead of the curve.',
   },
 ]
 

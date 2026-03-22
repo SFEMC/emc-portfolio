@@ -15,7 +15,7 @@ export default function Contact() {
           href="mailto:Samuel.Field@eddystonemersey.com"
           className="px-8 py-3 mb-8 text-sm font-body font-semibold rounded-lg bg-white text-gray-900 hover:opacity-90 transition-opacity"
         >
-          Samuel.Field@eddystonemersey.com
+          Get in touch
         </a>
         <div className="flex gap-8">
           <a href="tel:+447876853872" className="text-sm text-muted font-body hover:text-ink transition-colors">

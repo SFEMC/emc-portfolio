@@ -1,8 +1,8 @@
 const stats = [
   { value: '£10m+', label: 'Programme delivered at DEFRA' },
-  { value: 'RITA', label: 'Real Innovation Technology Award at HM Land Registry' },
+  { value: 'RITA', label: 'Award winner for operational efficiencies at HM Land Registry' },
   { value: '40%', label: 'Efficiency gain at HM Land Registry' },
-  { value: 'Live', label: 'Service taken from discovery through to BAU at DEFRA' },
+  { value: 'Global', label: 'Supporting foreign governments to scale delivery teams and recruit top talent' },
 ]
 
 export default function Achievements() {

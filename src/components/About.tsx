@@ -10,7 +10,7 @@ export default function About() {
         </div>
         <div className="lg:col-span-2 flex flex-col gap-4">
           <p className="text-muted font-body font-light text-base leading-relaxed">
-            I embed within organisations, learn how your teams operate, and take services from discovery through to live. I don't consult from a distance. I sit with the people doing the work, understand the constraints, and deliver compliant, accessible digital products.
+            I embed within organisations, learn how your teams operate, and take services from discovery through to live. I don't consult from a distance. I sit with the people doing the work, understand the constraints, and deliver compliant, accessible digital solutions.
           </p>
           <p className="text-muted font-body font-light text-base leading-relaxed">
             I've done this at DEFRA, HM Land Registry, and Plymouth Marjon University. I started as an apprentice and worked my way into senior product and delivery roles. That background means I understand how organisations run at every level, not from a slide deck.
