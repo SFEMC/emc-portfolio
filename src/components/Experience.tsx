@@ -18,7 +18,7 @@ const roles = [
     title: 'Consultant - Head of Transformation Delivery',
     org: 'Plymouth Marjon University',
     via: 'via Eddystone Mersey Consulting',
-    body: "Leading delivery across multiple workstreams of the Marjon 2030 Transformation Programme. With no dedicated team, budget, or tooling, I drove interim improvements across admissions and partnerships while shaping the CRM solution in parallel. Cut three weeks from the admissions cycle through process redesign and automation. Built Power Automate workflows saving ~40 FTE days. Authored 240+ user stories grounding the Salesforce build in user research and operational reality. Now designing and delivering a fully digital partner application route for May 2026 admissions, replacing the old spreadsheet model with another interim solution before CRM delivery begins.",
+    body: "Leading delivery across multiple workstreams of the Marjon 2030 Transformation Programme. With no dedicated team, budget, or tooling, I drove interim improvements across admissions and partnerships while shaping the CRM solution in parallel. Cut three weeks from the admissions cycle through process redesign and automation. Built Power Automate workflows saving ~40 FTE days. Authored user stories grounding the Salesforce build in user research and operational reality. Now designing and delivering a fully digital partner application route for May 2026 admissions, replacing the old spreadsheet model with another interim solution before CRM delivery begins.",
   },
   {
     date: 'July 2023 – July 2025',

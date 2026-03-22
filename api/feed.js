@@ -1,8 +1,6 @@
-import type { VercelRequest, VercelResponse } from '@vercel/node'
-
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+export default async function handler(req, res) {
   const { url } = req.query
-  if (!url || typeof url !== 'string') {
+  if (!url) {
     return res.status(400).json({ error: 'Missing url parameter' })
   }
 
@@ -14,7 +12,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     res.setHeader('Access-Control-Allow-Origin', '*')
     res.setHeader('Content-Type', 'application/xml')
     return res.status(200).send(text)
-  } catch {
-    return res.status(500).json({ error: 'Failed to fetch feed' })
+  } catch (e) {
+    return res.status(500).json({ error: 'Failed to fetch feed', detail: e.message })
   }
 }

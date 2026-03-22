@@ -9,7 +9,7 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 font-body font-semibold text-sm text-ink hover:opacity-70 transition-opacity tracking-wide">
           <img src="/logo.png" alt="" className="h-4 w-auto" style={{ filter: 'brightness(0) invert(1)' }} />
-          Eddystone Mersey Consulting Limited
+          <span className="hidden sm:inline">Eddystone Mersey Consulting Limited</span>
         </Link>
         <div className="hidden md:flex items-center gap-8">
           <Link
@@ -27,7 +27,7 @@ export default function Navbar() {
         </div>
         <a
           href="mailto:Samuel.Field@eddystonemersey.com"
-          className="px-5 py-2 text-sm font-body font-semibold rounded-lg bg-white text-gray-900 hover:opacity-90 transition-opacity"
+          className="px-3 py-2 sm:px-5 text-xs sm:text-sm font-body font-semibold rounded-lg bg-white text-gray-900 hover:opacity-90 transition-opacity whitespace-nowrap"
         >
           Get in Touch
         </a>
