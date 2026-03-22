@@ -13,7 +13,6 @@ type Category = 'public-sector' | 'higher-education' | 'ai'
 
 const feeds: Record<Category, { name: string; url: string }[]> = {
   'public-sector': [
-    { name: 'GDS Blog', url: 'https://gds.blog.gov.uk/feed/' },
     { name: 'Public Digital', url: 'https://public.digital/feed.xml' },
     { name: 'CDDO', url: 'https://cddo.blog.gov.uk/feed/' },
     { name: 'Defra Digital', url: 'https://defradigital.blog.gov.uk/feed/' },
