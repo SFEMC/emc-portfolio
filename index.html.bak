@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Samuel Field | Eddystone Mersey Consulting</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <div class="nav-inner">
+      <span class="nav-logo">SF</span>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>Eddystone Mersey Consulting</h1>
+      <p class="hero-sub">Product Delivery &middot; Service Design &middot; Public Sector</p>
+      <div class="hero-actions">
+        <a href="#about" class="btn">About me</a>
+        <a href="#contact" class="btn btn-outline">Get in touch</a>
+      </div>
+    </div>
+    <div class="hero-shape"></div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="about">
+    <div class="container">
+      <span class="section-label">About</span>
+      <h2>Turning complexity into clarity</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>I guide organisations through user-centred, high-impact digital change — specialising in product ownership, service design, and end-to-end programme delivery across central government and higher education.</p>
+          <p>I embed within organisations, rapidly understand real workflows, and take complex services from discovery through to live — delivering compliant, accessible digital products that stick.</p>
+          <p>With a track record spanning DEFRA, HM Land Registry, and Plymouth Marjon University, I bring the rigour of public sector delivery with the pace and pragmatism of an independent consultant.</p>
+        </div>
+        <div class="skills">
+          <div class="skill-item">
+            <span class="skill-icon">🎯</span>
+            <div>
+              <h4>Product &amp; Delivery</h4>
+              <p>Product Ownership, Roadmap &amp; Backlog Management, Agile Methodologies</p>
+            </div>
+          </div>
+          <div class="skill-item">
+            <span class="skill-icon">🗺</span>
+            <div>
+              <h4>Service Design</h4>
+              <p>User Research, Journey Mapping, Blueprinting, Enterprise Architecture</p>
+            </div>
+          </div>
+          <div class="skill-item">
+            <span class="skill-icon">🤝</span>
+            <div>
+              <h4>Stakeholder &amp; Change</h4>
+              <p>Change Management, Coaching &amp; Capability Building, Cross-team Collaboration</p>
+            </div>
+          </div>
+          <div class="skill-item">
+            <span class="skill-icon">⚙️</span>
+            <div>
+              <h4>Technical Delivery</h4>
+              <p>Requirements &amp; User Stories, Data Protection &amp; Risk, Power Automate, Power BI</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Achievements -->
+      <div class="achievements">
+        <span class="section-label">Key Achievements</span>
+        <div class="ach-grid">
+          <div class="ach-card">
+            <span class="ach-stat">£10m+</span>
+            <p>Directed end-to-end delivery of the Windsor Framework Pet Travel Scheme across UK Government, Port Operations and the EU</p>
+          </div>
+          <div class="ach-card">
+            <span class="ach-stat">40%</span>
+            <p>Efficiency improvement at HM Land Registry — recognised with the RITA Real Innovation Technology Award</p>
+          </div>
+          <div class="ach-card">
+            <span class="ach-stat">~40</span>
+            <p>FTE days saved at Plymouth Marjon University through Power Automate workflow automations and process redesign</p>
+          </div>
+          <div class="ach-card">
+            <span class="ach-stat">240+</span>
+            <p>User stories authored shaping a Salesforce solution grounded in user research and journey mapping</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience" class="experience">
+    <div class="container">
+      <span class="section-label">Experience</span>
+      <h2>Where I've worked</h2>
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-meta">
+            <span class="timeline-date">Sept 2025 – Present</span>
+          </div>
+          <div class="timeline-body">
+            <h3>Independent Consultant</h3>
+            <span class="timeline-org">Eddystone Mersey Consulting</span>
+            <p>I founded Eddystone Mersey Consulting to deliver senior-level digital transformation, product delivery and service design without the overhead of a large consultancy. Working across public sector and higher education, I embed directly within organisations, get under the skin of how they really operate, and help them deliver change that sticks. The structure lets me bring focused, expert attention to each engagement — and work across multiple clients where the need is greatest.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-meta">
+            <span class="timeline-date">Oct 2025 – Present</span>
+          </div>
+          <div class="timeline-body">
+            <h3>Expert Network Member</h3>
+            <span class="timeline-org">Public Digital <span class="via">(via Eddystone Mersey Consulting)</span></span>
+            <p>I'm a member of the Public Digital expert network, contributing to a global consultancy that helps governments, institutions and large organisations become more responsive, adaptable and impactful. It's work I find genuinely motivating — the kinds of organisations Public Digital works with are the ones where getting digital transformation right really matters.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-meta">
+            <span class="timeline-date">Oct 2025 – Present</span>
+          </div>
+          <div class="timeline-body">
+            <h3>Consultant — Head of Transformation Delivery</h3>
+            <span class="timeline-org">Plymouth Marjon University <span class="via">(via Eddystone Mersey Consulting)</span></span>
+            <p>At Plymouth Marjon University I'm leading delivery across multiple workstreams of the Marjon 2030 Transformation Programme. In under a year I've designed and delivered a fully digital application route for partner students — replacing a legacy spreadsheet process — alongside a real-time status page and partner verification portal. I've built Power Automate workflow automations and Power BI reporting that have saved around 40 FTE days, coached teams in Agile ways of working, and authored over 240 user stories shaping the university's Salesforce CRM implementation. One of the outcomes I'm most proud of is a three-week faster admissions cycle year on year, achieved through workflow redesign, improved communication channels and service optimisation.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-meta">
+            <span class="timeline-date">July 2023 – July 2025</span>
+          </div>
+          <div class="timeline-body">
+            <h3>Strategy, Service Design &amp; Product Management Consultant</h3>
+            <span class="timeline-org">Department for Environment, Food &amp; Rural Affairs (DEFRA)</span>
+            <p>At DEFRA I directed the end-to-end service design and delivery of the Windsor Framework Pet Travel Scheme — a £10m+ programme spanning UK Government, port operations and the EU. I led a multidisciplinary team from inception through to live, delivered an accessibility-compliant Digital Support Scheme ensuring every applicant could access a Pet Travel Document regardless of their needs, and served as Product Owner across 12 critical interim solutions under complex, politically sensitive deadlines. I also oversaw the post-launch transition to BAU, and the business continuity documentation I created during delivery was adopted as a departmental gold standard.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-meta">
+            <span class="timeline-date">June 2016 – Feb 2023</span>
+          </div>
+          <div class="timeline-body">
+            <h3>Apprentice through to Product Owner</h3>
+            <span class="timeline-org">HM Land Registry</span>
+            <p>I spent the early part of my career at HM Land Registry, progressing across a range of roles that took me from apprentice through to product ownership. I started as a Business Administration Apprentice before moving into executive officer roles spanning product management administration, executive registration and lead user on a major case management solution rollout. A period back in operations gave me a grounded understanding of how the organisation actually worked from the inside — the complexity, the constraints and the people at the centre of it all. Returning to the digital side, I stepped up into product ownership, delivered UI enhancements that removed hard-coded constraints and unlocked automation at scale, designed a critical fallback feature ensuring seamless processing for applications outside automation scope, and drove a 40% improvement in operational efficiency — work that contributed to the team winning the RITA (Real Innovation Technology Award). I was also nominated for the Executive Board People Award for championing innovation and strengthening the wider product community. These years shaped the practitioner I am today.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <span class="section-label">Contact</span>
+      <h2>Let's work together</h2>
+      <p class="contact-sub">If you have a transformation challenge, product to deliver, or just want to explore how I can help — get in touch.</p>
+      <div class="contact-layout">
+        <div class="contact-details">
+          <a href="mailto:Samuel.Field@eddystonemersey.com" class="contact-link">
+            <span class="contact-icon">✉️</span>
+            <span>Samuel.Field@eddystonemersey.com</span>
+          </a>
+          <a href="tel:+447876853872" class="contact-link">
+            <span class="contact-icon">📞</span>
+            <span>+44 7876 853872</span>
+          </a>
+          <a href="https://www.linkedin.com/in/samuel-field-446bb9131/" class="contact-link" target="_blank" rel="noopener">
+            <span class="contact-icon">💼</span>
+            <span>LinkedIn</span>
+          </a>
+        </div>
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input id="name" type="text" placeholder="Your name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input id="email" type="email" placeholder="your@email.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+          </div>
+          <button type="submit" class="btn">Send message</button>
+          <p class="form-success" id="form-success">Message sent! I'll be in touch soon.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Samuel Field · Eddystone Mersey Consulting</p>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/samuel-field-446bb9131/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:Samuel.Field@eddystonemersey.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
