@@ -2,7 +2,7 @@ export default function Hero() {
   return (
     <section className="max-w-6xl mx-auto px-6 pt-20 pb-16 border-b border-border">
       <div className="flex flex-col items-center text-center">
-        <img src="/logo.png" alt="Eddystone Mersey Consulting" className="h-24 w-auto mb-8" style={{ imageRendering: 'crisp-edges', filter: 'brightness(0) invert(1)' }} />
+        <img src="/logo.png" alt="Eddystone Mersey Consulting" className="h-32 w-auto mb-8" style={{ imageRendering: 'crisp-edges', filter: 'brightness(0) invert(1)' }} />
         <h1 className="font-body font-semibold text-2xl md:text-3xl lg:text-4xl text-white leading-[1.1] mb-6 max-w-3xl">
           I take complex public services from discovery through to live.
         </h1>
