@@ -6,12 +6,12 @@ export default function Navbar() {
 
   return (
     <nav className="sticky top-0 bg-bg/95 backdrop-blur-sm border-b border-border z-50">
-      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between relative">
         <Link to="/" className="flex items-center gap-2 font-body font-semibold text-sm text-ink hover:opacity-70 transition-opacity tracking-wide">
           <img src="/logo.png" alt="" className="h-4 w-auto" style={{ filter: 'brightness(0) invert(1)' }} />
           <span className="hidden sm:inline">Eddystone Mersey Consulting Limited</span>
         </Link>
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
           <Link
             to="/"
             className={`px-4 py-2 text-sm font-semibold rounded-lg transition-opacity ${!isResources ? 'bg-white text-gray-900' : 'border border-white text-white hover:opacity-70'}`}
