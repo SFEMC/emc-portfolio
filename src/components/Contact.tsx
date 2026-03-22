@@ -18,8 +18,8 @@ export default function Contact() {
           Get in touch
         </a>
         <div className="flex gap-8">
-          <a href="tel:+447876853872" className="text-sm text-muted font-body hover:text-ink transition-colors">
-            +44 7876 853872
+          <a href="https://wa.me/447876853872" target="_blank" rel="noopener noreferrer" className="text-sm text-muted font-body hover:text-ink transition-colors">
+            WhatsApp
           </a>
           <a href="https://www.linkedin.com/company/eddystone-mersey-consulting" target="_blank" rel="noopener noreferrer" className="text-sm text-muted font-body hover:text-ink transition-colors">
             LinkedIn
