@@ -75,11 +75,10 @@ const books: BookCard[] = [
 
 async function fetchFeed(url: string, sourceName: string): Promise<Article[]> {
   try {
-    const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`
-    const res = await fetch(proxyUrl)
-    const data = await res.json()
+    const res = await fetch(`/api/feed?url=${encodeURIComponent(url)}`)
+    const text = await res.text()
     const parser = new DOMParser()
-    const xml = parser.parseFromString(data.contents, 'text/xml')
+    const xml = parser.parseFromString(text, 'text/xml')
     const items = Array.from(xml.querySelectorAll('item')).slice(0, 5)
     return items.map((item) => ({
       title: item.querySelector('title')?.textContent?.trim() ?? '',
