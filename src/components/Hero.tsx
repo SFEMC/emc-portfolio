@@ -18,7 +18,7 @@ export default function Hero() {
           </a>
           <a
             href="mailto:Samuel.Field@eddystonemersey.com"
-            className="px-8 py-3 text-sm font-body font-semibold rounded-lg border border-white text-white hover:opacity-70 transition-opacity"
+            className="px-8 py-3 text-sm font-body font-semibold rounded-lg bg-white text-gray-900 hover:opacity-90 transition-opacity"
           >
             Contact Me
           </a>
