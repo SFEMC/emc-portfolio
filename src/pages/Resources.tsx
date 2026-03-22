@@ -14,7 +14,7 @@ type Category = 'public-sector' | 'higher-education' | 'ai'
 const feeds: Record<Category, { name: string; url: string }[]> = {
   'public-sector': [
     { name: 'GDS Blog', url: 'https://gds.blog.gov.uk/feed/' },
-    { name: 'Public Digital', url: 'https://public.digital/feed' },
+    { name: 'Public Digital', url: 'https://public.digital/feed.xml' },
     { name: 'CDDO', url: 'https://cddo.blog.gov.uk/feed/' },
     { name: 'Defra Digital', url: 'https://defradigital.blog.gov.uk/feed/' },
   ],
@@ -55,7 +55,7 @@ const books: BookCard[] = [
   { category: 'Public Digital', title: 'Digital Transformation at Scale', author: 'Greenway, Terrett, Bracken, Loosemore', description: 'Built from the experience of creating GDS.', url: 'https://public.digital/pd-books' },
   { category: 'Public Digital', title: 'Test and Learn', author: 'Public Digital', description: 'How to adopt a test and learn mindset in transformation.', url: 'https://public.digital/pd-books/test-and-learn' },
   { category: 'Public Digital', title: 'Shaping Technology for Transformation', author: 'Public Digital', description: 'Paying down technical debt and building technological strength.', url: 'https://public.digital/pd-books/pd-technology-book' },
-  { category: 'Public Digital', title: 'Design', author: 'Public Digital', description: 'How design approaches shape how modern organisations operate.', url: 'https://public.digital/pd-insights/publications' },
+  { category: 'Public Digital', title: 'Competitive Advantage by Design', author: 'Public Digital', description: 'How design approaches shape how modern organisations operate.', url: 'https://public.digital/pd-insights/publications' },
   { category: 'UK Digital & Public Sector', title: 'Good Services', author: 'Lou Downe', description: 'Fifteen principles for what makes a good service.', url: 'https://good.services/' },
   { category: 'UK Digital & Public Sector', title: 'An Internet for the People', author: 'Ben Tarnoff', description: 'How to think about public digital infrastructure.', url: 'https://www.versobooks.com/products/2560-internet-for-the-people' },
   { category: 'Service Design', title: 'User Research', author: 'Stephanie Marsh', description: 'Written by the former Head of User Research at GDS. Practical, not academic.', url: 'https://www.koganpage.com/marketing-communications/user-research-9781398603929' },
@@ -76,11 +76,25 @@ const books: BookCard[] = [
   { category: 'Newsletters', title: 'SVPG Newsletter', author: 'Marty Cagan', description: 'Strategic product leadership from the author of Inspired.', url: 'https://www.svpg.com/articles/' },
 ]
 
-const people: Person[] = [
-  { name: 'Lou Downe', description: 'Founded service design in UK government. Author of Good Services.', url: 'https://loudowne.com/', linkLabel: 'Website' },
-  { name: 'Janet Hughes', description: 'Former GDS, former DEFRA Programme Director. Writes about delivery and digital transformation.', url: 'https://www.linkedin.com/in/janet-hughes/', linkLabel: 'LinkedIn' },
-  { name: 'Tom Loosemore', description: 'Co-founded GDS. Now at Public Digital.', url: 'https://public.digital/people/tom-loosemore', linkLabel: 'Public Digital' },
-  { name: 'Emily Middleton', description: 'Director General for Digital Transformation at GDS.', url: 'https://www.gov.uk/government/people/emily-middleton', linkLabel: 'GOV.UK' },
+type PersonWithCategory = Person & { category: string }
+
+const people: PersonWithCategory[] = [
+  { category: 'UK Digital & Government', name: 'Lou Downe', description: 'Founded service design in UK government. Author of Good Services.', url: 'https://loudowne.com/', linkLabel: 'Website' },
+  { category: 'UK Digital & Government', name: 'Janet Hughes', description: 'Former GDS, former DEFRA Programme Director. Writes about delivery and digital transformation.', url: 'https://www.linkedin.com/in/janet-hughes/', linkLabel: 'LinkedIn' },
+  { category: 'UK Digital & Government', name: 'Tom Loosemore', description: 'Co-founded GDS. Now at Public Digital.', url: 'https://public.digital/people/tom-loosemore', linkLabel: 'Public Digital' },
+  { category: 'UK Digital & Government', name: 'Emily Middleton', description: 'Director General for Digital Transformation at GDS.', url: 'https://www.gov.uk/government/people/emily-middleton', linkLabel: 'GOV.UK' },
+  { category: 'UK Digital & Government', name: 'Richard Pope', description: 'Founding product manager at GOV.UK. Writes Platformland on government as a platform.', url: 'https://www.platformland.xyz/', linkLabel: 'Website' },
+  { category: 'UK Digital & Government', name: 'Ben Holliday', description: 'Chief Design Officer at TPXimpact. Previously NHS and DWP.', url: 'https://www.benholliday.com/', linkLabel: 'Website' },
+  { category: 'UK Digital & Government', name: 'Kit Collingwood', description: 'Co-founded OneTeamGov. Design and delivery leadership across DWP, MOJ and GDS.', url: 'https://medium.com/@kcollingwood', linkLabel: 'Medium' },
+  { category: 'UK Digital & Government', name: 'Giles Turnbull', description: 'Wrote The Agile Comms Handbook. Works with public sector teams on communicating change.', url: 'https://gilest.org/', linkLabel: 'Website' },
+  { category: 'UK Digital & Government', name: 'Matt Jukes', description: 'Head of Products at GDS National Data Library. Blogs about digital in government.', url: 'https://www.linkedin.com/in/jukesie/', linkLabel: 'LinkedIn' },
+  { category: 'Higher Education', name: 'Lawrie Phipps', description: 'Senior Research Lead at Jisc. Writes about digital leadership and transformation in universities.', url: 'https://lawriephipps.co.uk/', linkLabel: 'Website' },
+  { category: 'AI Trends & Skills', name: 'Benedict Evans', description: 'Former Andreessen Horowitz analyst. Annual essays on technology and industry change.', url: 'https://www.ben-evans.com/', linkLabel: 'Website' },
+  { category: 'AI Trends & Skills', name: 'Dan Shipper', description: 'Co-founder of Every. Deep practical essays on AI in real work.', url: 'https://every.to/chain-of-thought', linkLabel: 'Website' },
+  { category: 'AI Trends & Skills', name: 'Allie K. Miller', description: 'Former Amazon AI lead. Practical takes on AI for business.', url: 'https://www.alliekmiller.com/', linkLabel: 'Website' },
+  { category: 'AI Trends & Skills', name: 'Donald Clark', description: 'UK-based. Writes on AI in education, learning, and skills.', url: 'https://donaldclarkplanb.blogspot.com/', linkLabel: 'Website' },
+  { category: 'AI Trends & Skills', name: 'Jeni Tennison', description: 'Open Data Institute. AI policy and what it means for public services.', url: 'https://www.jenitennison.com/', linkLabel: 'Website' },
+  { category: 'AI Trends & Skills', name: 'Paul Roetzer', description: 'Marketing AI Institute. AI adoption and capability building in organisations.', url: 'https://www.marketingaiinstitute.com/', linkLabel: 'Website' },
 ]
 
 async function fetchFeed(url: string, sourceName: string): Promise<Article[]> {
@@ -166,6 +180,7 @@ export default function Resources() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {people.map((person, i) => (
             <div key={i} className="flex flex-col gap-3 border border-border p-5 rounded-lg">
+              <span className="text-xs font-body text-muted uppercase tracking-widest">{person.category}</span>
               <h3 className="font-body font-semibold text-ink text-base">{person.name}</h3>
               <p className="text-sm font-body font-light text-muted leading-relaxed flex-1">{person.description}</p>
               <a
