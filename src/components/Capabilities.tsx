@@ -28,7 +28,7 @@ export default function Capabilities() {
           </h2>
         </div>
         <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-8">
-          {capabilities.map((cap, i) => (
+          {capabilities.map((cap) => (
             <div key={cap.title}>
               <h3 className="font-body font-semibold text-xl text-ink mb-2">{cap.title}</h3>
               <p className="text-muted font-body font-light text-sm leading-relaxed">{cap.description}</p>

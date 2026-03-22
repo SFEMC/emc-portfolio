@@ -21,7 +21,7 @@ export default function Contact() {
           <a href="tel:+447876853872" className="text-sm text-muted font-body hover:text-ink transition-colors">
             +44 7876 853872
           </a>
-          <a href="https://www.linkedin.com/in/samuel-field-446bb9131/" target="_blank" rel="noopener noreferrer" className="text-sm text-muted font-body hover:text-ink transition-colors">
+          <a href="https://www.linkedin.com/company/eddystone-mersey-consulting" target="_blank" rel="noopener noreferrer" className="text-sm text-muted font-body hover:text-ink transition-colors">
             LinkedIn
           </a>
         </div>
