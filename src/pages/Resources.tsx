@@ -14,8 +14,6 @@ type Category = 'public-sector' | 'higher-education' | 'ai'
 const feeds: Record<Category, { name: string; url: string }[]> = {
   'public-sector': [
     { name: 'Public Digital', url: 'https://public.digital/feed.xml' },
-    { name: 'CDDO', url: 'https://cddo.blog.gov.uk/feed/' },
-    { name: 'Defra Digital', url: 'https://defradigital.blog.gov.uk/feed/' },
   ],
   'higher-education': [
     { name: 'Wonkhe', url: 'https://wonkhe.com/feed/' },
