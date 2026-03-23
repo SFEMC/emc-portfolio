@@ -13,7 +13,10 @@ type Category = 'public-sector' | 'higher-education' | 'ai'
 
 const feeds: Record<Category, { name: string; url: string }[]> = {
   'public-sector': [
-    { name: 'Public Digital', url: 'https://public.digital/feed.xml' },
+    { name: 'dxw', url: 'https://www.dxw.com/feed/' },
+    { name: 'mySociety', url: 'https://www.mysociety.org/feed/' },
+    { name: 'Giles Turnbull', url: 'https://gilest.org/feed/' },
+    { name: 'Co-op Digital', url: 'https://digitalblog.coop.co.uk/feed/' },
   ],
   'higher-education': [
     { name: 'Wonkhe', url: 'https://wonkhe.com/feed/' },
@@ -28,7 +31,7 @@ const feeds: Record<Category, { name: string; url: string }[]> = {
 }
 
 const categoryLabels: Record<Category, string> = {
-  'public-sector': 'Public Sector & Digital Government',
+  'public-sector': 'Service Design',
   'higher-education': 'Higher Education',
   'ai': 'Artificial Intelligence',
 }
