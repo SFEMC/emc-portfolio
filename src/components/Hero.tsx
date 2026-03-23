@@ -7,7 +7,7 @@ export default function Hero() {
           I take complex public services from discovery through to live.
         </h1>
         <p className="text-muted font-body font-light text-base md:text-lg leading-relaxed mb-8 max-w-2xl">
-          Product ownership, service design, and end-to-end delivery across central government and higher education. Senior-level expertise, no consultancy layers.
+          Product ownership, service design and end-to-end delivery across central government and higher education. Senior-level expertise, no consultancy layers.
         </p>
         <div className="flex flex-wrap justify-center gap-4">
           <a
