@@ -13,7 +13,7 @@ export default function About() {
             I embed within organisations, learn how your teams operate, and take services from discovery through to live. I don't consult from a distance. I sit with the people doing the work, understand the constraints, and deliver compliant, accessible digital solutions.
           </p>
           <p className="text-muted font-body font-light text-base leading-relaxed">
-            I've done this at DEFRA, HM Land Registry, and Plymouth Marjon University. I started as an apprentice and worked my way into senior product and delivery roles. That background means I understand how organisations run at every level, not from a slide deck.
+            I've done this at HM Land Registry and Plymouth Marjon University. At DEFRA, I designed and delivered a new service from the ground up. I started as an apprentice and worked my way into senior product and delivery roles across government and higher education. That route gave me a practical understanding of how organisations run, from frontline operations through to boardroom decisions.
           </p>
           <div className="flex flex-wrap gap-3 mt-2">
             {['DEFRA', 'HM Land Registry', 'Plymouth Marjon University', 'Public Digital'].map((org) => (
