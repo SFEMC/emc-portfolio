@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { format, parseISO } from 'date-fns'
 import projectsData from '../content/projects.json'
+import ProjectPreview from '../components/ProjectPreviews'
 
 interface ProjectDetail {
   what: string
@@ -120,6 +121,9 @@ export default function Projects() {
                 {/* Expanded detail */}
                 {isExpanded && detail && (
                   <div className="border-t border-border px-6 pb-6 pt-5" onClick={e => e.stopPropagation()}>
+                    <div className="mb-8">
+                      <ProjectPreview title={project.title} />
+                    </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                       <div>
                         <h3 className="text-xs text-muted uppercase tracking-widest font-body mb-2">What it does</h3>
