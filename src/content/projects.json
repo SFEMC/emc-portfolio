@@ -69,19 +69,19 @@
   },
   {
     "title": "EMC Portfolio",
-    "date": "2025-09-01",
-    "summary": "This site. Personal consulting portfolio built from scratch to showcase work across UK government and higher education.",
+    "date": "2026-03-31",
+    "summary": "This site. A multi-page consulting portfolio with dedicated Experience, Articles, Projects, and Resources sections. Articles render inline from markdown with tag filtering.",
     "tags": ["React", "TypeScript", "Tailwind", "Vite", "Vercel"],
     "category": "Code",
     "liveUrl": "",
     "repoUrl": "",
     "detail": {
-      "what": "My professional portfolio site for Eddystone Mersey Consulting. Showcases experience across DEFRA, HM Land Registry, Plymouth Marjon University, and Public Digital. Includes sections for experience, articles (local markdown and external links), projects, and a curated resources page with live RSS feeds.",
-      "how": "Single-page app with React Router (HashRouter). The Resources page fetches live RSS feeds via a server-side proxy, parses XML, and displays the latest articles from service design, higher education, and AI communities. Articles are stored as markdown files with frontmatter — drop a .md file in a folder and it appears on the site. Projects are data-driven from a JSON file.",
-      "built": "Built iteratively with Claude Code over several sessions. Started as a simple landing page and grew into a multi-section portfolio with articles, projects, experience, and resources.",
+      "what": "My professional portfolio site for Eddystone Mersey Consulting. A multi-page site with dedicated sections for Experience (timeline of roles across DEFRA, HM Land Registry, Plymouth Marjon University, and Public Digital), Articles (inline markdown articles with tag filtering and expand-to-read), Projects (detailed case studies of side projects), and Resources (curated reading lists with live RSS feeds from service design, higher education, and AI communities).",
+      "how": "Single-page app with React Router (HashRouter). Articles are stored as markdown files with YAML frontmatter — drop a .md file in a folder and it appears on the site with tag filtering and click-to-expand reading. Experience and projects are data-driven from JSON files. The Resources page fetches live RSS feeds via a serverless proxy, parses XML, and displays the latest posts. External articles are supported via a separate JSON file for pieces published on LinkedIn, Medium, or elsewhere.",
+      "built": "Built iteratively with Claude Code over several sessions. Started as a simple landing page and evolved into a full multi-page portfolio. The articles system supports both local markdown content and external links, with automatic source detection for LinkedIn, Medium, and other platforms.",
       "hosting": "Vercel (static site via Vite build). Custom domain at eddystonemersey.com. Serverless function for RSS feed proxy.",
       "bots": "None.",
-      "stack": ["React 18", "TypeScript", "Tailwind CSS 3", "Vite", "React Router", "Vercel", "date-fns", "lucide-react"]
+      "stack": ["React 18", "TypeScript", "Tailwind CSS 4", "Vite", "React Router", "Vercel", "marked", "date-fns", "lucide-react", "Motion"]
     }
   },
   {
