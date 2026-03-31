@@ -1,0 +1,55 @@
+[
+  {
+    "title": "Technology Consultant",
+    "organisation": "Eddystone Mersey Consulting",
+    "dateRange": "Sept 2025 – Present",
+    "description": "I deliver senior-level digital transformation, product delivery, and service design across public sector and higher education. I work with clients directly, no account managers or layers between me and the work.",
+    "achievements": [],
+    "technologies": []
+  },
+  {
+    "title": "Expert Network Member",
+    "organisation": "Public Digital",
+    "dateRange": "Oct 2025 – Present",
+    "description": "I contribute to Public Digital's expert network, working with governments and large institutions on becoming more responsive and adaptable.",
+    "achievements": [],
+    "technologies": []
+  },
+  {
+    "title": "Consultant - Head of Transformation Delivery",
+    "organisation": "Plymouth Marjon University",
+    "dateRange": "Oct 2025 – Present",
+    "description": "Leading delivery across multiple workstreams of the Marjon 2030 Transformation Programme. Without a dedicated team, budget, or tooling, I drove interim improvements across admissions and partnerships while shaping the CRM solution in parallel.",
+    "achievements": [
+      "Cut three weeks from the admissions cycle through process redesign and automation",
+      "Built Power Automate workflows that save around 40 FTE days",
+      "Authored user stories grounding the Salesforce build in user research and operational reality",
+      "Designing and delivering a fully digital partner application route for May 2026 admissions"
+    ],
+    "technologies": ["Salesforce", "Power Automate", "SharePoint"]
+  },
+  {
+    "title": "Strategy, Service Design & Product Management Consultant",
+    "organisation": "Department for Environment, Food & Rural Affairs (DEFRA)",
+    "dateRange": "July 2023 – July 2025",
+    "description": "Directed end-to-end service design and delivery of the Windsor Framework Pet Travel Scheme - a £10m+ programme spanning UK Government, port operations and the EU. Led a multidisciplinary team from inception through to live.",
+    "achievements": [
+      "Delivered an accessibility-compliant Digital Support Scheme",
+      "Served as Product Owner across 12 critical interim solutions",
+      "Business continuity documentation adopted as departmental gold standard"
+    ],
+    "technologies": ["GDS Service Standard", "GOV.UK Prototype Kit", "Jira", "Confluence"]
+  },
+  {
+    "title": "Apprentice through to Product Owner",
+    "organisation": "HM Land Registry",
+    "dateRange": "June 2016 – Feb 2023",
+    "description": "Progressed from Business Administration Apprentice through to Product Owner across seven years. Delivered UI enhancements that unlocked automation at scale and designed a critical fallback feature for applications outside automation scope.",
+    "achievements": [
+      "Drove a 40% improvement in operational efficiency",
+      "Contributed to the team winning the RITA (Real Innovation Technology Award)",
+      "Nominated for the Executive Board People Award"
+    ],
+    "technologies": ["Azure DevOps", "Business Analysis", "Agile Delivery"]
+  }
+]

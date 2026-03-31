@@ -13,7 +13,7 @@ export default function Contact() {
         </p>
         <a
           href="mailto:Samuel.Field@eddystonemersey.com"
-          className="px-8 py-3 mb-8 text-sm font-body font-semibold rounded-lg bg-white text-gray-900 hover:opacity-90 transition-opacity"
+          className="px-8 py-3 mb-8 text-sm font-body font-semibold rounded-lg bg-btn-bg text-btn-text hover:opacity-90 transition-opacity"
         >
           Get in touch
         </a>
@@ -29,10 +29,21 @@ export default function Contact() {
 
       {/* Footer */}
       <div className="border-t border-border mt-20 pt-8 flex justify-between items-center flex-wrap gap-4">
-        <p className="text-xs text-muted font-body">© 2026 Samuel Field · Eddystone Mersey Consulting Limited</p>
-        <Link to="/resources" className="text-xs text-muted font-body hover:text-ink transition-colors">
-          Resources →
-        </Link>
+        <p className="text-xs text-muted font-body">&copy; 2026 Samuel Field &middot; Eddystone Mersey Consulting Limited</p>
+        <div className="flex gap-6">
+          <Link to="/experience" className="text-xs text-muted font-body hover:text-ink transition-colors">
+            Case Studies &rarr;
+          </Link>
+          <Link to="/articles" className="text-xs text-muted font-body hover:text-ink transition-colors">
+            Articles &rarr;
+          </Link>
+          <Link to="/projects" className="text-xs text-muted font-body hover:text-ink transition-colors">
+            Side Projects &rarr;
+          </Link>
+          <Link to="/resources" className="text-xs text-muted font-body hover:text-ink transition-colors">
+            Resources &rarr;
+          </Link>
+        </div>
       </div>
     </section>
   )

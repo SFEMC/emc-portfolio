@@ -1,0 +1,104 @@
+[
+  {
+    "title": "Freed",
+    "date": "2026-03-28",
+    "summary": "A UK-wide dietary restaurant discovery platform. Interactive map with 120,000+ venues, dietary filters, community reviews, and venue verification.",
+    "tags": ["Next.js", "PostgreSQL", "PostGIS", "MapLibre", "Tailwind"],
+    "category": "AI Experiment",
+    "liveUrl": "",
+    "repoUrl": "",
+    "detail": {
+      "what": "A web app that helps people with dietary needs (coeliac, vegan, halal, kosher, dairy-free, nut-free, and more) find restaurants, cafes and takeaways across the UK. Users can search an interactive map, filter by dietary type, leave diet-specific reviews, upload photos, and save venues to personal lists. Venue owners can claim their listing and respond to reviews.",
+      "how": "The map uses MapLibre GL JS with free CartoCDN tiles. Venues are searched using PostGIS spatial queries — ST_DWithin for radius search and ST_Distance for distance calculation — which keeps the map fast across 120,000+ records. Dietary tags are inferred from venue names (e.g. 'kebab' maps to halal, 'sushi' to pescatarian) and then refined through community confirmation. A tag earns a 'verified' badge after 3 independent users confirm it. Reviews are diet-specific — a venue's vegan score is independent of its halal score.",
+      "built": "Built conversationally with Claude Code over a weekend. Started from a detailed product requirements document covering features, data strategy, GDPR compliance, and technical architecture. The FSA data pipeline iterates through all 363 UK local authorities, fetching and normalising restaurant data. Originally used Turso (SQLite) but hit the row-read limit during seeding — migrated to Neon Postgres with PostGIS for proper spatial indexing. Google Geocoding API powers the address search.",
+      "hosting": "Vercel (Next.js 16), Neon PostgreSQL with PostGIS extension, Google Geocoding API. All free tier.",
+      "bots": "No bots — browser-based only.",
+      "stack": ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS 4", "Neon PostgreSQL", "PostGIS", "MapLibre GL JS", "Google Geocoding API", "FSA API", "Vercel"]
+    }
+  },
+  {
+    "title": "Polymarket Analysis",
+    "date": "2026-03-28",
+    "summary": "Prediction market analysis dashboard. Ingests live market data, runs a probability model, calculates expected value, and surfaces mispriced contracts with automated alerts.",
+    "tags": ["Next.js", "Recharts", "REST APIs", "Tailwind"],
+    "category": "AI Experiment",
+    "liveUrl": "",
+    "repoUrl": "",
+    "detail": {
+      "what": "A dashboard that monitors prediction markets, runs a probability model against live prices, and flags contracts where the model thinks the market has got it wrong. Shows expected value calculations, price charts, confidence intervals, and sends Telegram alerts when high-value opportunities appear. A risk warning is displayed on every screen — this is analysis only, not trading advice.",
+      "how": "The ingestion cron fetches 300+ active markets from the Polymarket Gamma API, normalises prices from JSON string arrays, and stores price snapshots for trend analysis. The analysis engine runs a weighted-average probability model combining: market price baseline (weight 5), price momentum from recent history (weight 2), external signals weighted by source reliability and recency (weight 3), and volume-based confidence adjustments. Expected value is calculated for both YES and NO sides of each contract.",
+      "built": "Built with Claude Code from a detailed requirements specification. The probability model is deliberately conservative — it starts from the market price as baseline because markets are usually efficient. The category classifier uses keyword matching against contract questions to sort into politics, crypto, sports, economics, and tech.",
+      "hosting": "Vercel (Next.js 16), Turso (SQLite database), Telegram Bot API for alerts. All free tier.",
+      "bots": "A Telegram bot sends alerts when the analysis engine detects opportunities with expected value above 10%. Messages include the recommended action (BUY YES/NO), market price, model probability, and EV percentage.",
+      "stack": ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS 4", "Turso", "Recharts", "Polymarket Gamma API", "Telegram Bot API", "Vercel"]
+    }
+  },
+  {
+    "title": "Day Notes",
+    "date": "2026-03-26",
+    "summary": "Personal daily reflection journal with 5 entry templates, energy tracking, a smart Telegram reminder system, and weekly reviews. Sundays are blocked as rest days.",
+    "tags": ["Next.js", "Turso", "Telegram Bot API", "Tailwind"],
+    "category": "AI Experiment",
+    "liveUrl": "",
+    "repoUrl": "",
+    "detail": {
+      "what": "A personal journaling web app designed to build a daily writing habit. Each day you choose from five templates: Full Reflection (all fields), Quick Capture (just freeform), Wins & Lessons, Plan Tomorrow, or Day Debrief. You rate your energy on a 1-5 scale (Drained to Flying), and the app tracks streaks on a calendar. Saturdays prompt a weekly review. Sundays are blocked — 'Sunday is a day of rest.'",
+      "how": "Two database tables — daily_entries and weekly_entries — both using a date-keyed upsert pattern. Templates are entirely client-side — no extra database tables, just different field combinations rendered from a static array. The calendar shows colour-coded energy dots and highlights days with entries. Auto-save fires on blur so you never lose work.",
+      "built": "Built conversationally with Claude Code, iterating on features as ideas came up. The template system was a mid-build addition that transformed the experience from a rigid form to a flexible one. The Telegram integration was designed from the start — reminders push you to write, quick capture lets you text the bot from anywhere.",
+      "hosting": "Vercel (Next.js 15), Turso (SQLite on AWS eu-west-1), Telegram Bot API. Vercel Cron runs the four scheduled reminder jobs. All free tier.",
+      "bots": "A Telegram bot that works in two directions. Outbound: three daily reminders at 5pm (gentle nudge), 7pm (second prompt), and 10pm (conditional — checks the database and stays silent if you've already written). Plus a Saturday morning weekly review reminder. Inbound: message the bot with any text and it saves directly to today's freeform notes, then confirms with a link to the full entry.",
+      "stack": ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS 3", "Turso", "Telegram Bot API", "Vercel Cron", "jose (JWT)"]
+    }
+  },
+  {
+    "title": "EMC To-Do",
+    "date": "2026-03-20",
+    "summary": "Priority-driven task manager with drag-and-drop, snooze, subtasks, completion reasons, and automated Telegram briefings. Weekly email summaries via Resend.",
+    "tags": ["Next.js", "Supabase", "@dnd-kit", "Resend", "Telegram"],
+    "category": "AI Experiment",
+    "liveUrl": "",
+    "repoUrl": "",
+    "detail": {
+      "what": "A personal task management app that goes beyond simple checklists. Tasks have four priority levels (Urgent, High, Medium, Low), work/personal tags, due dates, subtasks, and comments. The key feature: when you complete or remove a task, a modal asks why. Those reasons feed into a weekly email summary, creating accountability and reflection. Tasks can be snoozed (hidden for 1 day to 2 weeks), and urgent tasks are pinned to the top.",
+      "how": "Drag-and-drop reordering uses @dnd-kit with touch, pointer, and keyboard sensors. Sort order is persisted to the database via parallel PUT requests. The streak counter skips weekends — only weekday completions count. Tasks auto-refresh every 60 seconds and when the browser tab becomes visible. Snoozed tasks are filtered at the database query level so they genuinely disappear until their date arrives.",
+      "built": "Built with Claude Code. The completion reason modal was a deliberate design choice — most to-do apps let you check things off without thinking. Forcing a reason creates a reflection loop that pays off in the Monday morning summary email.",
+      "hosting": "Vercel (Next.js 16), Supabase (PostgreSQL with JSONB columns for subtasks and comments), Resend (weekly email), Telegram Bot API (daily briefings). All free tier.",
+      "bots": "Three automated messages. Morning briefing (7am Mon-Fri via Telegram): overdue tasks, today's tasks, urgent items — on Mondays adds the week ahead. Friday nudge (4pm via Telegram): what's still urgent going into the weekend. Weekly summary (8am Monday via email through Resend): tasks completed with their reasons, tasks removed with their reasons, what's still open.",
+      "stack": ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS 4", "Supabase", "@dnd-kit", "Resend", "Telegram Bot API", "Vercel Cron"]
+    }
+  },
+  {
+    "title": "EMC Portfolio",
+    "date": "2025-09-01",
+    "summary": "This site. Personal consulting portfolio built from scratch to showcase work across UK government and higher education.",
+    "tags": ["React", "TypeScript", "Tailwind", "Vite", "Vercel"],
+    "category": "Code",
+    "liveUrl": "",
+    "repoUrl": "",
+    "detail": {
+      "what": "My professional portfolio site for Eddystone Mersey Consulting. Showcases experience across DEFRA, HM Land Registry, Plymouth Marjon University, and Public Digital. Includes sections for experience, articles (local markdown and external links), projects, and a curated resources page with live RSS feeds.",
+      "how": "Single-page app with React Router (HashRouter). The Resources page fetches live RSS feeds via a server-side proxy, parses XML, and displays the latest articles from service design, higher education, and AI communities. Articles are stored as markdown files with frontmatter — drop a .md file in a folder and it appears on the site. Projects are data-driven from a JSON file.",
+      "built": "Built iteratively with Claude Code over several sessions. Started as a simple landing page and grew into a multi-section portfolio with articles, projects, experience, and resources.",
+      "hosting": "Vercel (static site via Vite build). Custom domain at eddystonemersey.com. Serverless function for RSS feed proxy.",
+      "bots": "None.",
+      "stack": ["React 18", "TypeScript", "Tailwind CSS 3", "Vite", "React Router", "Vercel", "date-fns", "lucide-react"]
+    }
+  },
+  {
+    "title": "Base Physiotherapy",
+    "date": "2025-06-01",
+    "summary": "Website for a physiotherapy practice.",
+    "tags": ["Web Development"],
+    "category": "Code",
+    "liveUrl": "",
+    "repoUrl": "",
+    "detail": {
+      "what": "A professional website for a physiotherapy practice, designed to present services clearly and make it easy for patients to get in touch.",
+      "how": "Clean, responsive design focused on accessibility and clarity. Fast-loading static site optimised for mobile — most patients find it through local search.",
+      "built": "Built as a freelance project alongside consulting work.",
+      "hosting": "Vercel.",
+      "bots": "None.",
+      "stack": ["HTML", "CSS", "JavaScript", "Vercel"]
+    }
+  }
+]

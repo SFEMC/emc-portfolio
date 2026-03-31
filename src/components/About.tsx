@@ -10,10 +10,16 @@ export default function About() {
         </div>
         <div className="lg:col-span-2 flex flex-col gap-4">
           <p className="text-muted font-body font-light text-base leading-relaxed">
-            I embed within organisations, learn how your teams operate, and take services from discovery through to live. I don't consult from a distance. I sit with the people doing the work, understand the constraints, and deliver compliant, accessible digital solutions.
+            Most organisations know their services need to change. Fewer know where to start. They have systems, processes and project plans but no shared picture of what the service looks like from the outside in.
           </p>
           <p className="text-muted font-body font-light text-base leading-relaxed">
-            I've done this at HM Land Registry and Plymouth Marjon University. At DEFRA, I designed and delivered a new service from the ground up. I started as an apprentice and worked my way into senior product and delivery roles across government and higher education. That route gave me a practical understanding of how organisations run, from frontline operations through to boardroom decisions.
+            I fix that. I sit with the people doing the work, learn how teams operate, find where services break down and design them end-to-end. I run discoveries, write user stories, map journeys and embed within delivery teams to move things from alpha through to live.
+          </p>
+          <p className="text-muted font-body font-light text-base leading-relaxed">
+            I spent years doing this in central government, where GDS standards set the bar for how digital services get built. Now I bring those ways of working into higher education — a sector with the same complexity but fewer established frameworks for service delivery.
+          </p>
+          <p className="text-muted font-body font-light text-base leading-relaxed">
+            I don't consult from a distance. I embed within your team, run discoveries, map services and stay until the thing works.
           </p>
           <div className="flex flex-wrap gap-3 mt-2">
             {['DEFRA', 'HM Land Registry', 'Plymouth Marjon University', 'Public Digital'].map((org) => (

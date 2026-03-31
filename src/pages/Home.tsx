@@ -1,7 +1,7 @@
 import Hero from '../components/Hero'
 import About from '../components/About'
 import Capabilities from '../components/Capabilities'
-import Experience from '../components/Experience'
+import Explore from '../components/Explore'
 import Contact from '../components/Contact'
 
 export default function Home() {
@@ -10,8 +10,7 @@ export default function Home() {
       <Hero />
       <About />
       <Capabilities />
-      {/* <Achievements /> */}
-      <Experience />
+      <Explore />
       <Contact />
     </>
   )
