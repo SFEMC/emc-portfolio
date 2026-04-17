@@ -10,16 +10,16 @@ export default function About() {
         </div>
         <div className="lg:col-span-2 flex flex-col gap-4">
           <p className="text-muted font-body font-light text-base leading-relaxed">
-            Most organisations know their services need to change. Fewer know where to start. They have systems, processes and project plans but no shared picture of what the service looks like from the outside in.
+            I embed within your team. I don't consult from a distance or hand over a report and leave.
           </p>
           <p className="text-muted font-body font-light text-base leading-relaxed">
-            I fix that. I sit with the people doing the work, learn how teams operate, find where services break down and design them end-to-end. I run discoveries, write user stories, map journeys and embed within delivery teams to move things from alpha through to live.
+            I start by sitting with the people doing the work: your staff, your users, your partners. I learn how teams operate, find where services break down and map the whole journey from the outside in.
           </p>
           <p className="text-muted font-body font-light text-base leading-relaxed">
-            I spent years doing this in central government, where GDS standards set the bar for how digital services get built. Now I bring those ways of working into higher education — a sector with the same complexity but fewer established frameworks for service delivery.
+            From there I run discoveries, write user stories, design processes and build governance. I stay through delivery, working alongside your team to move things from alpha through to live.
           </p>
           <p className="text-muted font-body font-light text-base leading-relaxed">
-            I don't consult from a distance. I embed within your team, run discoveries, map services and stay until the thing works.
+            I work in the open. You see findings as they emerge, challenge my thinking and shape the direction. By the time we reach delivery, your team owns the solution because they helped build it.
           </p>
           <div className="flex flex-wrap gap-3 mt-2">
             {['DEFRA', 'HM Land Registry', 'Plymouth Marjon University', 'Public Digital'].map((org) => (

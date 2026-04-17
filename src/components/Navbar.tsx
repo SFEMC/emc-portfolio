@@ -10,16 +10,15 @@ const navItems = [
 ]
 
 const themes = [
-  { id: 'dark', label: 'Dark', icon: '🌙' },
-  { id: 'light', label: 'Light', icon: '☀️' },
-  { id: 'navy', label: 'Navy', icon: '🌊' },
-  { id: 'warm', label: 'Warm', icon: '🪵' },
+  { id: 'dark', label: 'Dark mode', icon: '🌙' },
+  { id: 'light', label: 'Light mode', icon: '☀️' },
+  { id: 'navy', label: 'Navy mode', icon: '🌊' },
+  { id: 'warm', label: 'Warm mode', icon: '🪵' },
 ] as const
 
 export default function Navbar() {
   const { pathname } = useLocation()
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [themeOpen, setThemeOpen] = useState(false)
   const [theme, setTheme] = useState('dark')
 
   useEffect(() => {
@@ -32,7 +31,6 @@ export default function Navbar() {
     setTheme(id)
     document.documentElement.setAttribute('data-theme', id)
     localStorage.setItem('emc-theme', id)
-    setThemeOpen(false)
   }
 
   const isLight = theme === 'light' || theme === 'warm'
@@ -64,34 +62,19 @@ export default function Navbar() {
 
         <div className="flex items-center gap-2">
           {/* Theme toggle */}
-          <div className="relative">
-            <button
-              onClick={() => setThemeOpen(!themeOpen)}
-              className="w-8 h-8 rounded-lg flex items-center justify-center text-sm hover:opacity-70 transition-opacity"
-              style={{ color: 'var(--muted)' }}
-              aria-label="Change theme"
-            >
-              {themes.find(t => t.id === theme)?.icon}
-            </button>
-            {themeOpen && (
-              <div className="absolute right-0 top-full mt-2 rounded-lg border p-1 min-w-[120px] z-50" style={{ backgroundColor: 'var(--surface)', borderColor: 'var(--border)' }}>
-                {themes.map(t => (
-                  <button
-                    key={t.id}
-                    onClick={() => changeTheme(t.id)}
-                    className="w-full flex items-center gap-2 px-3 py-2 text-xs font-body font-medium rounded-md transition-colors text-left"
-                    style={{
-                      color: theme === t.id ? 'var(--text)' : 'var(--muted)',
-                      backgroundColor: theme === t.id ? 'var(--border)' : 'transparent',
-                    }}
-                  >
-                    <span>{t.icon}</span>
-                    {t.label}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
+          <button
+            onClick={() => {
+              const currentIndex = themes.findIndex(t => t.id === theme)
+              const nextIndex = (currentIndex + 1) % themes.length
+              changeTheme(themes[nextIndex].id)
+            }}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-body font-medium hover:opacity-70 transition-opacity border"
+            style={{ color: 'var(--muted)', borderColor: 'var(--border)' }}
+            aria-label="Change theme"
+          >
+            <span>{themes.find(t => t.id === theme)?.icon}</span>
+            <span>{themes.find(t => t.id === theme)?.label}</span>
+          </button>
 
           {/* Mobile hamburger */}
           <button

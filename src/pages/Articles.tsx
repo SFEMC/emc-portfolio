@@ -145,6 +145,7 @@ export default function Articles() {
           {filtered.map((article, i) => {
             const isExternal = !!article.url
             const isLocal = !!article.html
+            const isReadable = isLocal || (isExternal && !!article.html)
             const isExpanded = expanded === i
 
             return (
@@ -156,8 +157,7 @@ export default function Articles() {
                     : 'border-border hover:border-white group cursor-pointer'
                 }`}
                 onClick={() => {
-                  if (isExternal) return // external handled by button
-                  if (isLocal) toggle(i)
+                  if (isReadable) toggle(i)
                 }}
               >
                 <div className="p-6">
@@ -170,7 +170,7 @@ export default function Articles() {
                     {isExternal && (
                       <span className="text-xs text-muted font-body">&#8599; {getExternalSource(article.url!)}</span>
                     )}
-                    {isLocal && !isExpanded && (
+                    {isReadable && !isExpanded && (
                       <span className="text-xs text-muted font-body">Click to read</span>
                     )}
                   </div>
@@ -199,7 +199,7 @@ export default function Articles() {
                         Read on {getExternalSource(article.url!)} &#8599;
                       </a>
                     )}
-                    {isLocal && isExpanded && (
+                    {isReadable && isExpanded && (
                       <button
                         onClick={(e) => { e.stopPropagation(); toggle(i) }}
                         className="ml-auto text-xs font-body text-muted hover:text-ink transition-colors"
@@ -211,7 +211,7 @@ export default function Articles() {
                 </div>
 
                 {/* Expanded article content */}
-                {isExpanded && isLocal && article.html && (
+                {isExpanded && article.html && (
                   <div
                     className="border-t border-border px-6 pb-8 pt-6"
                     onClick={e => e.stopPropagation()}
