@@ -52,6 +52,11 @@ function getExternalSource(url: string): string {
   return 'External'
 }
 
+function readingTime(html: string): number {
+  const words = html.replace(/<[^>]*>/g, ' ').trim().split(/\s+/).length
+  return Math.max(1, Math.round(words / 220))
+}
+
 const mdModules = import.meta.glob('/src/content/articles/*.md', { query: '?raw', import: 'default' })
 
 export default function Articles() {
@@ -98,25 +103,32 @@ export default function Articles() {
   }
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-16">
+    <div className="max-w-7xl mx-auto px-6 lg:px-10 py-20 md:py-28">
       {/* Header */}
-      <div className="border-b border-border pb-12 mb-12">
-        <p className="text-xs text-muted uppercase tracking-widest font-body mb-3">Articles</p>
-        <h1 className="font-body font-semibold text-3xl md:text-4xl text-ink leading-tight mb-4">
-          What I write
-        </h1>
-        <p className="text-muted font-body font-light text-base leading-relaxed max-w-2xl">
-          Thoughts on product delivery, service design, technology, and building things that work. Click to read, or follow the link for pieces published elsewhere.
-        </p>
+      <div className="grid grid-cols-12 gap-6 mb-16 md:mb-20">
+        <div className="col-span-12 md:col-span-10">
+          <p className="eyebrow mb-6">Writing</p>
+          <h1 className="font-display text-[44px] md:text-[64px] lg:text-[80px] leading-[1.02] tracking-tight text-ink font-medium mb-8">
+            Notes on services, delivery and how organisations change.
+          </h1>
+          <p className="text-[18px] md:text-[19px] text-ink-soft leading-relaxed max-w-2xl">
+            Short pieces from the work. Some published here, some on LinkedIn. Click a piece to read in place, or follow the link for the original.
+          </p>
+        </div>
       </div>
 
       {/* Tag filters */}
       {allTags.length > 0 && (
-        <div className="flex flex-wrap gap-2 mb-10">
+        <div
+          className="flex flex-wrap gap-2 mb-14 pb-10 border-b"
+          style={{ borderColor: 'var(--border)' }}
+        >
           <button
             onClick={() => setActiveTag('')}
-            className={`px-3 py-1.5 text-xs font-body font-semibold rounded-lg transition-opacity ${
-              !activeTag ? 'bg-white text-gray-900' : 'border border-border text-muted hover:text-ink'
+            className={`px-3.5 py-1.5 text-[13px] font-medium rounded-full transition-all ${
+              !activeTag
+                ? 'bg-ink text-bg border border-ink'
+                : 'border text-muted hover:text-ink border-border-strong'
             }`}
           >
             All
@@ -125,8 +137,10 @@ export default function Articles() {
             <button
               key={tag}
               onClick={() => setActiveTag(activeTag === tag ? '' : tag)}
-              className={`px-3 py-1.5 text-xs font-body font-semibold rounded-lg transition-opacity ${
-                activeTag === tag ? 'bg-white text-gray-900' : 'border border-border text-muted hover:text-ink'
+              className={`px-3.5 py-1.5 text-[13px] font-medium rounded-full transition-all ${
+                activeTag === tag
+                  ? 'bg-ink text-bg border border-ink'
+                  : 'border text-muted hover:text-ink border-border-strong'
               }`}
             >
               {tag}
@@ -137,92 +151,111 @@ export default function Articles() {
 
       {/* Articles list */}
       {!loaded ? (
-        <p className="text-muted font-body text-sm py-12 text-center">Loading articles...</p>
+        <p className="text-muted text-[14px] py-12 text-center">Loading articles...</p>
       ) : filtered.length === 0 ? (
-        <p className="text-muted font-body text-sm py-12 text-center">No articles yet.</p>
+        <p className="text-muted text-[14px] py-12 text-center">No articles yet.</p>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div
+          className="border-t"
+          style={{ borderColor: 'var(--border)' }}
+        >
           {filtered.map((article, i) => {
             const isExternal = !!article.url
-            const isLocal = !!article.html
+            const isLocal = !!article.html && !isExternal
             const isReadable = isLocal || (isExternal && !!article.html)
             const isExpanded = expanded === i
 
             return (
-              <div
+              <article
                 key={i}
-                className={`border rounded-lg transition-all flex flex-col ${
-                  isExpanded
-                    ? 'border-white col-span-1 md:col-span-2 lg:col-span-3 bg-surface'
-                    : 'border-border hover:border-white group cursor-pointer'
-                }`}
-                onClick={() => {
-                  if (isReadable) toggle(i)
-                }}
+                className="border-b"
+                style={{ borderColor: 'var(--border)' }}
               >
-                <div className="p-6">
-                  <div className="flex items-center gap-2 mb-3">
+                <div
+                  className={`grid grid-cols-12 gap-6 py-10 md:py-12 transition-colors ${
+                    isReadable ? 'cursor-pointer hover:bg-bg-elevated' : ''
+                  } px-2 -mx-2`}
+                  onClick={() => {
+                    if (isReadable) toggle(i)
+                  }}
+                >
+                  <div className="col-span-12 md:col-span-2">
                     {article.date && (
-                      <time className="text-xs text-muted font-body">
-                        {format(parseISO(article.date), 'd MMMM yyyy')}
+                      <time className="text-[13px] text-muted block">
+                        {format(parseISO(article.date), 'd MMM yyyy')}
                       </time>
                     )}
                     {isExternal && (
-                      <span className="text-xs text-muted font-body">&#8599; {getExternalSource(article.url!)}</span>
+                      <span className="text-[12px] text-muted mt-1 flex items-center gap-1">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+                        {getExternalSource(article.url!)}
+                      </span>
                     )}
-                    {isReadable && !isExpanded && (
-                      <span className="text-xs text-muted font-body">Click to read</span>
+                    {isReadable && article.html && (
+                      <span className="text-[12px] text-muted mt-1 block">
+                        {readingTime(article.html)} min read
+                      </span>
                     )}
                   </div>
-                  <h2 className={`font-body font-semibold text-lg leading-snug mb-2 transition-colors ${
-                    isExpanded ? 'text-white' : 'text-ink group-hover:text-white'
-                  }`}>
-                    {article.title}
-                  </h2>
-                  <p className="text-muted font-body font-light text-sm leading-relaxed mb-4">
-                    {article.summary}
-                  </p>
-                  <div className="flex flex-wrap items-center gap-2">
-                    {article.tags.map(tag => (
-                      <span key={tag} className="text-xs text-muted font-body border border-border px-2 py-0.5 rounded">
-                        {tag}
-                      </span>
-                    ))}
+
+                  <div className="col-span-12 md:col-span-7">
+                    <h2 className="font-display text-[24px] md:text-[30px] font-medium leading-tight text-ink mb-3 group-hover:text-accent">
+                      {article.title}
+                    </h2>
+                    <p className="text-[16px] text-ink-soft leading-relaxed max-w-2xl">
+                      {article.summary}
+                    </p>
+                    <div className="flex flex-wrap gap-2 mt-5">
+                      {article.tags.map(tag => (
+                        <span key={tag} className="chip">{tag}</span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="col-span-12 md:col-span-3 flex md:justify-end items-start gap-3">
                     {isExternal && (
                       <a
                         href={article.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="ml-auto text-xs font-body font-semibold text-white border border-white rounded px-3 py-1.5 hover:opacity-70 transition-opacity"
-                        onClick={e => e.stopPropagation()}
+                        onClick={(e) => e.stopPropagation()}
+                        className="btn-secondary text-[12px] py-2 px-3.5"
                       >
-                        Read on {getExternalSource(article.url!)} &#8599;
+                        Open on {getExternalSource(article.url!)}
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
                       </a>
                     )}
-                    {isReadable && isExpanded && (
-                      <button
-                        onClick={(e) => { e.stopPropagation(); toggle(i) }}
-                        className="ml-auto text-xs font-body text-muted hover:text-ink transition-colors"
-                      >
-                        Collapse ▲
-                      </button>
+                    {isReadable && (
+                      <span className="text-[13px] font-medium text-accent self-center">
+                        {isExpanded ? '— Close' : 'Read →'}
+                      </span>
                     )}
                   </div>
                 </div>
 
-                {/* Expanded article content */}
+                {/* Expanded body */}
                 {isExpanded && article.html && (
                   <div
-                    className="border-t border-border px-6 pb-8 pt-6"
-                    onClick={e => e.stopPropagation()}
+                    className="pb-14 pt-2"
+                    onClick={(e) => e.stopPropagation()}
                   >
-                    <article
-                      className="article-content max-w-3xl"
-                      dangerouslySetInnerHTML={{ __html: article.html }}
-                    />
+                    <div className="grid grid-cols-12 gap-6">
+                      <div className="col-span-12 md:col-span-10 md:col-start-2">
+                        <article
+                          className="article-content"
+                          dangerouslySetInnerHTML={{ __html: article.html }}
+                        />
+                        <button
+                          onClick={() => toggle(i)}
+                          className="mt-10 text-[13px] font-medium text-muted hover:text-accent transition-colors"
+                        >
+                          ↑ Close article
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 )}
-              </div>
+              </article>
             )
           })}
         </div>

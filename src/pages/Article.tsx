@@ -42,6 +42,11 @@ function parseFrontmatter(content: string): { meta: ArticleMeta; body: string } 
   }
 }
 
+function readingTime(text: string): number {
+  const words = text.replace(/<[^>]*>/g, ' ').trim().split(/\s+/).length
+  return Math.max(1, Math.round(words / 220))
+}
+
 const mdModules = import.meta.glob('/src/content/articles/*.md', { query: '?raw', import: 'default' })
 
 export default function Article() {
@@ -72,10 +77,8 @@ export default function Article() {
   if (notFound) {
     return (
       <div className="max-w-3xl mx-auto px-6 py-20 text-center">
-        <h1 className="font-body font-semibold text-2xl text-ink mb-4">Article not found</h1>
-        <Link to="/articles" className="text-muted font-body hover:text-ink transition-colors">
-          &larr; Back to articles
-        </Link>
+        <h1 className="font-display text-[32px] font-medium text-ink mb-4">Article not found</h1>
+        <Link to="/articles" className="link-accent">Back to writing</Link>
       </div>
     )
   }
@@ -83,59 +86,74 @@ export default function Article() {
   if (!article) {
     return (
       <div className="max-w-3xl mx-auto px-6 py-20 text-center">
-        <p className="text-muted font-body">Loading...</p>
+        <p className="text-muted">Loading...</p>
       </div>
     )
   }
 
+  const mins = readingTime(article.html)
+
   return (
-    <div className="max-w-3xl mx-auto px-6 py-16">
+    <div className="max-w-7xl mx-auto px-6 lg:px-10 py-14 md:py-20">
       {/* Back link */}
-      <Link to="/articles" className="text-sm text-muted font-body hover:text-ink transition-colors mb-8 inline-block">
-        &larr; All articles
+      <Link
+        to="/articles"
+        className="text-[14px] font-medium text-muted hover:text-accent transition-colors inline-flex items-center gap-2 mb-14"
+      >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        All writing
       </Link>
 
-      {/* Header */}
-      <header className="mb-12">
-        <div className="flex items-center gap-3 mb-4">
-          {article.meta.date && (
-            <time className="text-sm text-muted font-body">
-              {format(parseISO(article.meta.date), 'd MMMM yyyy')}
-            </time>
-          )}
-        </div>
-        <h1 className="font-body font-semibold text-3xl md:text-4xl text-ink leading-tight mb-4">
-          {article.meta.title}
-        </h1>
-        <p className="text-muted font-body font-light text-lg leading-relaxed">
-          {article.meta.summary}
-        </p>
-        <div className="flex flex-wrap gap-2 mt-4">
-          {article.meta.tags.map(tag => (
-            <span key={tag} className="text-xs text-muted font-body border border-border px-2 py-0.5 rounded">
-              {tag}
-            </span>
-          ))}
-        </div>
-      </header>
+      <div className="grid grid-cols-12 gap-6">
+        {/* Header */}
+        <header className="col-span-12 md:col-span-10 md:col-start-2 mb-14">
+          <div className="flex items-center gap-3 flex-wrap mb-8">
+            {article.meta.date && (
+              <time className="text-[13px] text-muted">
+                {format(parseISO(article.meta.date), 'd MMMM yyyy')}
+              </time>
+            )}
+            <span className="h-1 w-1 rounded-full" style={{ background: 'var(--muted)' }} />
+            <span className="text-[13px] text-muted">{mins} min read</span>
+          </div>
+          <h1 className="font-display text-[40px] md:text-[56px] lg:text-[64px] leading-[1.05] tracking-tight text-ink font-medium mb-6">
+            {article.meta.title}
+          </h1>
+          <p className="text-[19px] md:text-[21px] text-ink-soft leading-relaxed max-w-2xl mb-6">
+            {article.meta.summary}
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {article.meta.tags.map(tag => (
+              <span key={tag} className="chip">{tag}</span>
+            ))}
+          </div>
+        </header>
 
-      {/* Article body */}
-      <article
-        className="article-content"
-        dangerouslySetInnerHTML={{ __html: article.html }}
-      />
+        {/* Body */}
+        <div className="col-span-12 md:col-span-8 md:col-start-3">
+          <article
+            className="article-content"
+            dangerouslySetInnerHTML={{ __html: article.html }}
+          />
 
-      {/* Footer */}
-      <div className="border-t border-border mt-16 pt-8 flex justify-between items-center">
-        <Link to="/articles" className="text-sm text-muted font-body hover:text-ink transition-colors">
-          &larr; All articles
-        </Link>
-        <a
-          href="mailto:Samuel.Field@eddystonemersey.com"
-          className="text-sm text-muted font-body hover:text-ink transition-colors"
-        >
-          Discuss this article &rarr;
-        </a>
+          {/* Footer */}
+          <div
+            className="border-t mt-16 pt-10 flex flex-wrap justify-between items-center gap-4"
+            style={{ borderColor: 'var(--border)' }}
+          >
+            <Link to="/articles" className="text-[14px] font-medium text-muted hover:text-accent transition-colors inline-flex items-center gap-2">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+              All writing
+            </Link>
+            <a
+              href="mailto:Samuel.Field@eddystonemersey.com"
+              className="btn-secondary text-[13px]"
+            >
+              Discuss this piece
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   )

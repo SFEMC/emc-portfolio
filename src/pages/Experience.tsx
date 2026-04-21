@@ -1,55 +1,113 @@
-// Case studies content — kept here ready for launch
-/* Case studies content — ready for launch
-const caseStudies = [
+const engagements = [
   {
-    heading: "Transformation Delivery through Service Thinking",
-    org: "Plymouth Marjon University",
-    dates: "Oct 2025 – Present",
-    body: [
-      "Marjon brought me in to lead discovery and implement interim solutions across its 2030 Transformation Programme, ensuring the university could adopt its future state. No dedicated team existed. The budget was minimal. No tooling was in place.",
-      "I focused on what could move now. I redesigned the admissions process and cut three weeks from the cycle. I built Power Automate workflows that save around 40 full-time equivalent days per year. I wrote the user stories grounding the Salesforce CRM build in research and operational reality rather than vendor assumptions. I'm now running a pilot on a fully digital partner application route that replaces the old spreadsheet model for May 2026 admissions. I designed it, created all associated artefacts, did the user research and UX, tested it and brought it to pilot. I wore every hat from design through to delivery, leaning on an excellent digital colleague to help with the code.",
-      "I've since been formalised into Head of Service Design and Delivery. The constraint shaped the work. When you have almost no budget, you prioritise ruthlessly. When you have no tooling, you build what you need from what's available.",
-    ],
-    tags: ["Salesforce", "Power Automate", "SharePoint", "Marjon"],
+    org: 'Plymouth Marjon University',
+    role: 'Consultant, Service Design and Delivery',
+    dates: '2025 — Present',
+    headline: 'Transformation delivery through service thinking.',
+    teaser: 'Discovery across admissions, interim solution delivery and a fully digital partner application route designed, built and piloted for May 2026.',
+    tags: ['Service design', 'Salesforce', 'Power Automate', 'SharePoint'],
+    sector: 'Higher Education',
   },
   {
-    heading: "A high-risk cross-border programme from inception to live",
-    org: "Department for Environment, Food & Rural Affairs",
-    dates: "July 2023 – July 2025",
-    body: [
-      "The Windsor Framework Pet Travel Scheme was designed and delivered with UK Government, port operations and the EU. I managed end-to-end service design and delivery across each of them, from the point the programme started through to going live.",
-      "I delivered an accessibility-compliant Digital Support Scheme. I served as Product Owner across high-risk interim solutions, each with its own constraints and dependencies. The business continuity documentation I produced was adopted as the departmental gold standard.",
-      "After the service launched, I led the operational handover into BAU, working with the teams who would run the service day-to-day to make sure knowledge transferred and nothing fell between the cracks. I stayed on to support the live service through its early months, resolving issues as they surfaced and feeding operational insights back into the product backlog.",
-      "This was a programme where getting it wrong meant real consequences at real borders for real people. Every decision had to hold up under scrutiny from multiple governments.",
-    ],
-    tags: ["GDS Service Standard", "GOV.UK Prototype Kit", "Jira", "Confluence"],
+    org: 'Department for Environment, Food & Rural Affairs',
+    role: 'Product Owner',
+    dates: '2023 — 2025',
+    headline: 'A high-risk cross-border programme from inception to live.',
+    teaser: 'End-to-end service design and delivery across UK Government, port operations and the EU for the Windsor Framework Pet Travel Scheme.',
+    tags: ['GDS Service Standard', 'GOV.UK Prototype Kit', 'Jira', 'Confluence'],
+    sector: 'Central Government',
   },
   {
-    heading: "Earning Every Step: Apprentice to Product Owner",
-    org: "HM Land Registry",
-    dates: "June 2016 – Feb 2023",
-    body: [
-      "I joined HM Land Registry at 17 as a Business Administration Apprentice. Over seven years I moved through the organisation into product ownership. I delivered UI enhancements that unlocked automation at scale and designed a critical fallback feature for applications that fell outside automation scope.",
-      "I managed the rollout of these changes to 7,000 staff across the organisation. The team I worked with drove a 40% improvement in operational efficiency. We won the RITA (Real Innovation Technology Award). I was nominated for the Executive Board People Award.",
-      "I spearheaded the local community of practice, creating a space where colleagues across disciplines could share approaches and learn from each other.",
-      "I learned how government services work from the inside, starting at the most junior level and earning every step up.",
-    ],
-    tags: ["Azure DevOps", "Business Analysis", "Agile Delivery"],
+    org: 'HM Land Registry',
+    role: 'Apprentice → Product Owner',
+    dates: '2016 — 2023',
+    headline: 'Earning every step: apprentice to product owner.',
+    teaser: 'Seven years moving through the organisation into product ownership, delivering UI enhancements that unlocked automation at scale across 7,000 staff.',
+    tags: ['Azure DevOps', 'Business analysis', 'Agile delivery'],
+    sector: 'Central Government',
   },
 ]
-*/
 
 export default function Experience() {
   return (
-    <div className="max-w-6xl mx-auto px-6 py-16">
-      <div className="flex flex-col items-center justify-center text-center py-20">
-        <p className="text-xs text-muted uppercase tracking-widest font-body mb-3">Case Studies</p>
-        <h1 className="font-body font-semibold text-3xl md:text-4xl text-ink leading-tight mb-4">
-          Coming Soon
-        </h1>
-        <p className="text-muted font-body font-light text-base leading-relaxed max-w-lg">
-          Detailed case studies from my work across UK government and higher education are on the way. Check back soon.
-        </p>
+    <div className="max-w-7xl mx-auto px-6 lg:px-10 py-20 md:py-28">
+      {/* Header */}
+      <div className="grid grid-cols-12 gap-6 mb-16 md:mb-20">
+        <div className="col-span-12 md:col-span-10">
+          <p className="eyebrow mb-6">Case studies</p>
+          <h1 className="font-display text-[44px] md:text-[64px] lg:text-[80px] leading-[1.02] tracking-tight text-ink font-medium mb-8">
+            Ten years of public service delivery.
+          </h1>
+          <p className="text-[18px] md:text-[19px] text-ink-soft leading-relaxed max-w-2xl">
+            Detailed case studies for each engagement are in the works. For now, here's the shape of the work. Get in touch if you'd like to dig into any of it.
+          </p>
+        </div>
+      </div>
+
+      {/* Engagement list */}
+      <div
+        className="border-t"
+        style={{ borderColor: 'var(--border)' }}
+      >
+        {engagements.map((e) => (
+          <article
+            key={e.org}
+            className="grid grid-cols-12 gap-6 py-12 md:py-16 border-b"
+            style={{ borderColor: 'var(--border)' }}
+          >
+            <div className="col-span-12 md:col-span-3">
+              <p className="eyebrow mb-2">{e.dates}</p>
+              <p className="text-[14px] text-muted mb-1">{e.sector}</p>
+              <p className="text-[14px] text-ink-soft">{e.role}</p>
+            </div>
+
+            <div className="col-span-12 md:col-span-7">
+              <p className="text-[14px] text-muted mb-3">{e.org}</p>
+              <h2 className="font-display text-[28px] md:text-[36px] font-medium text-ink leading-tight mb-5">
+                {e.headline}
+              </h2>
+              <p className="text-[16px] md:text-[17px] text-ink-soft leading-relaxed mb-6 max-w-2xl">
+                {e.teaser}
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {e.tags.map((t) => (
+                  <span key={t} className="chip">{t}</span>
+                ))}
+              </div>
+            </div>
+
+            <div className="col-span-12 md:col-span-2 flex md:justify-end items-start">
+              <span
+                className="text-[12px] font-medium tracking-wider uppercase px-3 py-1.5 rounded-full"
+                style={{ background: 'var(--bg-elevated)', color: 'var(--muted)' }}
+              >
+                Case study coming
+              </span>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      {/* Discuss */}
+      <div
+        className="mt-20 pt-16 border-t"
+        style={{ borderColor: 'var(--border)' }}
+      >
+        <div className="grid grid-cols-12 gap-6">
+          <div className="col-span-12 md:col-span-7">
+            <p className="eyebrow mb-4">Want the detail?</p>
+            <h2 className="font-display text-[32px] md:text-[40px] leading-tight tracking-tight text-ink font-medium mb-6">
+              Happy to talk you through any of it.
+            </h2>
+            <p className="text-[17px] text-ink-soft leading-relaxed max-w-xl mb-8">
+              I can walk through the constraints, what worked, what did not and what I would do differently. A thirty minute call usually covers it.
+            </p>
+            <a href="mailto:Samuel.Field@eddystonemersey.com" className="btn-primary">
+              Set up a call
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   )

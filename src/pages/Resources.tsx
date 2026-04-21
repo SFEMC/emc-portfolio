@@ -157,153 +157,186 @@ export default function Resources() {
     })
   }, [activeCategory])
 
+  const cardBase = "flex flex-col gap-2 p-6 rounded-xl transition-all hover:-translate-y-0.5"
+  const cardStyle = { background: 'var(--bg-elevated)', border: '1px solid var(--border)' }
+
   return (
-    <div className="max-w-6xl mx-auto px-6 py-16">
+    <div className="max-w-7xl mx-auto px-6 lg:px-10 py-20 md:py-28">
       {/* Header */}
-      <div className="border-b border-border pb-12 mb-12">
-        <p className="text-xs text-muted uppercase tracking-widest font-body mb-3">Resources</p>
-        <h1 className="font-body font-semibold text-4xl md:text-5xl text-ink mb-4">
-          What I read
-        </h1>
-        <p className="text-muted font-body font-light text-base max-w-xl">
-          Books, newsletters, and blogs that shape how I work. These are the sources I come back to, alongside the live feeds below.
-        </p>
+      <div className="grid grid-cols-12 gap-6 mb-16 md:mb-20">
+        <div className="col-span-12 md:col-span-10">
+          <p className="eyebrow mb-6">Resources</p>
+          <h1 className="font-display text-[44px] md:text-[64px] lg:text-[80px] leading-[1.02] tracking-tight text-ink font-medium mb-8">
+            The sources I come back to.
+          </h1>
+          <p className="text-[18px] md:text-[19px] text-ink-soft leading-relaxed max-w-2xl">
+            Books, newsletters, blogs and people that shape how I think and work. Plus live feeds from the writers and organisations worth following today.
+          </p>
+        </div>
       </div>
 
       {/* Books */}
-      <div className="mb-16">
-        <p className="text-xs text-muted uppercase tracking-widest font-body mb-8">Books</p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <section
+        className="mb-20 pt-14 border-t"
+        style={{ borderColor: 'var(--border)' }}
+      >
+        <p className="eyebrow mb-8">Books</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {books.map((book, i) => (
-            <a key={i} href={book.url} target="_blank" rel="noopener noreferrer" className="flex flex-col gap-2 border border-border p-5 rounded-lg hover:border-white transition-colors">
-              <span className="text-xs font-body text-muted uppercase tracking-widest">{book.category}</span>
-              <h3 className="font-body font-semibold text-ink text-base leading-snug">{book.title}</h3>
-              {book.author && <p className="text-xs font-body text-muted">{book.author}</p>}
-              <p className="text-sm font-body font-light text-muted leading-relaxed">{book.description}</p>
+            <a key={i} href={book.url} target="_blank" rel="noopener noreferrer" className={cardBase} style={cardStyle}>
+              <span className="eyebrow text-[11px]">{book.category}</span>
+              <h3 className="font-display text-[19px] font-medium text-ink leading-snug">{book.title}</h3>
+              {book.author && <p className="text-[13px] text-muted">{book.author}</p>}
+              <p className="text-[14px] text-ink-soft leading-relaxed mt-1">{book.description}</p>
             </a>
           ))}
         </div>
-      </div>
+      </section>
 
       {/* Articles, Newsletters & Blogs */}
-      <div className="mb-16">
-        <p className="text-xs text-muted uppercase tracking-widest font-body mb-8">Articles, Newsletters & Blogs</p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <section
+        className="mb-20 pt-14 border-t"
+        style={{ borderColor: 'var(--border)' }}
+      >
+        <p className="eyebrow mb-8">Articles, newsletters &amp; blogs</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {articleCards.map((item, i) => (
-            <a key={i} href={item.url} target="_blank" rel="noopener noreferrer" className="flex flex-col gap-2 border border-border p-5 rounded-lg hover:border-white transition-colors">
-              <span className="text-xs font-body text-muted uppercase tracking-widest">{item.category}</span>
-              <h3 className="font-body font-semibold text-ink text-base leading-snug">{item.title}</h3>
-              {item.author && <p className="text-xs font-body text-muted">{item.author}</p>}
-              <p className="text-sm font-body font-light text-muted leading-relaxed">{item.description}</p>
+            <a key={i} href={item.url} target="_blank" rel="noopener noreferrer" className={cardBase} style={cardStyle}>
+              <span className="eyebrow text-[11px]">{item.category}</span>
+              <h3 className="font-display text-[19px] font-medium text-ink leading-snug">{item.title}</h3>
+              {item.author && <p className="text-[13px] text-muted">{item.author}</p>}
+              <p className="text-[14px] text-ink-soft leading-relaxed mt-1">{item.description}</p>
             </a>
           ))}
         </div>
-      </div>
+      </section>
 
-      {/* People to follow */}
-      <div className="mb-16">
-        <p className="text-xs text-muted uppercase tracking-widest font-body mb-8">People to follow</p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {/* People */}
+      <section
+        className="mb-20 pt-14 border-t"
+        style={{ borderColor: 'var(--border)' }}
+      >
+        <p className="eyebrow mb-8">People to follow</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {people.map((person, i) => (
-            <div key={i} className="flex flex-col gap-3 border border-border p-5 rounded-lg">
-              <span className="text-xs font-body text-muted uppercase tracking-widest">{person.category}</span>
-              <h3 className="font-body font-semibold text-ink text-base">{person.name}</h3>
-              <p className="text-sm font-body font-light text-muted leading-relaxed flex-1">{person.description}</p>
+            <div key={i} className="flex flex-col gap-3 p-6 rounded-xl" style={cardStyle}>
+              <span className="eyebrow text-[11px]">{person.category}</span>
+              <h3 className="font-display text-[19px] font-medium text-ink leading-snug">{person.name}</h3>
+              <p className="text-[14px] text-ink-soft leading-relaxed flex-1">{person.description}</p>
               <a
                 href={person.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs font-body font-semibold text-white border border-white rounded px-3 py-1.5 hover:opacity-70 transition-opacity self-start"
+                className="text-[12px] font-medium rounded-full px-3 py-1.5 self-start transition-colors"
+                style={{ border: '1px solid var(--border-strong)', color: 'var(--ink)' }}
               >
                 {person.linkLabel} ↗
               </a>
             </div>
           ))}
         </div>
-      </div>
+      </section>
 
       {/* Live feeds */}
-      <p className="text-xs text-muted uppercase tracking-widest font-body mb-8">Latest from the field</p>
-
-      {/* Category tabs */}
-      <div className="flex gap-6 mb-10 border-b border-border">
-        {(Object.keys(feeds) as Category[]).map((cat) => (
-          <button
-            key={cat}
-            onClick={() => setActiveCategory(cat)}
-            className={`pb-3 text-sm font-body border-b-2 transition-colors -mb-px ${
-              activeCategory === cat
-                ? 'border-ink text-ink font-medium'
-                : 'border-transparent text-muted hover:text-ink'
-            }`}
-          >
-            {categoryLabels[cat]}
-          </button>
-        ))}
-      </div>
-
-      {/* Source tags */}
-      <div className="flex flex-wrap gap-2 mb-8">
-        {feeds[activeCategory].map((s) => (
-          <span key={s.name} className="text-xs font-body text-muted border border-border px-3 py-1">
-            {s.name}
-          </span>
-        ))}
-      </div>
-
-      {/* Articles */}
-      {loading ? (
-        <div className="flex flex-col gap-4">
-          {[...Array(6)].map((_, i) => (
-            <div key={i} className="border-t border-border pt-6 pb-6 animate-pulse">
-              <div className="h-3 w-24 bg-border rounded mb-3" />
-              <div className="h-5 w-2/3 bg-border rounded mb-2" />
-              <div className="h-3 w-full bg-border rounded" />
-            </div>
-          ))}
+      <section
+        className="pt-14 border-t"
+        style={{ borderColor: 'var(--border)' }}
+      >
+        <div className="grid grid-cols-12 gap-6 mb-8">
+          <div className="col-span-12 md:col-span-7">
+            <p className="eyebrow mb-3">Live feeds</p>
+            <h2 className="font-display text-[32px] md:text-[40px] leading-tight tracking-tight text-ink font-medium">
+              Latest from the field.
+            </h2>
+          </div>
         </div>
-      ) : articles.length === 0 ? (
-        <p className="text-muted font-body font-light text-sm py-12 text-center">
-          No articles loaded. Some feeds may be temporarily unavailable.
-        </p>
-      ) : (
-        <div className="flex flex-col">
-          {articles.map((article, i) => (
-            <a
-              key={i}
-              href={article.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group border-t border-border py-6 grid grid-cols-1 md:grid-cols-4 gap-2 md:gap-8 hover:bg-surface transition-colors px-0 hover:px-4 -mx-0 hover:-mx-4"
+
+        {/* Category tabs */}
+        <div
+          className="flex gap-6 mb-8 border-b"
+          style={{ borderColor: 'var(--border)' }}
+        >
+          {(Object.keys(feeds) as Category[]).map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className={`pb-3 text-[14px] font-medium transition-colors relative -mb-px`}
+              style={{
+                color: activeCategory === cat ? 'var(--ink)' : 'var(--muted)',
+                borderBottom: activeCategory === cat ? '2px solid var(--accent)' : '2px solid transparent',
+              }}
             >
-              <div className="flex flex-col gap-1">
-                <span className="text-xs font-body text-muted">{article.source}</span>
-                {article.pubDate && (
-                  <span className="text-xs font-body text-muted/60">
-                    {(() => {
-                      try {
-                        return formatDistanceToNow(new Date(article.pubDate), { addSuffix: true })
-                      } catch {
-                        return ''
-                      }
-                    })()}
-                  </span>
-                )}
-              </div>
-              <div className="md:col-span-3">
-                <h3 className="font-body font-medium text-ink text-base leading-snug group-hover:text-blue transition-colors mb-1">
-                  {article.title}
-                </h3>
-                {article.description && (
-                  <p className="text-muted font-body font-light text-sm leading-relaxed line-clamp-2">
-                    {article.description}
-                  </p>
-                )}
-              </div>
-            </a>
+              {categoryLabels[cat]}
+            </button>
           ))}
         </div>
-      )}
+
+        {/* Source chips */}
+        <div className="flex flex-wrap gap-2 mb-10">
+          {feeds[activeCategory].map((s) => (
+            <span key={s.name} className="chip">{s.name}</span>
+          ))}
+        </div>
+
+        {/* Feed items */}
+        {loading ? (
+          <div className="flex flex-col gap-4">
+            {[...Array(6)].map((_, i) => (
+              <div
+                key={i}
+                className="border-t pt-6 pb-6 animate-pulse"
+                style={{ borderColor: 'var(--border)' }}
+              >
+                <div className="h-3 w-24 rounded mb-3" style={{ background: 'var(--border)' }} />
+                <div className="h-5 w-2/3 rounded mb-2" style={{ background: 'var(--border)' }} />
+                <div className="h-3 w-full rounded" style={{ background: 'var(--border)' }} />
+              </div>
+            ))}
+          </div>
+        ) : articles.length === 0 ? (
+          <p className="text-muted text-[14px] py-12 text-center">
+            No articles loaded. Some feeds may be temporarily unavailable.
+          </p>
+        ) : (
+          <div className="flex flex-col">
+            {articles.map((article, i) => (
+              <a
+                key={i}
+                href={article.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group border-t py-6 grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-6 hover:bg-bg-elevated transition-colors px-2 -mx-2"
+                style={{ borderColor: 'var(--border)' }}
+              >
+                <div className="md:col-span-3 flex flex-col gap-1">
+                  <span className="text-[13px] font-medium text-ink-soft">{article.source}</span>
+                  {article.pubDate && (
+                    <span className="text-[12px] text-muted">
+                      {(() => {
+                        try {
+                          return formatDistanceToNow(new Date(article.pubDate), { addSuffix: true })
+                        } catch {
+                          return ''
+                        }
+                      })()}
+                    </span>
+                  )}
+                </div>
+                <div className="md:col-span-9">
+                  <h3 className="font-display text-[19px] md:text-[21px] font-medium text-ink leading-snug group-hover:text-accent transition-colors mb-1.5">
+                    {article.title}
+                  </h3>
+                  {article.description && (
+                    <p className="text-muted text-[14px] leading-relaxed line-clamp-2">
+                      {article.description}
+                    </p>
+                  )}
+                </div>
+              </a>
+            ))}
+          </div>
+        )}
+      </section>
     </div>
   )
 }

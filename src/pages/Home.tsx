@@ -1,16 +1,20 @@
 import Hero from '../components/Hero'
-import About from '../components/About'
+import Principles from '../components/Principles'
 import Capabilities from '../components/Capabilities'
-import Explore from '../components/Explore'
+import SelectedWork from '../components/SelectedWork'
+import LatestWriting from '../components/LatestWriting'
+import About from '../components/About'
 import Contact from '../components/Contact'
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <About />
+      <Principles />
       <Capabilities />
-      <Explore />
+      <SelectedWork />
+      <LatestWriting />
+      <About />
       <Contact />
     </>
   )

@@ -39,26 +39,33 @@ export default function Projects() {
   }
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-16">
+    <div className="max-w-7xl mx-auto px-6 lg:px-10 py-20 md:py-28">
       {/* Header */}
-      <div className="border-b border-border pb-12 mb-12">
-        <p className="text-xs text-muted uppercase tracking-widest font-body mb-3">Side Projects</p>
-        <h1 className="font-body font-semibold text-3xl md:text-4xl text-ink leading-tight mb-4">
-          What I've built
-        </h1>
-        <p className="text-muted font-body font-light text-base leading-relaxed max-w-2xl">
-          Experiments, hobby builds, and creative work outside of client delivery. Click a project to see the full breakdown.
-        </p>
+      <div className="grid grid-cols-12 gap-6 mb-16 md:mb-20">
+        <div className="col-span-12 md:col-span-10">
+          <p className="eyebrow mb-6">Projects</p>
+          <h1 className="font-display text-[44px] md:text-[64px] lg:text-[80px] leading-[1.02] tracking-tight text-ink font-medium mb-8">
+            Things I've built for the fun of it.
+          </h1>
+          <p className="text-[18px] md:text-[19px] text-ink-soft leading-relaxed max-w-2xl">
+            Experiments, hobby builds and creative work outside of client delivery. Most are built conversationally with Claude Code in a weekend.
+          </p>
+        </div>
       </div>
 
-      {/* Category filters */}
-      <div className="flex flex-wrap gap-2 mb-10">
+      {/* Filters */}
+      <div
+        className="flex flex-wrap gap-2 mb-12 pb-10 border-b"
+        style={{ borderColor: 'var(--border)' }}
+      >
         {categories.map(cat => (
           <button
             key={cat}
             onClick={() => { setActiveCategory(cat); setExpanded(null) }}
-            className={`px-3 py-1.5 text-xs font-body font-semibold rounded-lg transition-opacity ${
-              activeCategory === cat ? 'bg-white text-gray-900' : 'border border-border text-muted hover:text-ink'
+            className={`px-3.5 py-1.5 text-[13px] font-medium rounded-full transition-all ${
+              activeCategory === cat
+                ? 'bg-ink text-bg border border-ink'
+                : 'border text-muted hover:text-ink border-border-strong'
             }`}
           >
             {cat}
@@ -68,50 +75,55 @@ export default function Projects() {
 
       {/* Project cards */}
       {filtered.length === 0 ? (
-        <p className="text-muted font-body text-sm py-12 text-center">No projects in this category yet.</p>
+        <p className="text-muted text-[14px] py-12 text-center">No projects in this category yet.</p>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {filtered.map((project, i) => {
             const isExpanded = expanded === i
             const detail = project.detail
 
             return (
-              <div
+              <article
                 key={i}
-                className={`border rounded-lg transition-all cursor-pointer flex flex-col ${
+                className={`rounded-2xl transition-all cursor-pointer flex flex-col ${
                   isExpanded
-                    ? 'border-white col-span-1 md:col-span-2 lg:col-span-3 bg-surface'
-                    : 'border-border hover:border-white group'
+                    ? 'col-span-1 md:col-span-2'
+                    : 'hover:-translate-y-0.5'
                 }`}
+                style={{
+                  background: 'var(--bg-elevated)',
+                  border: '1px solid var(--border)',
+                }}
                 onClick={() => toggle(i)}
               >
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-3">
-                    {project.date && (
-                      <time className="text-xs text-muted font-body">
-                        {format(parseISO(project.date), 'd MMMM yyyy')}
-                      </time>
-                    )}
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs font-body text-muted border border-border px-2 py-0.5 rounded">
-                        {project.category}
-                      </span>
-                      <span className="text-xs text-muted">
-                        {isExpanded ? '▲' : '▼'}
-                      </span>
+                <div className="p-7 md:p-8">
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="flex items-center gap-3">
+                      <span className="chip">{project.category}</span>
+                      {project.date && (
+                        <time className="text-[12px] text-muted">
+                          {format(parseISO(project.date), 'MMM yyyy')}
+                        </time>
+                      )}
                     </div>
+                    <span className="text-[12px] text-muted">
+                      {isExpanded ? '— Close' : 'Open'}
+                    </span>
                   </div>
-                  <h2 className={`font-body font-semibold text-lg leading-snug mb-2 transition-colors ${
-                    isExpanded ? 'text-white' : 'text-ink group-hover:text-white'
-                  }`}>
+
+                  <h2 className="font-display text-[24px] md:text-[28px] font-medium text-ink leading-tight mb-3">
                     {project.title}
                   </h2>
-                  <p className="text-muted font-body font-light text-sm leading-relaxed mb-4">
+                  <p className="text-[15px] text-ink-soft leading-relaxed mb-5">
                     {project.summary}
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {project.tags.map(tag => (
-                      <span key={tag} className="text-xs text-muted font-body border border-border px-2 py-0.5 rounded">
+                      <span
+                        key={tag}
+                        className="text-[12px] font-medium px-2.5 py-1 rounded-md"
+                        style={{ background: 'var(--bg)', color: 'var(--ink-soft)', border: '1px solid var(--border)' }}
+                      >
                         {tag}
                       </span>
                     ))}
@@ -120,42 +132,51 @@ export default function Projects() {
 
                 {/* Expanded detail */}
                 {isExpanded && detail && (
-                  <div className="border-t border-border px-6 pb-6 pt-5" onClick={e => e.stopPropagation()}>
-                    <div className="mb-8">
+                  <div
+                    className="border-t px-7 md:px-8 pb-8 pt-6"
+                    style={{ borderColor: 'var(--border)' }}
+                    onClick={e => e.stopPropagation()}
+                  >
+                    <div className="mb-10 rounded-xl overflow-hidden">
                       <ProjectPreview title={project.title} />
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                       <div>
-                        <h3 className="text-xs text-muted uppercase tracking-widest font-body mb-2">What it does</h3>
-                        <p className="text-sm font-body font-light text-ink leading-relaxed">{detail.what}</p>
+                        <p className="eyebrow mb-2">What it does</p>
+                        <p className="text-[15px] text-ink-soft leading-relaxed">{detail.what}</p>
                       </div>
                       <div>
-                        <h3 className="text-xs text-muted uppercase tracking-widest font-body mb-2">How it works</h3>
-                        <p className="text-sm font-body font-light text-ink leading-relaxed">{detail.how}</p>
+                        <p className="eyebrow mb-2">How it works</p>
+                        <p className="text-[15px] text-ink-soft leading-relaxed">{detail.how}</p>
                       </div>
                       <div>
-                        <h3 className="text-xs text-muted uppercase tracking-widest font-body mb-2">How it was built</h3>
-                        <p className="text-sm font-body font-light text-ink leading-relaxed">{detail.built}</p>
+                        <p className="eyebrow mb-2">How it was built</p>
+                        <p className="text-[15px] text-ink-soft leading-relaxed">{detail.built}</p>
                       </div>
                       <div>
-                        <h3 className="text-xs text-muted uppercase tracking-widest font-body mb-2">Hosting</h3>
-                        <p className="text-sm font-body font-light text-ink leading-relaxed mb-4">{detail.hosting}</p>
-
+                        <p className="eyebrow mb-2">Hosting</p>
+                        <p className="text-[15px] text-ink-soft leading-relaxed mb-4">{detail.hosting}</p>
                         {detail.bots && detail.bots !== 'None.' && detail.bots !== 'No bots — browser-based only.' && (
                           <>
-                            <h3 className="text-xs text-muted uppercase tracking-widest font-body mb-2">Bots & automation</h3>
-                            <p className="text-sm font-body font-light text-ink leading-relaxed">{detail.bots}</p>
+                            <p className="eyebrow mb-2 mt-4">Bots &amp; automation</p>
+                            <p className="text-[15px] text-ink-soft leading-relaxed">{detail.bots}</p>
                           </>
                         )}
                       </div>
                     </div>
 
-                    {/* Full tech stack */}
-                    <div className="mt-6 pt-5 border-t border-border">
-                      <h3 className="text-xs text-muted uppercase tracking-widest font-body mb-3">Full stack</h3>
+                    <div
+                      className="pt-6 border-t"
+                      style={{ borderColor: 'var(--border)' }}
+                    >
+                      <p className="eyebrow mb-3">Full stack</p>
                       <div className="flex flex-wrap gap-2">
                         {detail.stack.map(tech => (
-                          <span key={tech} className="text-xs font-body text-ink border border-border px-2.5 py-1 rounded-lg bg-bg">
+                          <span
+                            key={tech}
+                            className="text-[12px] font-medium px-2.5 py-1 rounded-md"
+                            style={{ background: 'var(--bg)', color: 'var(--ink)', border: '1px solid var(--border)' }}
+                          >
                             {tech}
                           </span>
                         ))}
@@ -163,7 +184,7 @@ export default function Projects() {
                     </div>
                   </div>
                 )}
-              </div>
+              </article>
             )
           })}
         </div>
