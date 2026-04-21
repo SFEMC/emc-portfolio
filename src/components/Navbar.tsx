@@ -53,12 +53,9 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
         {/* Wordmark */}
-        <Link to="/" className="flex items-baseline gap-2 group">
-          <span className="font-display text-[17px] font-medium tracking-tight text-ink">
+        <Link to="/" className="group">
+          <span className="font-display text-[18px] font-medium tracking-tight text-ink">
             Eddystone Mersey
-          </span>
-          <span className="hidden sm:inline text-[11px] tracking-[0.15em] uppercase text-muted font-medium">
-            Consulting
           </span>
         </Link>
 
