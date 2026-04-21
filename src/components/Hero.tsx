@@ -22,7 +22,7 @@ export default function Hero() {
 
         {/* Secondary paragraph */}
         <p className="col-span-12 md:col-span-7 text-[18px] md:text-[19px] leading-relaxed text-ink-soft mb-10">
-          I find where complex organisations break for the people using them and transform them end-to-end. I embed within teams to design operating models and services, taking them from discovery through to live.
+          I find where complex services break for the people using them and transform them end-to-end. I embed within teams to design operating models and services, taking them from discovery through to live.
         </p>
 
         {/* CTA cluster */}

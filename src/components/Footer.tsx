@@ -56,11 +56,10 @@ export default function Footer() {
         </div>
 
         <div
-          className="mt-14 pt-6 border-t flex flex-col sm:flex-row justify-between gap-3 text-[13px] text-muted"
+          className="mt-14 pt-6 border-t text-[13px] text-muted"
           style={{ borderColor: 'var(--border)' }}
         >
           <p>&copy; 2026 Eddystone Mersey Consulting Limited. Registered in England.</p>
-          <p>Built with care in Plymouth.</p>
         </div>
       </div>
     </footer>
