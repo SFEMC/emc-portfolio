@@ -43,7 +43,7 @@ export default function Projects() {
       {/* Header */}
       <div className="grid grid-cols-12 gap-6 mb-16 md:mb-20">
         <div className="col-span-12 md:col-span-10">
-          <p className="eyebrow mb-6">Projects</p>
+          <p className="eyebrow mb-6">Side Projects</p>
           <h1 className="font-display text-[44px] md:text-[64px] lg:text-[80px] leading-[1.02] tracking-tight text-ink font-medium mb-8">
             Things I've built for the fun of it.
           </h1>

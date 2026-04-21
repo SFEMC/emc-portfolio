@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom'
 const navItems = [
   { label: 'Case Studies', path: '/experience' },
   { label: 'Writing', path: '/articles' },
-  { label: 'Projects', path: '/projects' },
+  { label: 'Side Projects', path: '/projects' },
   { label: 'Resources', path: '/resources' },
 ]
 

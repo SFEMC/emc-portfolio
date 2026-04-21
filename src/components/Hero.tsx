@@ -11,7 +11,7 @@ export default function Hero() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-60" style={{ background: 'var(--accent)' }} />
               <span className="relative inline-flex rounded-full h-2 w-2" style={{ background: 'var(--accent)' }} />
             </span>
-            Available for Q3 2026
+            Fractional availability through 2026
           </span>
         </div>
 
@@ -22,7 +22,7 @@ export default function Hero() {
 
         {/* Secondary paragraph */}
         <p className="col-span-12 md:col-span-7 text-[18px] md:text-[19px] leading-relaxed text-ink-soft mb-10">
-          I'm Samuel Field. I lead product, service design and end-to-end delivery across UK central government and higher education. Senior-level expertise, no consultancy layers.
+          I'm Samuel Field. I lead service-led transformation across UK central government and higher education. Senior-level expertise, no consultancy layers.
         </p>
 
         {/* CTA cluster */}
@@ -51,8 +51,8 @@ export default function Hero() {
           <p className="text-[15px] font-medium text-ink">Public sector &amp; HE</p>
         </div>
         <div>
-          <p className="eyebrow mb-2">Recent clients</p>
-          <p className="text-[15px] font-medium text-ink">DEFRA, HMLR, Marjon</p>
+          <p className="eyebrow mb-2">Current client</p>
+          <p className="text-[15px] font-medium text-ink">Plymouth Marjon University</p>
         </div>
         <div>
           <p className="eyebrow mb-2">Operating since</p>

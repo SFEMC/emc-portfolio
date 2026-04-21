@@ -17,7 +17,7 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-[15px] text-muted leading-relaxed max-w-sm">
-              Product, service design and delivery for UK government and higher education. Based in Plymouth. Working wherever the problem is.
+              Service-led transformation for UK government and higher education. Based in Plymouth. Working wherever the problem is.
             </p>
           </div>
 
@@ -27,7 +27,7 @@ export default function Footer() {
             <ul className="flex flex-col gap-2.5">
               <li><Link to="/experience" className="text-[14px] text-ink-soft hover:text-accent transition-colors">Case studies</Link></li>
               <li><Link to="/articles" className="text-[14px] text-ink-soft hover:text-accent transition-colors">Writing</Link></li>
-              <li><Link to="/projects" className="text-[14px] text-ink-soft hover:text-accent transition-colors">Projects</Link></li>
+              <li><Link to="/projects" className="text-[14px] text-ink-soft hover:text-accent transition-colors">Side Projects</Link></li>
               <li><Link to="/resources" className="text-[14px] text-ink-soft hover:text-accent transition-colors">Resources</Link></li>
             </ul>
           </div>
