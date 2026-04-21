@@ -46,7 +46,7 @@ export default function Experience() {
         <div className="col-span-12 md:col-span-10">
           <p className="eyebrow mb-6">Experience</p>
           <h1 className="font-display text-[44px] md:text-[64px] lg:text-[80px] leading-[1.02] tracking-tight text-ink font-medium mb-8">
-            Ten years delivering transformation in the public sector.
+            Ten years delivering digital products and services in the public sector.
           </h1>
           <p className="text-[18px] md:text-[19px] text-ink-soft leading-relaxed max-w-2xl">
             A quick tour of where I've been and what I've shipped. Get in touch if you'd like to walk through any of it.
