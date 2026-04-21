@@ -28,7 +28,7 @@ export default function Hero() {
         {/* CTA cluster */}
         <div className="col-span-12 flex flex-wrap items-center gap-3">
           <a href="/#/experience" className="btn-primary">
-            Case studies
+            See experience
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
           </a>
           <a href="mailto:Samuel.Field@eddystonemersey.com" className="btn-secondary">

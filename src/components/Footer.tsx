@@ -25,7 +25,7 @@ export default function Footer() {
           <div className="md:col-span-3">
             <p className="eyebrow mb-4">Explore</p>
             <ul className="flex flex-col gap-2.5">
-              <li><Link to="/experience" className="text-[14px] text-ink-soft hover:text-accent transition-colors">Case studies</Link></li>
+              <li><Link to="/experience" className="text-[14px] text-ink-soft hover:text-accent transition-colors">Experience</Link></li>
               <li><Link to="/articles" className="text-[14px] text-ink-soft hover:text-accent transition-colors">Writing</Link></li>
               <li><Link to="/projects" className="text-[14px] text-ink-soft hover:text-accent transition-colors">Side Projects</Link></li>
               <li><Link to="/resources" className="text-[14px] text-ink-soft hover:text-accent transition-colors">Resources</Link></li>

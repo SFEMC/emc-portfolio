@@ -1,11 +1,11 @@
 const engagements = [
   {
     org: 'Plymouth Marjon University',
-    role: 'Consultant, Service Design and Delivery',
+    role: 'Design authority, Marjon 2030',
     dates: '2025 — Present',
-    headline: 'Transformation delivery through service thinking.',
-    teaser: 'Discovery across admissions, interim solution delivery and a fully digital partner application route designed, built and piloted for May 2026.',
-    tags: ['Service design', 'Salesforce', 'Power Automate', 'SharePoint'],
+    headline: 'Shaping the future operating model, services and digital landscape.',
+    teaser: 'Design authority across Marjon\'s 2030 transformation. I shape the future operating model, service landscape and digital estate. Running admissions discovery and piloting a digital partner application route for May 2026.',
+    tags: ['Design authority', 'Operating model', 'Service design', 'Digital estate'],
     sector: 'Higher Education',
   },
   {
@@ -22,8 +22,8 @@ const engagements = [
     role: 'Apprentice → Product Owner',
     dates: '2016 — 2023',
     headline: 'Earning every step: apprentice to product owner.',
-    teaser: 'Seven years moving through the organisation into product ownership, delivering UI enhancements that unlocked automation at scale across 7,000 staff.',
-    tags: ['Azure DevOps', 'Business analysis', 'Agile delivery'],
+    teaser: 'Seven years moving through the organisation into product ownership, delivering transformation that unlocked automation at scale across 7,000 staff. Team won the RITA (Real Innovation Technology Award) for driving a 40% improvement in operational efficiency.',
+    tags: ['Transformation delivery', 'Product ownership', 'Agile delivery', 'RITA award'],
     sector: 'Central Government',
   },
 ]
@@ -34,12 +34,12 @@ export default function Experience() {
       {/* Header */}
       <div className="grid grid-cols-12 gap-6 mb-16 md:mb-20">
         <div className="col-span-12 md:col-span-10">
-          <p className="eyebrow mb-6">Case studies</p>
+          <p className="eyebrow mb-6">Experience</p>
           <h1 className="font-display text-[44px] md:text-[64px] lg:text-[80px] leading-[1.02] tracking-tight text-ink font-medium mb-8">
-            Ten years of public service delivery.
+            Ten years delivering transformation in the public sector.
           </h1>
           <p className="text-[18px] md:text-[19px] text-ink-soft leading-relaxed max-w-2xl">
-            Detailed case studies for each engagement are in the works. For now, here's the shape of the work. Get in touch if you'd like to dig into any of it.
+            A quick tour of where I've been and what I've shipped. Get in touch if you'd like to walk through any of it.
           </p>
         </div>
       </div>
@@ -61,7 +61,7 @@ export default function Experience() {
               <p className="text-[14px] text-ink-soft">{e.role}</p>
             </div>
 
-            <div className="col-span-12 md:col-span-7">
+            <div className="col-span-12 md:col-span-9">
               <p className="text-[14px] text-muted mb-3">{e.org}</p>
               <h2 className="font-display text-[28px] md:text-[36px] font-medium text-ink leading-tight mb-5">
                 {e.headline}
@@ -76,14 +76,6 @@ export default function Experience() {
               </div>
             </div>
 
-            <div className="col-span-12 md:col-span-2 flex md:justify-end items-start">
-              <span
-                className="text-[12px] font-medium tracking-wider uppercase px-3 py-1.5 rounded-full"
-                style={{ background: 'var(--bg-elevated)', color: 'var(--muted)' }}
-              >
-                Case study coming
-              </span>
-            </div>
           </article>
         ))}
       </div>

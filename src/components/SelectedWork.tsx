@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom'
 const engagements = [
   {
     org: 'Plymouth Marjon University',
-    role: 'Consultant, Service Design and Delivery',
+    role: 'Design authority, Marjon 2030',
     dates: '2025 — Present',
-    headline: 'Transformation delivery through service thinking.',
-    tags: ['Service design', 'Salesforce', 'Power Automate'],
+    headline: 'Shaping the future operating model, services and digital landscape.',
+    tags: ['Design authority', 'Operating model', 'Service design'],
   },
   {
     org: 'Department for Environment, Food & Rural Affairs',
@@ -19,8 +19,8 @@ const engagements = [
     org: 'HM Land Registry',
     role: 'Apprentice → Product Owner',
     dates: '2016 — 2023',
-    headline: 'Seven years building digital services inside government.',
-    tags: ['Agile delivery', 'Azure DevOps', 'Rollout'],
+    headline: 'Seven years delivering transformation inside government.',
+    tags: ['Transformation delivery', 'Product ownership', 'Agile delivery'],
   },
 ]
 
@@ -39,7 +39,7 @@ export default function SelectedWork() {
         </div>
         <div className="col-span-12 md:col-span-4 md:col-start-9 flex items-end justify-start md:justify-end">
           <Link to="/experience" className="btn-secondary text-[13px]">
-            All case studies
+            Full experience
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </Link>
         </div>
