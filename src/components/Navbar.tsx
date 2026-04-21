@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
 const navItems = [
+  { label: 'Home', path: '/' },
   { label: 'Experience', path: '/experience' },
   { label: 'Writing', path: '/articles' },
   { label: 'Side Projects', path: '/projects' },
@@ -52,12 +53,11 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
         {/* Wordmark */}
-        <Link to="/" className="flex items-center gap-2.5 group">
-          <img src="/logo.png" alt="" className="h-5 w-auto logo-img" />
-          <span className="font-display text-[15px] font-medium tracking-tight text-ink">
+        <Link to="/" className="flex items-baseline gap-2 group">
+          <span className="font-display text-[17px] font-medium tracking-tight text-ink">
             Eddystone Mersey
           </span>
-          <span className="hidden sm:inline text-[12px] tracking-wider uppercase text-muted ml-0.5 font-medium">
+          <span className="hidden sm:inline text-[11px] tracking-[0.15em] uppercase text-muted font-medium">
             Consulting
           </span>
         </Link>

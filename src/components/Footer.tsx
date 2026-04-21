@@ -10,10 +10,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
           {/* Wordmark + blurb */}
           <div className="md:col-span-5">
-            <Link to="/" className="flex items-center gap-2.5 mb-4">
-              <img src="/logo.png" alt="" className="h-5 w-auto logo-img" />
-              <span className="font-display text-[16px] font-medium tracking-tight text-ink">
-                Eddystone Mersey Consulting
+            <Link to="/" className="inline-flex items-baseline gap-2 mb-4">
+              <span className="font-display text-[18px] font-medium tracking-tight text-ink">
+                Eddystone Mersey
+              </span>
+              <span className="text-[11px] tracking-[0.15em] uppercase text-muted font-medium">
+                Consulting
               </span>
             </Link>
             <p className="text-[15px] text-muted leading-relaxed max-w-sm">

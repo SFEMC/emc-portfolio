@@ -1,19 +1,29 @@
 const engagements = [
   {
     org: 'Plymouth Marjon University',
-    role: 'Design authority, Marjon 2030',
+    role: 'Consultant - Design Authority',
     dates: '2025 — Present',
-    headline: 'Shaping the future operating model, services and digital landscape.',
+    headline: 'Service-led transformation.',
     teaser: 'Design authority across Marjon\'s 2030 transformation. I shape the future operating model, service landscape and digital estate. Running admissions discovery and piloting a digital partner application route for May 2026.',
     tags: ['Design authority', 'Operating model', 'Service design', 'Digital estate'],
     sector: 'Higher Education',
   },
   {
+    org: 'Public Digital',
+    orgUrl: 'https://public.digital',
+    role: 'Expert Network Member',
+    dates: '2025 — Present',
+    headline: 'Transformation advisory at global scale.',
+    teaser: 'Part of Public Digital\'s Expert Network through Eddystone Mersey Consulting. I work alongside a global group of practitioners helping large organisations and governments change how they work to become more responsive, adaptable and impactful.',
+    tags: ['Transformation', 'Ways of working', 'Operating model', 'Advisory'],
+    sector: 'Consultancy network',
+  },
+  {
     org: 'Department for Environment, Food & Rural Affairs',
-    role: 'Product Owner',
+    role: 'Consultant - Product and Service Design',
     dates: '2023 — 2025',
     headline: 'A high-risk cross-border programme from inception to live.',
-    teaser: 'End-to-end service design and delivery across UK Government, port operations and the EU for the Windsor Framework Pet Travel Scheme.',
+    teaser: 'End-to-end service design and delivery of the £10m+ Windsor Framework Pet Travel Scheme, across UK Government, port operations and the EU. Projected to support 150,000 users in its first year.',
     tags: ['GDS Service Standard', 'GOV.UK Prototype Kit', 'Jira', 'Confluence'],
     sector: 'Central Government',
   },
@@ -21,7 +31,7 @@ const engagements = [
     org: 'HM Land Registry',
     role: 'Apprentice → Product Owner',
     dates: '2016 — 2023',
-    headline: 'Earning every step: apprentice to product owner.',
+    headline: 'Raised the issues. Owned the fix.',
     teaser: 'Seven years moving through the organisation into product ownership, delivering transformation that unlocked automation at scale across 7,000 staff. Team won the RITA (Real Innovation Technology Award) for driving a 40% improvement in operational efficiency.',
     tags: ['Transformation delivery', 'Product ownership', 'Agile delivery', 'RITA award'],
     sector: 'Central Government',
@@ -62,7 +72,21 @@ export default function Experience() {
             </div>
 
             <div className="col-span-12 md:col-span-9">
-              <p className="text-[14px] text-muted mb-3">{e.org}</p>
+              <p className="text-[14px] text-muted mb-3">
+                {'orgUrl' in e && e.orgUrl ? (
+                  <a
+                    href={e.orgUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 hover:text-accent transition-colors"
+                  >
+                    {e.org}
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+                  </a>
+                ) : (
+                  e.org
+                )}
+              </p>
               <h2 className="font-display text-[28px] md:text-[36px] font-medium text-ink leading-tight mb-5">
                 {e.headline}
               </h2>

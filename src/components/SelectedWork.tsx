@@ -3,14 +3,21 @@ import { Link } from 'react-router-dom'
 const engagements = [
   {
     org: 'Plymouth Marjon University',
-    role: 'Design authority, Marjon 2030',
+    role: 'Consultant - Design Authority',
     dates: '2025 — Present',
-    headline: 'Shaping the future operating model, services and digital landscape.',
+    headline: 'Service-led transformation.',
     tags: ['Design authority', 'Operating model', 'Service design'],
   },
   {
+    org: 'Public Digital',
+    role: 'Expert Network Member',
+    dates: '2025 — Present',
+    headline: 'Transformation advisory at global scale.',
+    tags: ['Transformation', 'Ways of working', 'Advisory'],
+  },
+  {
     org: 'Department for Environment, Food & Rural Affairs',
-    role: 'Product Owner',
+    role: 'Consultant - Product and Service Design',
     dates: '2023 — 2025',
     headline: 'A high-risk cross-border service from inception to live.',
     tags: ['GDS Service Standard', 'Cross-government', 'Product ownership'],
