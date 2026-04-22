@@ -1,6 +1,7 @@
 import Hero from '../components/Hero'
 import Principles from '../components/Principles'
 import Capabilities from '../components/Capabilities'
+import Disciplines from '../components/Disciplines'
 import SelectedWork from '../components/SelectedWork'
 import LatestWriting from '../components/LatestWriting'
 import About from '../components/About'
@@ -12,6 +13,7 @@ export default function Home() {
       <Hero />
       <Principles />
       <Capabilities />
+      <Disciplines />
       <SelectedWork />
       <LatestWriting />
       <About />

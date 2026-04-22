@@ -1,6 +1,6 @@
 export default function Hero() {
   return (
-    <section className="max-w-7xl mx-auto px-6 lg:px-10 pt-20 md:pt-28 pb-20 md:pb-28">
+    <section className="max-w-7xl mx-auto px-6 lg:px-10 pt-10 md:pt-28 pb-20 md:pb-28">
       <div className="grid grid-cols-12 gap-6">
         {/* Eyebrow + status */}
         <div className="col-span-12 mb-10 flex items-center gap-3 flex-wrap">

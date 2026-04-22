@@ -12,8 +12,8 @@ const engagements = [
     org: 'Public Digital',
     role: 'Expert Network Member',
     dates: '2025 — Present',
-    headline: 'Transformation advisory at global scale.',
-    tags: ['Transformation', 'Ways of working', 'Advisory'],
+    headline: '',
+    tags: [],
   },
   {
     org: 'Department for Environment, Food & Rural Affairs',
@@ -72,9 +72,11 @@ export default function SelectedWork() {
               </div>
               <div className="col-span-12 md:col-span-6">
                 <p className="text-[14px] text-muted mb-2">{e.org}</p>
-                <h3 className="font-display text-[24px] md:text-[30px] font-medium text-ink leading-tight group-hover:text-accent transition-colors">
-                  {e.headline}
-                </h3>
+                {e.headline && (
+                  <h3 className="font-display text-[24px] md:text-[30px] font-medium text-ink leading-tight group-hover:text-accent transition-colors">
+                    {e.headline}
+                  </h3>
+                )}
               </div>
               <div className="col-span-12 md:col-span-3 flex flex-wrap gap-2 md:justify-end items-start">
                 {e.tags.map((t) => (
