@@ -110,7 +110,7 @@ export default function Article() {
           <div className="flex items-center gap-3 flex-wrap mb-8">
             {article.meta.date && (
               <time className="text-[13px] text-muted">
-                {format(parseISO(article.meta.date), 'd MMMM yyyy')}
+                {format(parseISO(article.meta.date), 'MMMM yyyy')}
               </time>
             )}
             <span className="h-1 w-1 rounded-full" style={{ background: 'var(--muted)' }} />

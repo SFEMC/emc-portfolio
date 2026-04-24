@@ -182,7 +182,7 @@ export default function Articles() {
                   <div className="col-span-12 md:col-span-2">
                     {article.date && (
                       <time className="text-[13px] text-muted block">
-                        {format(parseISO(article.date), 'd MMM yyyy')}
+                        {format(parseISO(article.date), 'MMM yyyy')}
                       </time>
                     )}
                     {isExternal && (

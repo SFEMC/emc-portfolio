@@ -102,7 +102,7 @@ export default function LatestWriting() {
               <div className="flex items-center gap-3 mb-4">
                 {a.date && (
                   <time className="text-[13px] text-muted">
-                    {format(parseISO(a.date), 'd MMM yyyy')}
+                    {format(parseISO(a.date), 'MMM yyyy')}
                   </time>
                 )}
                 {isExternal && (
