@@ -9,13 +9,6 @@ const engagements = [
     tags: ['Design authority', 'Operating model', 'Service design'],
   },
   {
-    org: 'Public Digital',
-    role: 'Expert Network Member',
-    dates: '2025 — Present',
-    headline: '',
-    tags: [],
-  },
-  {
     org: 'Department for Environment, Food & Rural Affairs',
     role: 'Consultant - Product and Service Design',
     dates: '2023 — 2025',

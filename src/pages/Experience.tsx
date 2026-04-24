@@ -9,16 +9,6 @@ const engagements = [
     sector: 'Higher Education',
   },
   {
-    org: 'Public Digital',
-    orgUrl: 'https://public.digital',
-    role: 'Expert Network Member',
-    dates: '2025 — Present',
-    headline: 'Transformation advisory at global scale.',
-    teaser: 'Part of Public Digital\'s Expert Network through Eddystone Mersey Consulting. I work alongside a global group of practitioners helping large organisations and governments change how they work to become more responsive, adaptable and impactful.',
-    tags: ['Transformation', 'Ways of working', 'Operating model', 'Advisory'],
-    sector: 'Consultancy network',
-  },
-  {
     org: 'Department for Environment, Food & Rural Affairs',
     role: 'Consultant - Product and Service Design',
     dates: '2023 — 2025',

@@ -39,7 +39,7 @@ export default function Hero() {
 
       {/* Credentials strip */}
       <div
-        className="mt-20 pt-8 border-t grid grid-cols-2 md:grid-cols-4 gap-8"
+        className="mt-20 pt-8 border-t grid grid-cols-1 md:grid-cols-3 gap-8"
         style={{ borderColor: 'var(--border)' }}
       >
         <div>
@@ -49,10 +49,6 @@ export default function Hero() {
         <div>
           <p className="eyebrow mb-2">Working in</p>
           <p className="text-[15px] font-medium text-ink">Public sector &amp; HE</p>
-        </div>
-        <div>
-          <p className="eyebrow mb-2">Current client</p>
-          <p className="text-[15px] font-medium text-ink">Plymouth Marjon University</p>
         </div>
         <div>
           <p className="eyebrow mb-2">Operating since</p>

@@ -8,13 +8,6 @@ const roles = [
   },
   {
     date: 'Oct 2025 – Present',
-    title: 'Expert Network Member',
-    org: 'Public Digital',
-    via: 'via Eddystone Mersey Consulting',
-    body: "I contribute to Public Digital's expert network, working with governments and large institutions on becoming more responsive and adaptable.",
-  },
-  {
-    date: 'Oct 2025 – Present',
     title: 'Consultant - Head of Transformation Delivery',
     org: 'Plymouth Marjon University',
     via: 'via Eddystone Mersey Consulting',
