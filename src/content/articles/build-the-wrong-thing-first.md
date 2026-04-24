@@ -1,6 +1,6 @@
 ---
 title: "Build the Wrong Thing First"
-date: "2026-04-24"
+date: "2026-04-19"
 summary: "Before you spend six months building the right thing, spend a month building it wrong. A prototype shows you what breaks before you commit resource to fixing it at scale."
 tags: ["service design", "prototyping", "transformation"]
 slug: "build-the-wrong-thing-first"
