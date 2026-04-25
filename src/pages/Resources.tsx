@@ -1,40 +1,4 @@
-import { useState, useEffect } from 'react'
-import { formatDistanceToNow } from 'date-fns'
-
-type Article = {
-  title: string
-  link: string
-  pubDate: string
-  description: string
-  source: string
-}
-
-type Category = 'public-sector' | 'higher-education' | 'ai'
-
-const feeds: Record<Category, { name: string; url: string }[]> = {
-  'public-sector': [
-    { name: 'dxw', url: 'https://www.dxw.com/feed/' },
-    { name: 'mySociety', url: 'https://www.mysociety.org/feed/' },
-    { name: 'Giles Turnbull', url: 'https://gilest.org/feed/' },
-    { name: 'Co-op Digital', url: 'https://digitalblog.coop.co.uk/feed/' },
-  ],
-  'higher-education': [
-    { name: 'Wonkhe', url: 'https://wonkhe.com/feed/' },
-    { name: 'JISC', url: 'https://www.jisc.ac.uk/blog/rss' },
-    { name: 'HEPI', url: 'https://www.hepi.ac.uk/feed/' },
-  ],
-  'ai': [
-    { name: 'MIT Tech Review – AI', url: 'https://www.technologyreview.com/feed/' },
-    { name: 'The Rundown AI', url: 'https://www.therundown.ai/rss' },
-    { name: 'Import AI', url: 'https://jack-clark.net/feed/' },
-  ],
-}
-
-const categoryLabels: Record<Category, string> = {
-  'public-sector': 'Service Design',
-  'higher-education': 'Higher Education',
-  'ai': 'Artificial Intelligence',
-}
+import { useState } from 'react'
 
 type BookCard = {
   category: string
@@ -49,6 +13,7 @@ type Person = {
   description: string
   url: string
   linkLabel: string
+  isNew?: boolean
 }
 
 const books: BookCard[] = [
@@ -120,251 +85,234 @@ const articleCards: BookCard[] = [
   { category: 'Higher Education', title: 'HEPI', description: 'Independent UK higher education policy research.', url: 'https://www.hepi.ac.uk/' },
 ]
 
-type PersonWithCategory = Person & { category: string }
-
-const people: PersonWithCategory[] = [
-  { category: 'UK Digital & Government', name: 'Lou Downe', description: 'Founded service design in UK government. Author of Good Services.', url: 'https://loudowne.com/', linkLabel: 'Website' },
-  { category: 'UK Digital & Government', name: 'Janet Hughes', description: 'Former GDS, former DEFRA Programme Director. Writes about delivery and digital transformation.', url: 'https://www.linkedin.com/in/janet-hughes/', linkLabel: 'LinkedIn' },
-  { category: 'UK Digital & Government', name: 'Tom Loosemore', description: 'Co-founded GDS. Now at Public Digital.', url: 'https://public.digital/people/tom-loosemore', linkLabel: 'Public Digital' },
-  { category: 'UK Digital & Government', name: 'Emily Middleton', description: 'Director General for Digital Transformation at GDS.', url: 'https://www.gov.uk/government/people/emily-middleton', linkLabel: 'GOV.UK' },
-  { category: 'UK Digital & Government', name: 'Richard Pope', description: 'Founding product manager at GOV.UK. Writes Platformland on government as a platform.', url: 'https://www.platformland.xyz/', linkLabel: 'Website' },
-  { category: 'UK Digital & Government', name: 'Ben Holliday', description: 'Chief Design Officer at TPXimpact. Previously NHS and DWP.', url: 'https://www.benholliday.com/', linkLabel: 'Website' },
-  { category: 'UK Digital & Government', name: 'Kit Collingwood', description: 'Co-founded OneTeamGov. Design and delivery leadership across DWP, MOJ and GDS.', url: 'https://medium.com/@kcollingwood', linkLabel: 'Medium' },
-  { category: 'UK Digital & Government', name: 'Giles Turnbull', description: 'Wrote The Agile Comms Handbook. Works with public sector teams on communicating change.', url: 'https://gilest.org/', linkLabel: 'Website' },
-  { category: 'UK Digital & Government', name: 'Matt Jukes', description: 'Head of Products at GDS National Data Library. Blogs about digital in government.', url: 'https://www.linkedin.com/in/jukesie/', linkLabel: 'LinkedIn' },
-  { category: 'UK Digital & Government', name: 'Scott Colfer', description: 'Twenty years leading product and digital transformation across government, health, education and non-profit. Writes Product in Service. Currently at Herd Consulting.', url: 'https://scottcolfer.com/', linkLabel: 'Website' },
-  { category: 'Higher Education', name: 'Lawrie Phipps', description: 'Senior Research Lead at Jisc. Writes about digital leadership and transformation in universities.', url: 'https://lawriephipps.co.uk/', linkLabel: 'Website' },
-  { category: 'AI Trends & Skills', name: 'Benedict Evans', description: 'Former Andreessen Horowitz analyst. Annual essays on technology and industry change.', url: 'https://www.ben-evans.com/', linkLabel: 'Website' },
-  { category: 'AI Trends & Skills', name: 'Dan Shipper', description: 'Co-founder of Every. Deep practical essays on AI in real work.', url: 'https://every.to/chain-of-thought', linkLabel: 'Website' },
-  { category: 'AI Trends & Skills', name: 'Allie K. Miller', description: 'Former Amazon AI lead. Practical takes on AI for business.', url: 'https://www.alliekmiller.com/', linkLabel: 'Website' },
-  { category: 'AI Trends & Skills', name: 'Donald Clark', description: 'UK-based. Writes on AI in education, learning, and skills.', url: 'https://donaldclarkplanb.blogspot.com/', linkLabel: 'Website' },
-  { category: 'AI Trends & Skills', name: 'Jeni Tennison', description: 'Open Data Institute. AI policy and what it means for public services.', url: 'https://www.jenitennison.com/', linkLabel: 'Website' },
-  { category: 'AI Trends & Skills', name: 'Paul Roetzer', description: 'Marketing AI Institute. AI adoption and capability building in organisations.', url: 'https://www.marketingaiinstitute.com/', linkLabel: 'Website' },
+const people: Person[] = [
+  { name: 'Lou Downe', description: 'Founded service design in UK government. Author of Good Services.', url: 'https://loudowne.com/', linkLabel: 'Website' },
+  { name: 'Janet Hughes', description: 'Former GDS, former DEFRA Programme Director.', url: 'https://www.linkedin.com/in/janet-hughes/', linkLabel: 'LinkedIn' },
+  { name: 'Tom Loosemore', description: 'Co-founded GDS. Now at Public Digital.', url: 'https://public.digital/people/tom-loosemore', linkLabel: 'Public Digital' },
+  { name: 'Emily Middleton', description: 'Director General for Digital Transformation at GDS.', url: 'https://www.gov.uk/government/people/emily-middleton', linkLabel: 'GOV.UK' },
+  { name: 'Richard Pope', description: 'Founding product manager at GOV.UK. Writes Platformland.', url: 'https://www.platformland.xyz/', linkLabel: 'Website' },
+  { name: 'Ben Holliday', description: 'Chief Design Officer at TPXimpact. Previously NHS and DWP.', url: 'https://www.benholliday.com/', linkLabel: 'Website' },
+  { name: 'Kit Collingwood', description: 'Co-founded OneTeamGov. Design and delivery across DWP, MOJ and GDS.', url: 'https://medium.com/@kcollingwood', linkLabel: 'Medium' },
+  { name: 'Giles Turnbull', description: 'Wrote The Agile Comms Handbook. Public sector comms.', url: 'https://gilest.org/', linkLabel: 'Website' },
+  { name: 'Matt Jukes', description: 'Head of Products at GDS National Data Library.', url: 'https://www.linkedin.com/in/jukesie/', linkLabel: 'LinkedIn' },
+  { name: 'Scott Colfer', description: 'Twenty years leading product and digital transformation. Writes Product in Service.', url: 'https://scottcolfer.com/', linkLabel: 'Website' },
+  { name: 'Lawrie Phipps', description: 'Senior Research Lead at Jisc. Digital leadership in universities.', url: 'https://lawriephipps.co.uk/', linkLabel: 'Website' },
+  { name: 'Benedict Evans', description: 'Former Andreessen Horowitz analyst. Annual essays on technology change.', url: 'https://www.ben-evans.com/', linkLabel: 'Website' },
+  { name: 'Dan Shipper', description: 'Co-founder of Every. Practical essays on AI in real work.', url: 'https://every.to/chain-of-thought', linkLabel: 'Website' },
+  { name: 'Allie K. Miller', description: 'Former Amazon AI lead. Practical AI for business.', url: 'https://www.alliekmiller.com/', linkLabel: 'Website' },
+  { name: 'Donald Clark', description: 'UK-based. Writes on AI in education, learning and skills.', url: 'https://donaldclarkplanb.blogspot.com/', linkLabel: 'Website' },
+  { name: 'Jeni Tennison', description: 'Open Data Institute. AI policy and public services.', url: 'https://www.jenitennison.com/', linkLabel: 'Website' },
+  { name: 'Paul Roetzer', description: 'Marketing AI Institute. AI adoption in organisations.', url: 'https://www.marketingaiinstitute.com/', linkLabel: 'Website' },
+  { name: 'Sarah Drummond', description: 'Snook founder, public sector service design.', url: 'https://wearesnook.com', linkLabel: 'Website', isNew: true },
+  { name: 'Mike Bracken', description: 'Co-founded GDS, Public Digital.', url: 'https://public.digital', linkLabel: 'Public Digital', isNew: true },
+  { name: 'Will Myddelton', description: 'Design practice in government.', url: 'https://www.myddelton.co.uk', linkLabel: 'Website', isNew: true },
+  { name: 'Stefan Czerniawski', description: 'Strategic writing on digital government.', url: 'https://blog.czerniawski.org', linkLabel: 'Website', isNew: true },
+  { name: 'Cathy Dutton', description: 'Service and interaction design, Defra.', url: 'https://cathydutton.co.uk', linkLabel: 'Website', isNew: true },
+  { name: 'Teresa Torres', description: 'Continuous discovery habits.', url: 'https://www.producttalk.org', linkLabel: 'Website', isNew: true },
+  { name: 'Cassie Kozyrkov', description: 'Applied AI and decision science.', url: 'https://kozyrkov.com', linkLabel: 'Website', isNew: true },
+  { name: 'Shreyas Doshi', description: 'Product craft and prioritisation.', url: 'https://shreyas.substack.com', linkLabel: 'Substack', isNew: true },
 ]
 
-async function fetchFeed(url: string, sourceName: string): Promise<Article[]> {
-  try {
-    const res = await fetch(`/api/feed?url=${encodeURIComponent(url)}`)
-    const text = await res.text()
-    const parser = new DOMParser()
-    const xml = parser.parseFromString(text, 'text/xml')
-    const items = Array.from(xml.querySelectorAll('item')).slice(0, 5)
-    return items.map((item) => {
-      const linkEl = item.getElementsByTagName('link')[0]
-      const link = linkEl?.textContent?.trim() || linkEl?.getAttribute('href') || ''
-      return {
-        title: item.getElementsByTagName('title')[0]?.textContent?.trim() ?? '',
-        link,
-        pubDate: item.getElementsByTagName('pubDate')[0]?.textContent?.trim() ?? '',
-        description: item.getElementsByTagName('description')[0]?.textContent?.replace(/<[^>]*>/g, '').trim().slice(0, 160) ?? '',
-        source: sourceName,
-      }
-    })
-  } catch {
-    return []
-  }
+type SectionFilter = 'all' | 'books' | 'reading' | 'people'
+
+const tabs: { value: SectionFilter; label: string }[] = [
+  { value: 'all', label: 'All' },
+  { value: 'books', label: 'Books' },
+  { value: 'reading', label: 'Reading' },
+  { value: 'people', label: 'People' },
+]
+
+function getInitials(name: string): string {
+  const parts = name.trim().split(/\s+/)
+  const first = parts[0]?.[0] ?? ''
+  const last = parts.length > 1 ? parts[parts.length - 1][0] : ''
+  return (first + last).toUpperCase()
 }
 
+const cardBase = 'flex flex-col gap-2 p-6 rounded-xl transition-all hover:-translate-y-0.5'
+
 export default function Resources() {
-  const [activeCategory, setActiveCategory] = useState<Category>('public-sector')
-  const [articles, setArticles] = useState<Article[]>([])
-  const [loading, setLoading] = useState(false)
+  const [filter, setFilter] = useState<SectionFilter>('all')
+  const [showAllBooks, setShowAllBooks] = useState(false)
+  const [showAllArticles, setShowAllArticles] = useState(false)
 
-  useEffect(() => {
-    setLoading(true)
-    setArticles([])
-    const sources = feeds[activeCategory]
-    Promise.all(sources.map((s) => fetchFeed(s.url, s.name))).then((results) => {
-      const all = results.flat().sort((a, b) => {
-        const da = a.pubDate ? new Date(a.pubDate).getTime() : 0
-        const db = b.pubDate ? new Date(b.pubDate).getTime() : 0
-        return db - da
-      })
-      setArticles(all)
-      setLoading(false)
-    })
-  }, [activeCategory])
-
-  const cardBase = "flex flex-col gap-2 p-6 rounded-xl transition-all hover:-translate-y-0.5"
   const cardStyle = { background: 'var(--bg-elevated)', border: '1px solid var(--border)' }
+
+  const showBooks = filter === 'all' || filter === 'books'
+  const showReading = filter === 'all' || filter === 'reading'
+  const showPeople = filter === 'all' || filter === 'people'
+
+  const initialCount = 6
+  const booksHead = books.slice(0, initialCount)
+  const booksTail = books.slice(initialCount)
+  const articlesHead = articleCards.slice(0, initialCount)
+  const articlesTail = articleCards.slice(initialCount)
+
+  function renderCard(item: BookCard, i: number) {
+    return (
+      <a key={i} href={item.url} target="_blank" rel="noopener noreferrer" className={cardBase} style={cardStyle}>
+        <span className="eyebrow text-[11px]">{item.category}</span>
+        <h3 className="font-display text-[19px] font-medium text-ink leading-snug">{item.title}</h3>
+        {item.author && <p className="text-[13px] text-muted">{item.author}</p>}
+        <p className="text-[14px] text-ink-soft leading-relaxed mt-1">{item.description}</p>
+      </a>
+    )
+  }
 
   return (
     <div className="max-w-7xl mx-auto px-6 lg:px-10 py-20 md:py-28">
       {/* Header */}
-      <div className="grid grid-cols-12 gap-6 mb-16 md:mb-20">
+      <div className="grid grid-cols-12 gap-6 mb-12 md:mb-14">
         <div className="col-span-12 md:col-span-10">
           <p className="eyebrow mb-6">Resources</p>
           <h1 className="font-display text-[44px] md:text-[64px] lg:text-[80px] leading-[1.02] tracking-tight text-ink font-medium mb-8">
             The sources I come back to.
           </h1>
           <p className="text-[18px] md:text-[19px] text-ink-soft leading-relaxed max-w-2xl">
-            Books, newsletters, blogs and people that shape how I think and work. Plus live feeds from the writers and organisations worth following today.
+            Books, newsletters, blogs and people that shape how I think and work.
           </p>
         </div>
       </div>
 
-      {/* Books */}
-      <section
-        className="mb-20 pt-14 border-t"
+      {/* Section nav */}
+      <div
+        className="flex flex-wrap gap-2 mb-14 pb-8 border-b"
         style={{ borderColor: 'var(--border)' }}
       >
-        <p className="eyebrow mb-8">Books</p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {books.map((book, i) => (
-            <a key={i} href={book.url} target="_blank" rel="noopener noreferrer" className={cardBase} style={cardStyle}>
-              <span className="eyebrow text-[11px]">{book.category}</span>
-              <h3 className="font-display text-[19px] font-medium text-ink leading-snug">{book.title}</h3>
-              {book.author && <p className="text-[13px] text-muted">{book.author}</p>}
-              <p className="text-[14px] text-ink-soft leading-relaxed mt-1">{book.description}</p>
-            </a>
-          ))}
-        </div>
-      </section>
+        {tabs.map((tab) => (
+          <button
+            key={tab.value}
+            onClick={() => setFilter(tab.value)}
+            className={`px-3.5 py-1.5 text-[13px] font-medium rounded-full transition-all ${
+              filter === tab.value
+                ? 'bg-ink text-bg border border-ink'
+                : 'border text-muted hover:text-ink border-border-strong'
+            }`}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Books */}
+      {showBooks && (
+        <section className="mb-20">
+          <div className="flex items-end justify-between mb-8 gap-6 flex-wrap">
+            <p className="eyebrow">Books</p>
+            <span className="text-[13px] text-muted">{books.length} total</span>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {booksHead.map(renderCard)}
+          </div>
+          <div
+            className="overflow-hidden transition-[max-height] duration-500 ease-in-out"
+            style={{ maxHeight: showAllBooks ? '8000px' : '0px' }}
+          >
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-5">
+              {booksTail.map((b, i) => renderCard(b, i + initialCount))}
+            </div>
+          </div>
+          {booksTail.length > 0 && (
+            <div className="mt-8">
+              <button
+                type="button"
+                onClick={() => setShowAllBooks(!showAllBooks)}
+                className="btn-secondary text-[13px]"
+              >
+                {showAllBooks ? 'Show less' : `Show all ${books.length}`}
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ transform: showAllBooks ? 'rotate(180deg)' : 'none', transition: 'transform 0.3s' }}>
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </button>
+            </div>
+          )}
+        </section>
+      )}
 
       {/* Articles, Newsletters & Blogs */}
-      <section
-        className="mb-20 pt-14 border-t"
-        style={{ borderColor: 'var(--border)' }}
-      >
-        <p className="eyebrow mb-8">Articles, newsletters &amp; blogs</p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {articleCards.map((item, i) => (
-            <a key={i} href={item.url} target="_blank" rel="noopener noreferrer" className={cardBase} style={cardStyle}>
-              <span className="eyebrow text-[11px]">{item.category}</span>
-              <h3 className="font-display text-[19px] font-medium text-ink leading-snug">{item.title}</h3>
-              {item.author && <p className="text-[13px] text-muted">{item.author}</p>}
-              <p className="text-[14px] text-ink-soft leading-relaxed mt-1">{item.description}</p>
-            </a>
-          ))}
-        </div>
-      </section>
-
-      {/* People */}
-      <section
-        className="mb-20 pt-14 border-t"
-        style={{ borderColor: 'var(--border)' }}
-      >
-        <p className="eyebrow mb-8">People to follow</p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {people.map((person, i) => (
-            <div key={i} className="flex flex-col gap-3 p-6 rounded-xl" style={cardStyle}>
-              <span className="eyebrow text-[11px]">{person.category}</span>
-              <h3 className="font-display text-[19px] font-medium text-ink leading-snug">{person.name}</h3>
-              <p className="text-[14px] text-ink-soft leading-relaxed flex-1">{person.description}</p>
-              <a
-                href={person.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[12px] font-medium rounded-full px-3 py-1.5 self-start transition-colors"
-                style={{ border: '1px solid var(--border-strong)', color: 'var(--ink)' }}
-              >
-                {person.linkLabel} ↗
-              </a>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Live feeds */}
-      <section
-        className="pt-14 border-t"
-        style={{ borderColor: 'var(--border)' }}
-      >
-        <div className="grid grid-cols-12 gap-6 mb-8">
-          <div className="col-span-12 md:col-span-7">
-            <p className="eyebrow mb-3">Live feeds</p>
-            <h2 className="font-display text-[32px] md:text-[40px] leading-tight tracking-tight text-ink font-medium">
-              Latest from the field.
-            </h2>
+      {showReading && (
+        <section className="mb-20">
+          <div className="flex items-end justify-between mb-8 gap-6 flex-wrap">
+            <p className="eyebrow">Articles, newsletters &amp; blogs</p>
+            <span className="text-[13px] text-muted">{articleCards.length} total</span>
           </div>
-        </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {articlesHead.map(renderCard)}
+          </div>
+          <div
+            className="overflow-hidden transition-[max-height] duration-500 ease-in-out"
+            style={{ maxHeight: showAllArticles ? '8000px' : '0px' }}
+          >
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-5">
+              {articlesTail.map((a, i) => renderCard(a, i + initialCount))}
+            </div>
+          </div>
+          {articlesTail.length > 0 && (
+            <div className="mt-8">
+              <button
+                type="button"
+                onClick={() => setShowAllArticles(!showAllArticles)}
+                className="btn-secondary text-[13px]"
+              >
+                {showAllArticles ? 'Show less' : `Show all ${articleCards.length}`}
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ transform: showAllArticles ? 'rotate(180deg)' : 'none', transition: 'transform 0.3s' }}>
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </button>
+            </div>
+          )}
+        </section>
+      )}
 
-        {/* Category tabs */}
-        <div
-          className="flex gap-6 mb-8 border-b"
-          style={{ borderColor: 'var(--border)' }}
-        >
-          {(Object.keys(feeds) as Category[]).map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`pb-3 text-[14px] font-medium transition-colors relative -mb-px`}
-              style={{
-                color: activeCategory === cat ? 'var(--ink)' : 'var(--muted)',
-                borderBottom: activeCategory === cat ? '2px solid var(--accent)' : '2px solid transparent',
-              }}
-            >
-              {categoryLabels[cat]}
-            </button>
-          ))}
-        </div>
-
-        {/* Source chips */}
-        <div className="flex flex-wrap gap-2 mb-10">
-          {feeds[activeCategory].map((s) => (
-            <span key={s.name} className="chip">{s.name}</span>
-          ))}
-        </div>
-
-        {/* Feed items */}
-        {loading ? (
-          <div className="flex flex-col gap-4">
-            {[...Array(6)].map((_, i) => (
+      {/* People to follow */}
+      {showPeople && (
+        <section className="mb-12">
+          <div className="flex items-end justify-between mb-8 gap-6 flex-wrap">
+            <p className="eyebrow">People to follow</p>
+            <span className="text-[13px] text-muted">{people.length} total</span>
+          </div>
+          <div
+            className="grid grid-cols-1 lg:grid-cols-2 gap-x-10 border-t"
+            style={{ borderColor: 'var(--border)' }}
+          >
+            {people.map((p, i) => (
               <div
                 key={i}
-                className="border-t pt-6 pb-6 animate-pulse"
+                className="flex items-center gap-4 py-4 border-b"
                 style={{ borderColor: 'var(--border)' }}
               >
-                <div className="h-3 w-24 rounded mb-3" style={{ background: 'var(--border)' }} />
-                <div className="h-5 w-2/3 rounded mb-2" style={{ background: 'var(--border)' }} />
-                <div className="h-3 w-full rounded" style={{ background: 'var(--border)' }} />
+                <div
+                  className="w-8 h-8 rounded-full flex items-center justify-center text-[11px] font-semibold shrink-0"
+                  style={{ background: 'var(--bg-elevated)', color: 'var(--ink)', border: '1px solid var(--border)' }}
+                  aria-hidden="true"
+                >
+                  {getInitials(p.name)}
+                </div>
+                <div className="flex-1 min-w-0 text-[14px] leading-snug">
+                  <span className="font-semibold text-ink">{p.name}</span>
+                  {p.isNew && (
+                    <span
+                      className="ml-2 inline-flex items-center px-1.5 py-0.5 text-[10px] font-medium rounded uppercase tracking-wide text-white align-middle"
+                      style={{ background: '#16a34a' }}
+                    >
+                      new
+                    </span>
+                  )}
+                  <span className="text-muted"> · {p.description}</span>
+                </div>
+                <a
+                  href={p.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[12px] font-medium text-ink-soft hover:text-accent transition-colors shrink-0 ml-2 whitespace-nowrap"
+                >
+                  {p.linkLabel} ↗
+                </a>
               </div>
             ))}
           </div>
-        ) : articles.length === 0 ? (
-          <p className="text-muted text-[14px] py-12 text-center">
-            No articles loaded. Some feeds may be temporarily unavailable.
-          </p>
-        ) : (
-          <div className="flex flex-col">
-            {articles.map((article, i) => (
-              <a
-                key={i}
-                href={article.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group border-t py-6 grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-6 hover:bg-bg-elevated transition-colors px-2 -mx-2"
-                style={{ borderColor: 'var(--border)' }}
-              >
-                <div className="md:col-span-3 flex flex-col gap-1">
-                  <span className="text-[13px] font-medium text-ink-soft">{article.source}</span>
-                  {article.pubDate && (
-                    <span className="text-[12px] text-muted">
-                      {(() => {
-                        try {
-                          return formatDistanceToNow(new Date(article.pubDate), { addSuffix: true })
-                        } catch {
-                          return ''
-                        }
-                      })()}
-                    </span>
-                  )}
-                </div>
-                <div className="md:col-span-9">
-                  <h3 className="font-display text-[19px] md:text-[21px] font-medium text-ink leading-snug group-hover:text-accent transition-colors mb-1.5">
-                    {article.title}
-                  </h3>
-                  {article.description && (
-                    <p className="text-muted text-[14px] leading-relaxed line-clamp-2">
-                      {article.description}
-                    </p>
-                  )}
-                </div>
-              </a>
-            ))}
-          </div>
-        )}
-      </section>
+        </section>
+      )}
     </div>
   )
 }
