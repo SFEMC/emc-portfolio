@@ -62,21 +62,7 @@ export default function Experience() {
             </div>
 
             <div className="col-span-12 md:col-span-9">
-              <p className="text-[14px] text-muted mb-3">
-                {'orgUrl' in e && e.orgUrl ? (
-                  <a
-                    href={e.orgUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 hover:text-accent transition-colors"
-                  >
-                    {e.org}
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
-                  </a>
-                ) : (
-                  e.org
-                )}
-              </p>
+              <p className="text-[14px] text-muted mb-3">{e.org}</p>
               <h2 className="font-display text-[28px] md:text-[36px] font-medium text-ink leading-tight mb-5">
                 {e.headline}
               </h2>
