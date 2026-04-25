@@ -56,6 +56,25 @@ const books: BookCard[] = [
   { category: 'Leadership', title: 'Accelerate', author: 'Forsgren, Humble, Kim', description: 'Research-backed evidence connecting delivery performance to organisational performance. Gives you metrics and benchmarks to measure whether transformation efforts produce results.', url: 'https://itrevolution.com/product/accelerate/' },
 ]
 
+const podcasts: BookCard[] = [
+  // Service Design
+  { category: 'Service Design', title: 'Michael Martino Show', author: 'Michael Martino', description: 'Service design, digital transformation and gov tech.', url: 'https://open.spotify.com/show/5lbPpVbpHjVRzD1i6GiAEc' },
+  { category: 'Service Design', title: 'Service Design Show', author: 'Marc Fonteijn', description: 'Going beyond service design basics to deliver real impact.', url: 'https://www.servicedesignshow.com' },
+  { category: 'Service Design', title: 'Service Design Podcast', author: 'Laurens Somers, Jeroen Depuydt', description: 'Conversations with practitioners worldwide, partnered with SDN.', url: 'https://www.servicedesignpodcast.com' },
+  { category: 'Service Design', title: 'Service Design YAP', author: 'SDN UK Chapter', description: 'Career stories and design war stories from the UK community.', url: 'https://servicedesignyap.buzzsprout.com' },
+  { category: 'Service Design', title: 'This Is HCD', author: 'Gerry Scullion', description: 'Human-centred design across government, health and services.', url: 'https://www.thisishcd.com' },
+
+  // UK Digital & Government
+  { category: 'UK Digital & Government', title: 'GDS Podcast', author: 'Government Digital Service', description: 'Official GDS podcast on policy, delivery and digital government.', url: 'https://governmentdigitalservice.podbean.com' },
+  { category: 'UK Digital & Government', title: 'Transform Gov', author: 'Maeve Kneafsey', description: 'Leaders behind transformative digital government projects.', url: 'https://shows.acast.com/transform-the-digital-government-podcast' },
+  { category: 'UK Digital & Government', title: 'Government Transformed', author: 'Global Government Forum', description: 'Public service reform case studies from the UK, Estonia and beyond.', url: 'https://www.globalgovernmentforum.com/government-transformed-podcast-sharing-the-inside-story-of-how-to-make-public-service-change-happen/' },
+
+  // Product
+  { category: 'Product', title: "Lenny's Podcast", author: 'Lenny Rachitsky', description: 'In-depth conversations with product leaders on strategy and growth.', url: 'https://www.lennyspodcast.com' },
+  { category: 'Product', title: 'Product Thinking', author: 'Melissa Perri', description: 'Systems and strategies that elevate product leadership.', url: 'https://produxlabs.com/product-thinking' },
+  { category: 'Product', title: 'The Product Experience', author: 'Randy Silver, Lily Smith', description: 'Practical product management from strategy to execution.', url: 'https://www.mindtheproduct.com/the-product-experience/' },
+]
+
 const articleCards: BookCard[] = [
   { category: 'Articles', title: 'Adopting a Prototype Mindset', author: 'Public Digital', description: 'The case for prototyping as a way of thinking, not just a phase.', url: 'https://public.digital/pd-insights/blog/2024/03/adopting-a-prototype-mindset' },
   { category: 'Articles', title: 'Doing User Research to Inform Strategy', author: 'Public Digital', description: 'How user research connects to strategic decisions, not just interface design.', url: 'https://public.digital/pd-insights/blog/2024/02/doing-user-research-to-inform-strategy' },
@@ -113,11 +132,12 @@ const people: Person[] = [
   { name: 'Shreyas Doshi', description: 'Product craft and prioritisation.', url: 'https://shreyas.substack.com', linkLabel: 'Substack', isNew: true },
 ]
 
-type SectionFilter = 'all' | 'books' | 'reading' | 'people'
+type SectionFilter = 'all' | 'books' | 'podcasts' | 'reading' | 'people'
 
 const tabs: { value: SectionFilter; label: string }[] = [
   { value: 'all', label: 'All' },
   { value: 'books', label: 'Books' },
+  { value: 'podcasts', label: 'Podcasts' },
   { value: 'reading', label: 'Reading' },
   { value: 'people', label: 'People' },
 ]
@@ -139,6 +159,7 @@ export default function Resources() {
   const cardStyle = { background: 'var(--bg-elevated)', border: '1px solid var(--border)' }
 
   const showBooks = filter === 'all' || filter === 'books'
+  const showPodcasts = filter === 'all' || filter === 'podcasts'
   const showReading = filter === 'all' || filter === 'reading'
   const showPeople = filter === 'all' || filter === 'people'
 
@@ -226,6 +247,19 @@ export default function Resources() {
               </button>
             </div>
           )}
+        </section>
+      )}
+
+      {/* Podcasts */}
+      {showPodcasts && (
+        <section className="mb-20">
+          <div className="flex items-end justify-between mb-8 gap-6 flex-wrap">
+            <p className="eyebrow">Podcasts</p>
+            <span className="text-[13px] text-muted">{podcasts.length} total</span>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {podcasts.map(renderCard)}
+          </div>
         </section>
       )}
 
