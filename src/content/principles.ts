@@ -27,7 +27,7 @@ export const principles: Principle[] = [
   {
     n: '04',
     title: 'Build capability as you go',
-    body: 'I do not leave a PowerPoint and a handshake. I embed in your team, coach as I work and make sure the change stays when I leave.',
+    body: 'I do not leave a PowerPoint and a handshake. I join your team, coach as I work and make sure the change stays when I leave.',
     expanded: "Transformation programmes design new services and hand them to operational teams to run. The handover is where most failures sit. The team that designed the service understood the problem. The team that inherited it received a system, a process document and a go-live date. Nobody asked them whether they could operate what had been built. I involve frontline staff from day one. Not consultation, not a workshop where I ask for feedback on something I've already designed. I put operational team members in the room when I map the journey, let them challenge assumptions and redesign when they say \"that won't work.\" A team that helped shape a service will fight to make it work. A team that had a service imposed on them will resist it from the start. By the time I leave, the people running the service can hold it without me. That's the measure of whether the work landed.",
   },
 ]

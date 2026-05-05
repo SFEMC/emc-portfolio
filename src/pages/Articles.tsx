@@ -11,6 +11,7 @@ interface ArticleEntry {
   url?: string
   body?: string
   html?: string
+  linkedinUrl?: string
 }
 
 function parseFrontmatter(content: string): { meta: Omit<ArticleEntry, 'body' | 'html'>; body: string } | null {
@@ -39,6 +40,7 @@ function parseFrontmatter(content: string): { meta: Omit<ArticleEntry, 'body' | 
       summary: meta.summary as string || '',
       tags: (Array.isArray(meta.tags) ? meta.tags : [meta.tags as string]).filter(Boolean),
       slug: meta.slug as string || undefined,
+      linkedinUrl: (meta.linkedinUrl as string) || undefined,
     },
     body,
   }
@@ -241,6 +243,19 @@ export default function Articles() {
                   >
                     <div className="grid grid-cols-12 gap-6">
                       <div className="col-span-12 md:col-span-10 md:col-start-2">
+                        {article.linkedinUrl && (
+                          <p className="text-[13px] text-muted mb-6">
+                            Also published on{' '}
+                            <a
+                              href={article.linkedinUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="link-accent"
+                            >
+                              LinkedIn
+                            </a>.
+                          </p>
+                        )}
                         <article
                           className="article-content"
                           dangerouslySetInnerHTML={{ __html: article.html }}

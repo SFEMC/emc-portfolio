@@ -1,3 +1,5 @@
+import CalendlyButton from '../components/CalendlyButton'
+
 const engagements = [
   {
     org: 'Plymouth Marjon University',
@@ -21,8 +23,8 @@ const engagements = [
     org: 'HM Land Registry',
     role: 'Apprentice → Product Owner',
     dates: '2016 — 2023',
-    headline: 'Raised the issues. Owned the fix.',
-    teaser: 'Seven years moving through the organisation into product ownership, delivering transformation that unlocked automation at scale across 7,000 staff. Team won the RITA (Real Innovation Technology Award) for driving a 40% improvement in operational efficiency.',
+    headline: 'Simplifying how a national service processes applications.',
+    teaser: "Product owner for a workstream that changed how HM Land Registry manages and routes applications, making caseworkers' lives easier. The work won a RITA award for delivering operational efficiencies. I got to that role by progressing from apprentice through the organisation across seven years.",
     tags: ['Transformation delivery', 'Product ownership', 'Agile delivery', 'RITA award'],
     sector: 'Central Government',
   },
@@ -94,10 +96,10 @@ export default function Experience() {
             <p className="text-[17px] text-ink-soft leading-relaxed max-w-xl mb-8">
               I can walk through the constraints, what worked, what did not and what I would do differently. A thirty minute call usually covers it.
             </p>
-            <a href="mailto:Samuel.Field@eddystonemersey.com" className="btn-primary">
+            <CalendlyButton className="btn-primary">
               Set up a call
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </a>
+            </CalendlyButton>
           </div>
         </div>
       </div>

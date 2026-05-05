@@ -17,23 +17,6 @@
     }
   },
   {
-    "title": "Polymarket Analysis",
-    "date": "2026-03-28",
-    "summary": "Prediction market analysis dashboard. Ingests live market data, runs a probability model, calculates expected value, and surfaces mispriced contracts with automated alerts.",
-    "tags": ["Next.js", "Recharts", "REST APIs", "Tailwind"],
-    "category": "AI Experiment",
-    "liveUrl": "",
-    "repoUrl": "",
-    "detail": {
-      "what": "A dashboard that monitors prediction markets, runs a probability model against live prices, and flags contracts where the model thinks the market has got it wrong. Shows expected value calculations, price charts, confidence intervals, and sends Telegram alerts when high-value opportunities appear. A risk warning is displayed on every screen — this is analysis only, not trading advice.",
-      "how": "The ingestion cron fetches 300+ active markets from the Polymarket Gamma API, normalises prices from JSON string arrays, and stores price snapshots for trend analysis. The analysis engine runs a weighted-average probability model combining: market price baseline (weight 5), price momentum from recent history (weight 2), external signals weighted by source reliability and recency (weight 3), and volume-based confidence adjustments. Expected value is calculated for both YES and NO sides of each contract.",
-      "built": "Built with Claude Code from a detailed requirements specification. The probability model is deliberately conservative — it starts from the market price as baseline because markets are usually efficient. The category classifier uses keyword matching against contract questions to sort into politics, crypto, sports, economics, and tech.",
-      "hosting": "Vercel (Next.js 16), Turso (SQLite database), Telegram Bot API for alerts. All free tier.",
-      "bots": "A Telegram bot sends alerts when the analysis engine detects opportunities with expected value above 10%. Messages include the recommended action (BUY YES/NO), market price, model probability, and EV percentage.",
-      "stack": ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS 4", "Turso", "Recharts", "Polymarket Gamma API", "Telegram Bot API", "Vercel"]
-    }
-  },
-  {
     "title": "Day Notes",
     "date": "2026-03-26",
     "summary": "Personal daily reflection journal with 5 entry templates, energy tracking, a smart Telegram reminder system, and weekly reviews. Sundays are blocked as rest days.",

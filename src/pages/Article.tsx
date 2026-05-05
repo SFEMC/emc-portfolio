@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { marked } from 'marked'
 import { format, parseISO } from 'date-fns'
+import CalendlyButton from '../components/CalendlyButton'
 
 interface ArticleMeta {
   title: string
@@ -9,6 +10,7 @@ interface ArticleMeta {
   summary: string
   tags: string[]
   slug: string
+  linkedinUrl?: string
 }
 
 function parseFrontmatter(content: string): { meta: ArticleMeta; body: string } | null {
@@ -37,6 +39,7 @@ function parseFrontmatter(content: string): { meta: ArticleMeta; body: string } 
       summary: meta.summary as string || '',
       tags: (Array.isArray(meta.tags) ? meta.tags : [meta.tags as string]).filter(Boolean),
       slug: meta.slug as string || '',
+      linkedinUrl: (meta.linkedinUrl as string) || undefined,
     },
     body,
   }
@@ -127,6 +130,19 @@ export default function Article() {
               <span key={tag} className="chip">{tag}</span>
             ))}
           </div>
+          {article.meta.linkedinUrl && (
+            <p className="text-[13px] text-muted mt-6">
+              Also published on{' '}
+              <a
+                href={article.meta.linkedinUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-accent"
+              >
+                LinkedIn
+              </a>.
+            </p>
+          )}
         </header>
 
         {/* Body */}
@@ -145,13 +161,10 @@ export default function Article() {
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
               All writing
             </Link>
-            <a
-              href="mailto:Samuel.Field@eddystonemersey.com"
-              className="btn-secondary text-[13px]"
-            >
+            <CalendlyButton className="btn-secondary text-[13px]">
               Discuss this piece
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </a>
+            </CalendlyButton>
           </div>
         </div>
       </div>

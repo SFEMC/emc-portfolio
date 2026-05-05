@@ -1,4 +1,5 @@
 import { principles } from '../content/principles'
+import CalendlyButton from '../components/CalendlyButton'
 
 export default function HowIWork() {
   return (
@@ -78,10 +79,10 @@ export default function HowIWork() {
             <h2 className="font-display text-[32px] md:text-[40px] leading-tight tracking-tight text-ink font-medium mb-6">
               Happy to walk through it.
             </h2>
-            <a href="mailto:Samuel.Field@eddystonemersey.com" className="btn-primary">
+            <CalendlyButton className="btn-primary">
               Set up a call
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </a>
+            </CalendlyButton>
           </div>
         </div>
       </div>

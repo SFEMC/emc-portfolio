@@ -89,7 +89,7 @@ export default function LatestWriting() {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
         {articles.map((a) => {
-          const target = a.url || (a.slug ? `/#/articles/${a.slug}` : '/#/articles')
+          const target = a.url || (a.slug ? `/articles/${a.slug}` : '/articles')
           const isExternal = !!a.url
           return (
             <a

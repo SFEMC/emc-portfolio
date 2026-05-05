@@ -2,7 +2,7 @@
 title: "My First 6 Months in Higher Education: What I've Learned Moving From Government Digital & Service Delivery"
 date: "2026-03-27"
 summary: "Having moved from delivering digital products and services in UK Central Government into Higher Education, I expected the two to feel similar. In practice, they feel like completely different worlds."
-tags: ["higher education", "government", "service design", "digital transformation"]
+tags: ["Higher Education", "Government", "Service Design", "Digital Transformation"]
 slug: "first-6-months-higher-education"
 ---
 

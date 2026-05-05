@@ -48,7 +48,7 @@ export default function Projects() {
             Things I've built for the fun of it.
           </h1>
           <p className="text-[18px] md:text-[19px] text-ink-soft leading-relaxed max-w-2xl">
-            Experiments, hobby builds and creative work outside of client delivery. Most are built conversationally with Claude Code in a weekend.
+            I build things outside of client work to stay sharp and learn new tools. These are hobby projects, experiments with AI-assisted development that keep me close to the technology my delivery teams work with.
           </p>
         </div>
       </div>

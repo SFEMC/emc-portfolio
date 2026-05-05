@@ -8,13 +8,13 @@ type BookCard = {
   url: string
 }
 
-type Person = {
-  name: string
-  description: string
-  url: string
-  linkLabel: string
-  isNew?: boolean
-}
+const startHere: BookCard[] = [
+  { category: 'Service Design', title: 'Good Services', author: 'Lou Downe', description: 'Lou Downe, former Head of Design at GDS, sets out 15 principles for designing services that work for users.', url: 'https://good.services/' },
+  { category: 'Transformation', title: 'Digital Transformation at Scale', author: 'Greenway, Terrett, Bracken, Loosemore', description: 'Written by the team who built GDS. What leaders need to know about digital transformation in large institutions.', url: 'https://public.digital/pd-books' },
+  { category: 'Transformation', title: 'Escaping the Build Trap', author: 'Melissa Perri', description: 'How organisations move from shipping features to delivering outcomes.', url: 'https://melissaperri.com/books/escaping-build-trap' },
+  { category: 'Strategy', title: 'Good Strategy Bad Strategy', author: 'Richard Rumelt', description: 'Distinguishes real strategy (a diagnosis, a guiding policy and coherent actions) from aspirational goal-setting.', url: 'https://goodbadstrategy.com/' },
+  { category: 'Systems & Org Design', title: 'Team Topologies', author: 'Skelton, Pais', description: 'Treats organisational structure as a design problem. Four team types, three interaction modes.', url: 'https://teamtopologies.com/book' },
+]
 
 const books: BookCard[] = [
   // Service Design
@@ -104,50 +104,14 @@ const articleCards: BookCard[] = [
   { category: 'Higher Education', title: 'HEPI', description: 'Independent UK higher education policy research.', url: 'https://www.hepi.ac.uk/' },
 ]
 
-const people: Person[] = [
-  { name: 'Lou Downe', description: 'Founded service design in UK government. Author of Good Services.', url: 'https://loudowne.com/', linkLabel: 'Website' },
-  { name: 'Janet Hughes', description: 'Former GDS, former DEFRA Programme Director.', url: 'https://www.linkedin.com/in/janet-hughes/', linkLabel: 'LinkedIn' },
-  { name: 'Tom Loosemore', description: 'Co-founded GDS. Now at Public Digital.', url: 'https://public.digital/people/tom-loosemore', linkLabel: 'Public Digital' },
-  { name: 'Emily Middleton', description: 'Director General for Digital Transformation at GDS.', url: 'https://www.gov.uk/government/people/emily-middleton', linkLabel: 'GOV.UK' },
-  { name: 'Richard Pope', description: 'Founding product manager at GOV.UK. Writes Platformland.', url: 'https://www.platformland.xyz/', linkLabel: 'Website' },
-  { name: 'Ben Holliday', description: 'Chief Design Officer at TPXimpact. Previously NHS and DWP.', url: 'https://www.benholliday.com/', linkLabel: 'Website' },
-  { name: 'Kit Collingwood', description: 'Co-founded OneTeamGov. Design and delivery across DWP, MOJ and GDS.', url: 'https://medium.com/@kcollingwood', linkLabel: 'Medium' },
-  { name: 'Giles Turnbull', description: 'Wrote The Agile Comms Handbook. Public sector comms.', url: 'https://gilest.org/', linkLabel: 'Website' },
-  { name: 'Matt Jukes', description: 'Head of Products at GDS National Data Library.', url: 'https://www.linkedin.com/in/jukesie/', linkLabel: 'LinkedIn' },
-  { name: 'Scott Colfer', description: 'Twenty years leading product and digital transformation. Writes Product in Service.', url: 'https://scottcolfer.com/', linkLabel: 'Website' },
-  { name: 'Lawrie Phipps', description: 'Senior Research Lead at Jisc. Digital leadership in universities.', url: 'https://lawriephipps.co.uk/', linkLabel: 'Website' },
-  { name: 'Benedict Evans', description: 'Former Andreessen Horowitz analyst. Annual essays on technology change.', url: 'https://www.ben-evans.com/', linkLabel: 'Website' },
-  { name: 'Dan Shipper', description: 'Co-founder of Every. Practical essays on AI in real work.', url: 'https://every.to/chain-of-thought', linkLabel: 'Website' },
-  { name: 'Allie K. Miller', description: 'Former Amazon AI lead. Practical AI for business.', url: 'https://www.alliekmiller.com/', linkLabel: 'Website' },
-  { name: 'Donald Clark', description: 'UK-based. Writes on AI in education, learning and skills.', url: 'https://donaldclarkplanb.blogspot.com/', linkLabel: 'Website' },
-  { name: 'Jeni Tennison', description: 'Open Data Institute. AI policy and public services.', url: 'https://www.jenitennison.com/', linkLabel: 'Website' },
-  { name: 'Paul Roetzer', description: 'Marketing AI Institute. AI adoption in organisations.', url: 'https://www.marketingaiinstitute.com/', linkLabel: 'Website' },
-  { name: 'Sarah Drummond', description: 'Snook founder, public sector service design.', url: 'https://wearesnook.com', linkLabel: 'Website', isNew: true },
-  { name: 'Mike Bracken', description: 'Co-founded GDS, Public Digital.', url: 'https://public.digital', linkLabel: 'Public Digital', isNew: true },
-  { name: 'Will Myddelton', description: 'Design practice in government.', url: 'https://www.myddelton.co.uk', linkLabel: 'Website', isNew: true },
-  { name: 'Stefan Czerniawski', description: 'Strategic writing on digital government.', url: 'https://blog.czerniawski.org', linkLabel: 'Website', isNew: true },
-  { name: 'Cathy Dutton', description: 'Service and interaction design, Defra.', url: 'https://cathydutton.co.uk', linkLabel: 'Website', isNew: true },
-  { name: 'Teresa Torres', description: 'Continuous discovery habits.', url: 'https://www.producttalk.org', linkLabel: 'Website', isNew: true },
-  { name: 'Cassie Kozyrkov', description: 'Applied AI and decision science.', url: 'https://kozyrkov.com', linkLabel: 'Website', isNew: true },
-  { name: 'Shreyas Doshi', description: 'Product craft and prioritisation.', url: 'https://shreyas.substack.com', linkLabel: 'Substack', isNew: true },
-]
-
-type SectionFilter = 'all' | 'books' | 'podcasts' | 'reading' | 'people'
+type SectionFilter = 'all' | 'books' | 'podcasts' | 'reading'
 
 const tabs: { value: SectionFilter; label: string }[] = [
   { value: 'all', label: 'All' },
   { value: 'books', label: 'Books' },
   { value: 'podcasts', label: 'Podcasts' },
   { value: 'reading', label: 'Reading' },
-  { value: 'people', label: 'People' },
 ]
-
-function getInitials(name: string): string {
-  const parts = name.trim().split(/\s+/)
-  const first = parts[0]?.[0] ?? ''
-  const last = parts.length > 1 ? parts[parts.length - 1][0] : ''
-  return (first + last).toUpperCase()
-}
 
 const cardBase = 'flex flex-col gap-2 p-6 rounded-xl transition-all hover:-translate-y-0.5'
 
@@ -158,10 +122,10 @@ export default function Resources() {
 
   const cardStyle = { background: 'var(--bg-elevated)', border: '1px solid var(--border)' }
 
+  const showStartHere = filter === 'all' || filter === 'books'
   const showBooks = filter === 'all' || filter === 'books'
   const showPodcasts = filter === 'all' || filter === 'podcasts'
   const showReading = filter === 'all' || filter === 'reading'
-  const showPeople = filter === 'all' || filter === 'people'
 
   const initialCount = 6
   const booksHead = books.slice(0, initialCount)
@@ -190,7 +154,7 @@ export default function Resources() {
             The sources I come back to.
           </h1>
           <p className="text-[18px] md:text-[19px] text-ink-soft leading-relaxed max-w-2xl">
-            Books, newsletters, blogs and people that shape how I think and work.
+            Books, newsletters and blogs that shape how I think and work.
           </p>
         </div>
       </div>
@@ -214,6 +178,22 @@ export default function Resources() {
           </button>
         ))}
       </div>
+
+      {/* Start here */}
+      {showStartHere && (
+        <section className="mb-20">
+          <div className="flex items-end justify-between mb-3 gap-6 flex-wrap">
+            <p className="eyebrow">Start here</p>
+            <span className="text-[13px] text-muted">{startHere.length} essentials</span>
+          </div>
+          <p className="text-[15px] text-ink-soft leading-relaxed max-w-2xl mb-8">
+            Five books that shaped how I think about services, transformation and strategy. Read these first.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {startHere.map(renderCard)}
+          </div>
+        </section>
+      )}
 
       {/* Books */}
       {showBooks && (
@@ -298,55 +278,6 @@ export default function Resources() {
         </section>
       )}
 
-      {/* People to follow */}
-      {showPeople && (
-        <section className="mb-12">
-          <div className="flex items-end justify-between mb-8 gap-6 flex-wrap">
-            <p className="eyebrow">People to follow</p>
-            <span className="text-[13px] text-muted">{people.length} total</span>
-          </div>
-          <div
-            className="grid grid-cols-1 lg:grid-cols-2 gap-x-10 border-t"
-            style={{ borderColor: 'var(--border)' }}
-          >
-            {people.map((p, i) => (
-              <div
-                key={i}
-                className="flex items-center gap-4 py-4 border-b"
-                style={{ borderColor: 'var(--border)' }}
-              >
-                <div
-                  className="w-8 h-8 rounded-full flex items-center justify-center text-[11px] font-semibold shrink-0"
-                  style={{ background: 'var(--bg-elevated)', color: 'var(--ink)', border: '1px solid var(--border)' }}
-                  aria-hidden="true"
-                >
-                  {getInitials(p.name)}
-                </div>
-                <div className="flex-1 min-w-0 text-[14px] leading-snug">
-                  <span className="font-semibold text-ink">{p.name}</span>
-                  {p.isNew && (
-                    <span
-                      className="ml-2 inline-flex items-center px-1.5 py-0.5 text-[10px] font-medium rounded uppercase tracking-wide text-white align-middle"
-                      style={{ background: '#16a34a' }}
-                    >
-                      new
-                    </span>
-                  )}
-                  <span className="text-muted"> · {p.description}</span>
-                </div>
-                <a
-                  href={p.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[12px] font-medium text-ink-soft hover:text-accent transition-colors shrink-0 ml-2 whitespace-nowrap"
-                >
-                  {p.linkLabel} ↗
-                </a>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
     </div>
   )
 }

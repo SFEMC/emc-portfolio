@@ -3,7 +3,7 @@ const orgs = [
   'HM Land Registry',
   'Plymouth Marjon University',
   'Public Digital',
-  'GDS',
+  'GDS Service Standard',
 ]
 
 export default function About() {
@@ -24,16 +24,13 @@ export default function About() {
         <div className="col-span-12 md:col-span-7 md:col-start-6">
           <div className="space-y-6 text-[17px] text-ink-soft leading-relaxed">
             <p>
-              I embed inside your team. I do not consult from a distance or hand over a report and leave.
+              I design and deliver public-facing services across government and higher education. I research user needs, map the end-to-end journey across every channel and handoff, build blueprints and deliver through to live.
             </p>
             <p>
-              I start with the people doing the work: your staff, your users, your partners. I learn how teams operate, find where services break down and map the whole journey from the outside in.
+              I also work upstream. Before blueprints and technology, I help leadership teams define roles, governance and decision-making structures. An operating model built on unclear ownership will fail. So will any service blueprint built on top of it.
             </p>
             <p>
-              From there I run discoveries, write user stories, design processes and build governance. I stay through delivery, working alongside your team to move things from alpha through to live.
-            </p>
-            <p>
-              I work in the open. You see findings as they emerge, challenge the thinking and shape the direction. By the time we reach delivery, your team owns the solution because they helped build it.
+              I spend as much time with frontline staff and users as I do with leadership teams. The people closest to the work see what breaks first. I work across both levels because they depend on each other.
             </p>
           </div>
 

@@ -1,3 +1,6 @@
+import { Link } from 'react-router-dom'
+import CalendlyButton from './CalendlyButton'
+
 export default function Hero() {
   return (
     <section className="max-w-7xl mx-auto px-6 lg:px-10 pt-10 md:pt-28 pb-20 md:pb-28">
@@ -22,18 +25,18 @@ export default function Hero() {
 
         {/* Secondary paragraph */}
         <p className="col-span-12 md:col-span-7 text-[18px] md:text-[19px] leading-relaxed text-ink-soft mb-10">
-          I find where complex services break for the people using them and transform them end-to-end. I embed within teams to design operating models and services, taking them from discovery through to live.
+          I use design thinking to reshape how your organisation operates, from the operating model and governance that hold it together to the services your users experience.
         </p>
 
         {/* CTA cluster */}
         <div className="col-span-12 flex flex-wrap items-center gap-3">
-          <a href="/#/experience" className="btn-primary">
+          <Link to="/experience" className="btn-primary">
             See experience
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
-          </a>
-          <a href="mailto:Samuel.Field@eddystonemersey.com" className="btn-secondary">
+          </Link>
+          <CalendlyButton className="btn-secondary">
             Talk to me
-          </a>
+          </CalendlyButton>
         </div>
       </div>
 

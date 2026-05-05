@@ -1,23 +1,19 @@
 const capabilities = [
   {
-    title: 'Product & Delivery',
-    body: 'I take services from discovery through to live. I own the roadmap, run the backlog and keep multidisciplinary teams moving across organisational boundaries.',
-    tools: ['Jira', 'Azure DevOps', 'Confluence'],
+    title: 'Strategy & Organisational Design',
+    body: 'Operating models, governance, roles and decision-making structures. I help leadership teams set the foundations before anyone redesigns a service.',
   },
   {
     title: 'Service Design',
-    body: 'I map how your service works today, find where it breaks down and redesign it around the people who use it. User research, journey mapping, blueprinting.',
-    tools: ['FigJam', 'Lucid', 'GOV.UK Prototype Kit'],
+    body: 'User research, journey mapping, blueprinting and end-to-end redesign. I find where services break for the people using them and rebuild around what they need.',
+  },
+  {
+    title: 'Product & Delivery',
+    body: 'Roadmaps, backlogs and multidisciplinary teams. I take services from discovery through to live and keep teams moving across organisational boundaries.',
   },
   {
     title: 'Stakeholder & Change',
-    body: 'I embed inside your organisation and build capability as I go. I coach teams, manage upwards and make sure change lands with the people it affects.',
-    tools: ['Workshops', 'Show-and-tells', 'Coaching'],
-  },
-  {
-    title: 'Technical Delivery',
-    body: 'I write the requirements, shape the solution and bridge the gap between technical teams and the business. I get hands-on with whatever tooling the organisation uses.',
-    tools: ['Salesforce', 'Power Automate', 'SharePoint'],
+    body: 'I work inside your organisation and build capability as I go. I coach, work in the open and make sure change lands with the people it affects.',
   },
 ]
 
@@ -46,14 +42,9 @@ export default function Capabilities() {
             <h3 className="font-display text-[22px] md:text-[26px] font-medium text-ink leading-tight mb-4">
               {cap.title}
             </h3>
-            <p className="text-[16px] text-ink-soft leading-relaxed mb-6 max-w-md">
+            <p className="text-[16px] text-ink-soft leading-relaxed max-w-md">
               {cap.body}
             </p>
-            <div className="flex flex-wrap gap-2">
-              {cap.tools.map((t) => (
-                <span key={t} className="chip">{t}</span>
-              ))}
-            </div>
           </div>
         ))}
       </div>

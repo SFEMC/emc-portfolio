@@ -2,7 +2,7 @@
 title: "The Problem With 'User-Centred' as a Label"
 date: "2026-04-24"
 summary: "Every team says they're user-centred. Ask them to describe the user need their service meets in one sentence, and you'll get silence. The label has become a badge, not a practice."
-tags: ["user-centred design", "service design"]
+tags: ["User-Centred Design", "Service Design"]
 slug: "the-problem-with-user-centred-as-a-label"
 ---
 

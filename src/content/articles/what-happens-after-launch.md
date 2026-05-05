@@ -2,7 +2,7 @@
 title: "What Happens After Launch"
 date: "2026-04-24"
 summary: "Services don't fail at launch. They fail six months later, when the people running them don't understand why a decision was made and the institutional knowledge walks out the door with the delivery team."
-tags: ["service design", "delivery", "transitions"]
+tags: ["Service Design", "Delivery", "Transitions"]
 slug: "what-happens-after-launch"
 ---
 

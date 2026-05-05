@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import CalendlyButton from './CalendlyButton'
 
 const navItems = [
   { label: 'Home', path: '/' },
   { label: 'Experience', path: '/experience' },
   { label: 'How I work', path: '/how-i-work' },
   { label: 'Writing', path: '/articles' },
-  { label: 'Side Projects', path: '/projects' },
   { label: 'Resources', path: '/resources' },
 ]
 
@@ -101,12 +101,9 @@ export default function Navbar() {
             )}
           </button>
 
-          <a
-            href="mailto:Samuel.Field@eddystonemersey.com"
-            className="hidden md:inline-flex btn-primary"
-          >
+          <CalendlyButton className="hidden md:inline-flex btn-primary">
             Talk to me
-          </a>
+          </CalendlyButton>
 
           {/* Mobile hamburger */}
           <button
@@ -155,12 +152,12 @@ export default function Navbar() {
                 {item.label}
               </Link>
             ))}
-            <a
-              href="mailto:Samuel.Field@eddystonemersey.com"
+            <CalendlyButton
               className="btn-primary mt-3 justify-center"
+              onAfter={() => setMobileOpen(false)}
             >
               Talk to me
-            </a>
+            </CalendlyButton>
           </div>
         </div>
       )}

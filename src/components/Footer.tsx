@@ -59,7 +59,7 @@ export default function Footer() {
           className="mt-14 pt-6 border-t text-[13px] text-muted"
           style={{ borderColor: 'var(--border)' }}
         >
-          <p>&copy; 2026 Eddystone Mersey Consulting Limited. Registered in England.</p>
+          <p>&copy; 2026 Eddystone Mersey Consulting Limited. Company 16665724. Registered in England.</p>
         </div>
       </div>
     </footer>
