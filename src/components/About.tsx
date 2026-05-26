@@ -1,7 +1,7 @@
 const orgs = [
   'DEFRA',
   'HM Land Registry',
-  'Plymouth Marjon University',
+  'UK Higher Education',
   'Public Digital',
   'GDS Service Standard',
 ]

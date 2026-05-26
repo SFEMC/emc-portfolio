@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 const engagements = [
   {
-    org: 'Plymouth Marjon University',
+    org: 'UK Higher Education',
     role: 'Consultant - Design Authority',
     dates: '2025 — Present',
     headline: 'Service-led transformation.',

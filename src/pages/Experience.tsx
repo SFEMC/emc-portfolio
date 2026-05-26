@@ -2,11 +2,11 @@ import CalendlyButton from '../components/CalendlyButton'
 
 const engagements = [
   {
-    org: 'Plymouth Marjon University',
+    org: 'UK Higher Education',
     role: 'Consultant - Design Authority',
     dates: '2025 — Present',
     headline: 'Service-led transformation.',
-    teaser: "I am design authority across Marjon's 2030 transformation, engaged via Eddystone Mersey Consulting. I am accountable for service design and interim solution delivery, shaping the future operating model, service landscape and digital estate. I stabilise and join up existing services so that when we build the technology, teams adopt it first time and users feel the difference. In six months I've cut three weeks from the admissions cycle, delivered a digital application route for partner students and built a verification portal for partner institutions, replacing the spreadsheets and manual processes that slowed teams down and put data at risk.",
+    teaser: "I am design authority across a UK university's multi-year transformation, engaged via Eddystone Mersey Consulting. I am accountable for service design and interim solution delivery, shaping the future operating model, service landscape and digital estate. I stabilise and join up existing services so that when we build the technology, teams adopt it first time and users feel the difference. In six months I've cut three weeks from the admissions cycle, delivered a digital application route for partner students and built a verification portal for partner institutions, replacing the spreadsheets and manual processes that slowed teams down and put data at risk.",
     tags: ['Design authority', 'Operating model', 'Service design', 'Digital estate'],
     sector: 'Higher Education',
   },
