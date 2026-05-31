@@ -65,7 +65,7 @@ export default function Home() {
             Design Authority for Higher Education.
           </h2>
           <p className="max-w-[680px] text-[var(--grey-text)] text-[18px] md:text-[19px] leading-relaxed mb-12" data-reveal>
-            We combine governance and delivery to ensure your transformation builds the right thing, first time. Design Authority is our structured approach to filling the gap between strategy and workstream delivery, the design and service-level view that most institutions lack.
+            We combine governance and delivery to ensure your transformation invests in the right thing. We prototype, test and refine before you commit resource at scale. Design Authority is our structured approach to filling the gap between strategy and workstream delivery, the design and service-level view that most institutions lack.
           </p>
           <div data-reveal>
             <TheGap />
