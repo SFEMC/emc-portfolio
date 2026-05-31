@@ -14,15 +14,37 @@ export default function Navbar() {
   const { pathname } = useLocation()
   const [mobileOpen, setMobileOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [hidden, setHidden] = useState(false)
 
   useEffect(() => {
+    // Hide on scroll-down past threshold; show on scroll-up or near top.
+    // Threshold avoids flicker when the page bounces at the very top.
+    const HIDE_THRESHOLD = 120
+    const DELTA = 6
+    let lastY = window.scrollY
+
     function onScroll() {
-      setScrolled(window.scrollY > 8)
+      const y = window.scrollY
+      setScrolled(y > 8)
+      // Always show the menu while the mobile drawer is open
+      if (mobileOpen) {
+        setHidden(false)
+        lastY = y
+        return
+      }
+      if (y < HIDE_THRESHOLD) {
+        setHidden(false)
+      } else if (y - lastY > DELTA) {
+        setHidden(true)
+      } else if (lastY - y > DELTA) {
+        setHidden(false)
+      }
+      lastY = y
     }
     window.addEventListener('scroll', onScroll, { passive: true })
     onScroll()
     return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  }, [mobileOpen])
 
   function isActive(path: string) {
     return pathname === path || (path !== '/' && pathname.startsWith(path))
@@ -30,11 +52,13 @@ export default function Navbar() {
 
   return (
     <nav
-      className="sticky top-0 z-50 transition-all duration-200 border-b"
+      className="sticky top-0 z-50 border-b will-change-transform"
       style={{
         backgroundColor: scrolled ? 'rgba(245,245,242,0.88)' : 'var(--warm-white)',
         backdropFilter: scrolled ? 'saturate(160%) blur(8px)' : 'none',
         borderColor: 'var(--border-light, #E3E3DE)',
+        transform: hidden ? 'translateY(-100%)' : 'translateY(0)',
+        transition: 'transform 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 200ms, backdrop-filter 200ms',
       }}
     >
       <div className="max-w-[1200px] mx-auto px-6 lg:px-10 h-[84px] flex items-center justify-between">
