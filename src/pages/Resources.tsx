@@ -105,13 +105,13 @@ const articleCards: BookCard[] = [
   { category: 'Higher Education', title: 'HEPI', description: 'Independent UK higher education policy research.', url: 'https://www.hepi.ac.uk/' },
 ]
 
-type SectionFilter = 'all' | 'books' | 'podcasts' | 'reading'
+type SectionFilter = 'all' | 'books' | 'podcasts' | 'blogs'
 
 const tabs: { value: SectionFilter; label: string }[] = [
   { value: 'all', label: 'All' },
   { value: 'books', label: 'Books' },
   { value: 'podcasts', label: 'Podcasts' },
-  { value: 'reading', label: 'Reading' },
+  { value: 'blogs', label: 'Blogs' },
 ]
 
 export default function Resources() {
@@ -134,7 +134,7 @@ export default function Resources() {
   const showStartHere = filter === 'all' || filter === 'books'
   const showBooks = filter === 'all' || filter === 'books'
   const showPodcasts = filter === 'all' || filter === 'podcasts'
-  const showReading = filter === 'all' || filter === 'reading'
+  const showBlogs = filter === 'all' || filter === 'blogs'
 
   const initialCount = 6
   const booksHead = books.slice(0, initialCount)
@@ -271,11 +271,11 @@ export default function Resources() {
             </section>
           )}
 
-          {/* Articles, Newsletters & Blogs */}
-          {showReading && (
+          {/* Blogs (articles, newsletters, blogs) */}
+          {showBlogs && (
             <section className="mb-20" data-reveal-stagger>
               <div className="flex items-end justify-between mb-8 gap-6 flex-wrap">
-                <span className="eyebrow">Reading</span>
+                <span className="eyebrow">Blogs</span>
                 <span className="text-[13px] text-[var(--grey-text)]">{articleCards.length} total</span>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
