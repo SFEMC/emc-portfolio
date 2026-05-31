@@ -88,10 +88,10 @@ export default function Home() {
           </h2>
           <div className="max-w-[680px] text-[var(--grey-text)] text-[18px] md:text-[19px] leading-relaxed space-y-5 mb-14">
             <p data-reveal>
-              Samuel is a product manager by trade, a service designer by practice and a delivery lead who does all three because they depend on each other.
+              Samuel won a Real Innovation Technology Award for his work transforming how a government department processes applications. He spent seven years working on transformation at that department, starting as an apprentice in operations and leaving as an established product owner. He went on to lead service design and delivery at a major government department.
             </p>
             <p data-reveal>
-              He spent seven years at HM Land Registry, progressing from apprentice to product owner for a workstream that changed how a national service processes applications. That work won a RITA award for operational efficiencies. He delivers under GDS service standards, 14 points from user research through to live performance, and applies that discipline to higher education.
+              He is passionate about human-centred design. He maps the full service because what breaks happens in the handoffs between teams. He prototypes and iterates before anyone commits resource. He builds the operating model, develops strategy and stays until the service goes live, ensuring successful service design and transition.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-7" data-reveal-stagger>

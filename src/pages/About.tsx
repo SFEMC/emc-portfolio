@@ -37,10 +37,10 @@ export default function About() {
             </div>
             <div className="md:col-span-8 text-[var(--grey-text)] text-[18px] md:text-[19px] leading-relaxed space-y-5">
               <p>
-                Samuel founded Eddystone Mersey Consulting after seven years at HM Land Registry, where he progressed from apprentice to product owner for a workstream that changed how a national service processes applications. That work won a RITA award for delivering operational efficiencies. He moved into consulting to bring GDS service standards and delivery discipline to higher education.
+                Samuel won a Real Innovation Technology Award for his work transforming how a government department processes applications. He spent seven years working on transformation at that department, starting as an apprentice in operations and leaving as an established product owner. He went on to lead service design and delivery at a major government department.
               </p>
               <p>
-                Samuel is a product manager by trade, a service designer by practice and a delivery lead by necessity. He does all three because they depend on each other.
+                He is passionate about human-centred design. He maps the full service because what breaks happens in the handoffs between teams. He prototypes and iterates before anyone commits resource. He builds the operating model, develops strategy and stays until the service goes live, ensuring successful service design and transition.
               </p>
             </div>
           </div>
