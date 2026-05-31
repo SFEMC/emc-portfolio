@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { useRevealOnScroll } from '../hooks/useScrollAnim'
+import { useState, useEffect } from 'react'
+import { useRevealOnScroll, gsap, ScrollTrigger, prefersReducedMotion } from '../hooks/useScrollAnim'
 
 type BookCard = {
   category: string
@@ -119,6 +119,17 @@ export default function Resources() {
   const [filter, setFilter] = useState<SectionFilter>('all')
   const [showAllBooks, setShowAllBooks] = useState(false)
   const [showAllArticles, setShowAllArticles] = useState(false)
+
+  // When the filter changes, force every newly-mounted card visible.
+  // The initial useRevealOnScroll sets opacity:0 on first paint and relies on
+  // ScrollTrigger to fade things in. After a filter change, new cards mount
+  // already in viewport with stale opacity:0 and no trigger fires for them.
+  useEffect(() => {
+    if (prefersReducedMotion()) return
+    const cards = document.querySelectorAll<HTMLElement>('[data-reveal]')
+    gsap.to(cards, { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out', stagger: 0.04 })
+    ScrollTrigger.refresh()
+  }, [filter, showAllBooks, showAllArticles])
 
   const showStartHere = filter === 'all' || filter === 'books'
   const showBooks = filter === 'all' || filter === 'books'
