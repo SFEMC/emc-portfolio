@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState, useMemo } from 'react'
+import { Link } from 'react-router-dom'
 import { format, parseISO } from 'date-fns'
-import { marked } from 'marked'
+import { useRevealOnScroll } from '../hooks/useScrollAnim'
 
 interface ArticleEntry {
   title: string
@@ -9,272 +10,201 @@ interface ArticleEntry {
   tags: string[]
   slug?: string
   url?: string
-  body?: string
-  html?: string
   linkedinUrl?: string
+  pinned?: boolean
 }
 
-function parseFrontmatter(content: string): { meta: Omit<ArticleEntry, 'body' | 'html'>; body: string } | null {
-  const match = content.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/)
+function parseFrontmatter(content: string): Omit<ArticleEntry, 'pinned'> | null {
+  const match = content.match(/^---\n([\s\S]*?)\n---/)
   if (!match) return null
-  const frontmatter = match[1]
-  const body = match[2]
-
   const meta: Record<string, string | string[]> = {}
-  for (const line of frontmatter.split('\n')) {
+  for (const line of match[1].split('\n')) {
     const m = line.match(/^(\w+):\s*(.+)$/)
-    if (m) {
-      let value: string | string[] = m[2].trim()
-      if (value.startsWith('"') && value.endsWith('"')) value = value.slice(1, -1)
-      if (value.startsWith('[')) {
-        try { value = JSON.parse(value) } catch { /* keep as string */ }
-      }
-      meta[m[1]] = value
+    if (!m) continue
+    let value: string | string[] = m[2].trim()
+    if (value.startsWith('"') && value.endsWith('"')) value = value.slice(1, -1)
+    if (value.startsWith('[')) {
+      try { value = JSON.parse(value) } catch { /* keep as string */ }
     }
+    meta[m[1]] = value
   }
-
   return {
-    meta: {
-      title: meta.title as string || '',
-      date: meta.date as string || '',
-      summary: meta.summary as string || '',
-      tags: (Array.isArray(meta.tags) ? meta.tags : [meta.tags as string]).filter(Boolean),
-      slug: meta.slug as string || undefined,
-      linkedinUrl: (meta.linkedinUrl as string) || undefined,
-    },
-    body,
+    title: (meta.title as string) || '',
+    date: (meta.date as string) || '',
+    summary: (meta.summary as string) || '',
+    tags: (Array.isArray(meta.tags) ? meta.tags : [meta.tags as string]).filter(Boolean),
+    slug: (meta.slug as string) || undefined,
+    linkedinUrl: (meta.linkedinUrl as string) || undefined,
   }
-}
-
-function getExternalSource(url: string): string {
-  if (url.includes('linkedin.com')) return 'LinkedIn'
-  if (url.includes('medium.com')) return 'Medium'
-  if (url.includes('gov.uk')) return 'GOV.UK'
-  if (url.includes('substack.com')) return 'Substack'
-  return 'External'
-}
-
-function readingTime(html: string): number {
-  const words = html.replace(/<[^>]*>/g, ' ').trim().split(/\s+/).length
-  return Math.max(1, Math.round(words / 220))
 }
 
 const mdModules = import.meta.glob('/src/content/articles/*.md', { query: '?raw', import: 'default' })
 
+const TOPIC_FILTERS = [
+  'All',
+  'Service Design',
+  'Delivery',
+  'Higher Education',
+  'Transformation',
+  'Government',
+  'User-Centred Design',
+]
+
+const PINNED_SLUGS = new Set([
+  'thinking-in-services',
+  'test-before-you-transform',
+  'first-6-months-higher-education',
+])
+
 export default function Articles() {
+  useRevealOnScroll()
   const [articles, setArticles] = useState<ArticleEntry[]>([])
-  const [activeTag, setActiveTag] = useState<string>('')
-  const [expanded, setExpanded] = useState<number | null>(null)
+  const [activeFilter, setActiveFilter] = useState<string>('All')
   const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
-    async function loadArticles() {
-      const all: ArticleEntry[] = []
-
-      for (const path in mdModules) {
-        const content = await mdModules[path]() as string
-        const parsed = parseFrontmatter(content)
-        if (parsed) {
-          const html = await marked(parsed.body, { gfm: true, breaks: true })
-          all.push({ ...parsed.meta, body: parsed.body, html })
-        }
-      }
-
+    Promise.all(
+      Object.entries(mdModules).map(async ([, loader]) => parseFrontmatter((await loader()) as string))
+    ).then(async (loaded) => {
+      const all: ArticleEntry[] = loaded
+        .filter((a): a is Omit<ArticleEntry, 'pinned'> => a !== null)
+        .map((a) => ({ ...a, pinned: a.slug ? PINNED_SLUGS.has(a.slug) : false }))
       try {
         const ext = await import('../content/articles/external.json')
         const external = ext.default as ArticleEntry[]
-        for (const a of external) {
-          all.push({ ...a, slug: undefined })
-        }
+        for (const a of external) all.push({ ...a, pinned: false })
       } catch { /* no external file */ }
-
-      all.sort((a, b) => (b.date || '').localeCompare(a.date || ''))
+      all.sort((a, b) => {
+        if (a.pinned !== b.pinned) return a.pinned ? -1 : 1
+        return (b.date || '').localeCompare(a.date || '')
+      })
       setArticles(all)
       setLoaded(true)
-    }
-    loadArticles()
+    })
   }, [])
 
-  const allTags = [...new Set(articles.flatMap(a => a.tags))].sort()
-  const filtered = activeTag
-    ? articles.filter(a => a.tags.includes(activeTag))
-    : articles
-
-  function toggle(i: number) {
-    setExpanded(expanded === i ? null : i)
-  }
+  const filtered = useMemo(() => {
+    if (activeFilter === 'All') return articles
+    return articles.filter((a) => a.tags.includes(activeFilter))
+  }, [articles, activeFilter])
 
   return (
-    <div className="max-w-7xl mx-auto px-6 lg:px-10 py-20 md:py-28">
+    <>
       {/* Header */}
-      <div className="grid grid-cols-12 gap-6 mb-16 md:mb-20">
-        <div className="col-span-12 md:col-span-10">
-          <p className="eyebrow mb-6">Writing</p>
-          <h1 className="font-display text-[44px] md:text-[64px] lg:text-[80px] leading-[1.02] tracking-tight text-navy font-bold mb-8">
-            Notes on services, delivery and how organisations change.
+      <section className="section-light">
+        <div className="max-w-[1200px] mx-auto px-6 lg:px-10 pt-20 md:pt-28 pb-12">
+          <span className="eyebrow mb-6">Writing</span>
+          <h1 className="text-navy text-[44px] md:text-[56px] font-semibold tracking-[-0.025em] leading-[1.06] mt-5 mb-8 max-w-3xl">
+            Thinking out loud.
           </h1>
-          <p className="text-[18px] md:text-[19px] text-muted leading-relaxed max-w-2xl">
-            Short pieces from the work. Some published here, some on LinkedIn. Click a piece to read in place, or follow the link for the original.
+          <p className="text-[var(--grey-text)] text-[18px] md:text-[19px] leading-relaxed max-w-[680px]">
+            Samuel writes about service design, delivery and transformation in higher education and government.
           </p>
         </div>
-      </div>
+      </section>
 
-      {/* Tag filters */}
-      {allTags.length > 0 && (
-        <div
-          className="flex flex-wrap gap-2 mb-14 pb-10 border-b"
-          style={{ borderColor: 'var(--border)' }}
-        >
-          <button
-            onClick={() => setActiveTag('')}
-            className={`px-3.5 py-1.5 text-[13px] font-medium rounded-full transition-all ${
-              !activeTag
-                ? 'bg-ink text-bg border border-ink'
-                : 'border text-muted hover:text-ink border-border-strong'
-            }`}
-          >
-            All
-          </button>
-          {allTags.map(tag => (
-            <button
-              key={tag}
-              onClick={() => setActiveTag(activeTag === tag ? '' : tag)}
-              className={`px-3.5 py-1.5 text-[13px] font-medium rounded-full transition-all ${
-                activeTag === tag
-                  ? 'bg-ink text-bg border border-ink'
-                  : 'border text-muted hover:text-ink border-border-strong'
-              }`}
-            >
-              {tag}
-            </button>
-          ))}
-        </div>
-      )}
-
-      {/* Articles list */}
-      {!loaded ? (
-        <p className="text-muted text-[14px] py-12 text-center">Loading articles...</p>
-      ) : filtered.length === 0 ? (
-        <p className="text-muted text-[14px] py-12 text-center">No articles yet.</p>
-      ) : (
-        <div
-          className="border-t"
-          style={{ borderColor: 'var(--border)' }}
-        >
-          {filtered.map((article, i) => {
-            const isExternal = !!article.url
-            const isLocal = !!article.html && !isExternal
-            const isReadable = isLocal || (isExternal && !!article.html)
-            const isExpanded = expanded === i
-
-            return (
-              <article
-                key={i}
-                className="border-b"
-                style={{ borderColor: 'var(--border)' }}
-              >
-                <div
-                  className={`grid grid-cols-12 gap-6 py-10 md:py-12 transition-colors ${
-                    isReadable ? 'cursor-pointer hover:bg-bg-elevated' : ''
-                  } px-2 -mx-2`}
-                  onClick={() => {
-                    if (isReadable) toggle(i)
+      {/* Filters + grid */}
+      <section className="section-light pb-24 md:pb-[110px]">
+        <div className="max-w-[1200px] mx-auto px-6 lg:px-10">
+          {/* Topic filter pills */}
+          <div className="flex flex-wrap gap-2 mb-12 pb-10 border-b border-[color:var(--border-light)]">
+            {TOPIC_FILTERS.map((topic) => {
+              const active = activeFilter === topic
+              return (
+                <button
+                  key={topic}
+                  onClick={() => setActiveFilter(topic)}
+                  className="px-4 py-2 text-[13px] font-semibold rounded-full transition-all"
+                  style={{
+                    background: active ? 'var(--gold)' : 'transparent',
+                    color: active ? 'var(--navy)' : 'var(--navy)',
+                    border: active ? '1px solid var(--gold)' : '1px solid var(--border-strong)',
                   }}
                 >
-                  <div className="col-span-12 md:col-span-2">
-                    {article.date && (
-                      <time className="text-[13px] text-muted block">
-                        {format(parseISO(article.date), 'MMM yyyy')}
-                      </time>
-                    )}
-                    {isExternal && (
-                      <span className="text-[12px] text-muted mt-1 flex items-center gap-1">
-                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
-                        {getExternalSource(article.url!)}
-                      </span>
-                    )}
-                    {isReadable && article.html && (
-                      <span className="text-[12px] text-muted mt-1 block">
-                        {readingTime(article.html)} min read
-                      </span>
-                    )}
-                  </div>
+                  {topic}
+                </button>
+              )
+            })}
+          </div>
 
-                  <div className="col-span-12 md:col-span-7">
-                    <h2 className="font-display text-[24px] md:text-[30px] font-medium leading-tight text-ink mb-3 group-hover:text-accent">
-                      {article.title}
-                    </h2>
-                    <p className="text-[16px] text-ink-soft leading-relaxed max-w-2xl">
-                      {article.summary}
-                    </p>
-                    <div className="flex flex-wrap gap-2 mt-5">
-                      {article.tags.map(tag => (
-                        <span key={tag} className="chip">{tag}</span>
+          {/* Grid */}
+          {!loaded ? (
+            <p className="text-[var(--grey-text)] text-[14px] py-12 text-center">Loading articles…</p>
+          ) : filtered.length === 0 ? (
+            <p className="text-[var(--grey-text)] text-[14px] py-12 text-center">No articles in this topic yet.</p>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6" data-reveal-stagger>
+              {filtered.map((article, i) => {
+                const isExternal = !!article.url
+                const href = isExternal ? article.url! : `/articles/${article.slug}`
+                const CardBody = (
+                  <article
+                    key={i}
+                    data-reveal
+                    className="emc-card group h-full flex flex-col relative overflow-hidden"
+                    style={article.pinned ? { borderColor: 'var(--gold)', boxShadow: 'var(--shadow-card)' } : undefined}
+                  >
+                    {article.pinned && (
+                      <span className="absolute top-4 right-4 text-[10px] font-semibold tracking-[0.18em] uppercase text-[var(--gold)]">
+                        Featured
+                      </span>
+                    )}
+                    <div className="flex flex-wrap items-center gap-2 mb-4">
+                      {article.tags.slice(0, 2).map((tag) => (
+                        <span
+                          key={tag}
+                          className="text-[11px] font-semibold tracking-[0.14em] uppercase px-2.5 py-1 rounded-sm"
+                          style={{ background: 'rgba(201,164,75,0.12)', color: 'var(--gold)' }}
+                        >
+                          {tag}
+                        </span>
                       ))}
                     </div>
-                  </div>
-
-                  <div className="col-span-12 md:col-span-3 flex md:justify-end items-start gap-3">
-                    {isExternal && (
-                      <a
-                        href={article.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                        className="btn-secondary text-[12px] py-2 px-3.5"
-                      >
-                        Open on {getExternalSource(article.url!)}
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
-                      </a>
-                    )}
-                    {isReadable && (
-                      <span className="text-[13px] font-medium text-accent self-center">
-                        {isExpanded ? '— Close' : 'Read →'}
-                      </span>
-                    )}
-                  </div>
-                </div>
-
-                {/* Expanded body */}
-                {isExpanded && article.html && (
-                  <div
-                    className="pb-14 pt-2"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <div className="grid grid-cols-12 gap-6">
-                      <div className="col-span-12 md:col-span-10 md:col-start-2">
-                        {article.linkedinUrl && (
-                          <p className="text-[13px] text-muted mb-6">
-                            Also published on{' '}
-                            <a
-                              href={article.linkedinUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="link-accent"
-                            >
-                              LinkedIn
-                            </a>.
-                          </p>
+                    <h2 className="text-navy text-[22px] font-semibold leading-snug mb-3 group-hover:text-[var(--gold)] transition-colors">
+                      {article.title}
+                    </h2>
+                    <p className="text-[var(--grey-text)] text-[15px] leading-relaxed mb-5 flex-1">
+                      {article.summary}
+                    </p>
+                    <div className="flex items-center justify-between pt-4 border-t border-[color:var(--border-card)]">
+                      <div className="flex items-center gap-3">
+                        {article.date && (
+                          <time className="text-[13px] text-[var(--grey-text)]">
+                            {format(parseISO(article.date), 'MMM yyyy')}
+                          </time>
                         )}
-                        <article
-                          className="article-content"
-                          dangerouslySetInnerHTML={{ __html: article.html }}
-                        />
-                        <button
-                          onClick={() => toggle(i)}
-                          className="mt-10 text-[13px] font-medium text-muted hover:text-accent transition-colors"
-                        >
-                          ↑ Close article
-                        </button>
+                        {isExternal && (
+                          <span className="text-[11px] font-semibold tracking-wider uppercase text-[var(--grey-text)]">
+                            On LinkedIn
+                          </span>
+                        )}
                       </div>
+                      <span className="text-[13px] font-semibold text-navy inline-flex items-center gap-1.5 group-hover:text-[var(--gold)] transition-colors">
+                        Read
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                          {isExternal ? <path d="M7 17L17 7M7 7h10v10"/> : <path d="M5 12h14M13 6l6 6-6 6"/>}
+                        </svg>
+                      </span>
                     </div>
-                  </div>
-                )}
-              </article>
-            )
-          })}
+                  </article>
+                )
+                if (isExternal) {
+                  return (
+                    <a key={i} href={href} target="_blank" rel="noopener noreferrer" className="block">
+                      {CardBody}
+                    </a>
+                  )
+                }
+                return (
+                  <Link key={i} to={href} className="block">
+                    {CardBody}
+                  </Link>
+                )
+              })}
+            </div>
+          )}
         </div>
-      )}
-    </div>
+      </section>
+    </>
   )
 }
