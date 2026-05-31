@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useRevealOnScroll, gsap, ScrollTrigger, prefersReducedMotion } from '../hooks/useScrollAnim'
 
 type BookCard = {
   category: string
@@ -104,28 +105,36 @@ const articleCards: BookCard[] = [
   { category: 'Higher Education', title: 'HEPI', description: 'Independent UK higher education policy research.', url: 'https://www.hepi.ac.uk/' },
 ]
 
-type SectionFilter = 'all' | 'books' | 'podcasts' | 'reading'
+type SectionFilter = 'all' | 'books' | 'podcasts' | 'blogs'
 
 const tabs: { value: SectionFilter; label: string }[] = [
   { value: 'all', label: 'All' },
   { value: 'books', label: 'Books' },
   { value: 'podcasts', label: 'Podcasts' },
-  { value: 'reading', label: 'Reading' },
+  { value: 'blogs', label: 'Blogs' },
 ]
 
-const cardBase = 'flex flex-col gap-2 p-6 rounded-xl transition-all hover:-translate-y-0.5'
-
 export default function Resources() {
+  useRevealOnScroll()
   const [filter, setFilter] = useState<SectionFilter>('all')
   const [showAllBooks, setShowAllBooks] = useState(false)
   const [showAllArticles, setShowAllArticles] = useState(false)
 
-  const cardStyle = { background: 'var(--bg-elevated)', border: '1px solid var(--border)' }
+  // When the filter changes, force every newly-mounted card visible.
+  // The initial useRevealOnScroll sets opacity:0 on first paint and relies on
+  // ScrollTrigger to fade things in. After a filter change, new cards mount
+  // already in viewport with stale opacity:0 and no trigger fires for them.
+  useEffect(() => {
+    if (prefersReducedMotion()) return
+    const cards = document.querySelectorAll<HTMLElement>('[data-reveal]')
+    gsap.to(cards, { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out', stagger: 0.04 })
+    ScrollTrigger.refresh()
+  }, [filter, showAllBooks, showAllArticles])
 
   const showStartHere = filter === 'all' || filter === 'books'
   const showBooks = filter === 'all' || filter === 'books'
   const showPodcasts = filter === 'all' || filter === 'podcasts'
-  const showReading = filter === 'all' || filter === 'reading'
+  const showBlogs = filter === 'all' || filter === 'blogs'
 
   const initialCount = 6
   const booksHead = books.slice(0, initialCount)
@@ -135,149 +144,169 @@ export default function Resources() {
 
   function renderCard(item: BookCard, i: number) {
     return (
-      <a key={i} href={item.url} target="_blank" rel="noopener noreferrer" className={cardBase} style={cardStyle}>
-        <span className="eyebrow text-[11px]">{item.category}</span>
-        <h3 className="font-display text-[19px] font-medium text-ink leading-snug">{item.title}</h3>
-        {item.author && <p className="text-[13px] text-muted">{item.author}</p>}
-        <p className="text-[14px] text-ink-soft leading-relaxed mt-1">{item.description}</p>
+      <a
+        key={i}
+        href={item.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-reveal
+        className="emc-card group flex flex-col gap-2"
+      >
+        <span className="text-[11px] font-semibold tracking-[0.14em] uppercase text-[var(--gold)]">
+          {item.category}
+        </span>
+        <h3 className="text-navy text-[19px] font-semibold leading-snug group-hover:text-[var(--gold)] transition-colors">
+          {item.title}
+        </h3>
+        {item.author && (
+          <p className="text-[13px] text-[var(--grey-text)]">{item.author}</p>
+        )}
+        <p className="text-[14px] text-[var(--grey-text)] leading-relaxed mt-1">
+          {item.description}
+        </p>
       </a>
     )
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-6 lg:px-10 py-20 md:py-28">
+    <>
       {/* Header */}
-      <div className="grid grid-cols-12 gap-6 mb-12 md:mb-14">
-        <div className="col-span-12 md:col-span-10">
-          <p className="eyebrow mb-6">Resources</p>
-          <h1 className="font-display text-[44px] md:text-[64px] lg:text-[80px] leading-[1.02] tracking-tight text-ink font-medium mb-8">
-            The sources I come back to.
+      <section className="section-light">
+        <div className="max-w-[1200px] mx-auto px-6 lg:px-10 pt-20 md:pt-28 pb-12">
+          <span className="eyebrow mb-6">Resources</span>
+          <h1 className="text-navy text-[44px] md:text-[56px] font-semibold tracking-[-0.025em] leading-[1.06] mt-5 mb-8 max-w-3xl">
+            The sources we come back to.
           </h1>
-          <p className="text-[18px] md:text-[19px] text-ink-soft leading-relaxed max-w-2xl">
-            Books, newsletters and blogs that shape how I think and work.
+          <p className="text-[var(--grey-text)] text-[18px] md:text-[19px] leading-relaxed max-w-[680px]">
+            Books, podcasts and reading that shape how we think and work.
           </p>
         </div>
-      </div>
+      </section>
 
-      {/* Section nav */}
-      <div
-        className="flex flex-wrap gap-2 mb-14 pb-8 border-b"
-        style={{ borderColor: 'var(--border)' }}
-      >
-        {tabs.map((tab) => (
-          <button
-            key={tab.value}
-            onClick={() => setFilter(tab.value)}
-            className={`px-3.5 py-1.5 text-[13px] font-medium rounded-full transition-all ${
-              filter === tab.value
-                ? 'bg-ink text-bg border border-ink'
-                : 'border text-muted hover:text-ink border-border-strong'
-            }`}
-          >
-            {tab.label}
-          </button>
-        ))}
-      </div>
+      {/* Filters + content */}
+      <section className="section-light pb-24 md:pb-[110px]">
+        <div className="max-w-[1200px] mx-auto px-6 lg:px-10">
+          {/* Section filter pills */}
+          <div className="flex flex-wrap gap-2 mb-14 pb-10 border-b border-[color:var(--border-light)]">
+            {tabs.map((tab) => {
+              const active = filter === tab.value
+              return (
+                <button
+                  key={tab.value}
+                  onClick={() => setFilter(tab.value)}
+                  className="px-4 py-2 text-[13px] font-semibold rounded-full transition-all"
+                  style={{
+                    background: active ? 'var(--gold)' : 'transparent',
+                    color: 'var(--navy)',
+                    border: active ? '1px solid var(--gold)' : '1px solid var(--border-strong)',
+                  }}
+                >
+                  {tab.label}
+                </button>
+              )
+            })}
+          </div>
 
-      {/* Start here */}
-      {showStartHere && (
-        <section className="mb-20">
-          <div className="flex items-end justify-between mb-3 gap-6 flex-wrap">
-            <p className="eyebrow">Start here</p>
-            <span className="text-[13px] text-muted">{startHere.length} essentials</span>
-          </div>
-          <p className="text-[15px] text-ink-soft leading-relaxed max-w-2xl mb-8">
-            Five books that shaped how I think about services, transformation and strategy. Read these first.
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {startHere.map(renderCard)}
-          </div>
-        </section>
-      )}
-
-      {/* Books */}
-      {showBooks && (
-        <section className="mb-20">
-          <div className="flex items-end justify-between mb-8 gap-6 flex-wrap">
-            <p className="eyebrow">Books</p>
-            <span className="text-[13px] text-muted">{books.length} total</span>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {booksHead.map(renderCard)}
-          </div>
-          <div
-            className="overflow-hidden transition-[max-height] duration-500 ease-in-out"
-            style={{ maxHeight: showAllBooks ? '8000px' : '0px' }}
-          >
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-5">
-              {booksTail.map((b, i) => renderCard(b, i + initialCount))}
-            </div>
-          </div>
-          {booksTail.length > 0 && (
-            <div className="mt-8">
-              <button
-                type="button"
-                onClick={() => setShowAllBooks(!showAllBooks)}
-                className="btn-secondary text-[13px]"
-              >
-                {showAllBooks ? 'Show less' : `Show all ${books.length}`}
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ transform: showAllBooks ? 'rotate(180deg)' : 'none', transition: 'transform 0.3s' }}>
-                  <path d="M6 9l6 6 6-6" />
-                </svg>
-              </button>
-            </div>
+          {/* Start here */}
+          {showStartHere && (
+            <section className="mb-20" data-reveal-stagger>
+              <div className="flex items-end justify-between mb-3 gap-6 flex-wrap">
+                <span className="eyebrow">Start here</span>
+                <span className="text-[13px] text-[var(--grey-text)]">{startHere.length} essentials</span>
+              </div>
+              <p className="text-[15px] text-[var(--grey-text)] leading-relaxed max-w-2xl mb-8">
+                Five books that shape how we think about services, transformation and strategy. Read these first.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {startHere.map(renderCard)}
+              </div>
+            </section>
           )}
-        </section>
-      )}
 
-      {/* Podcasts */}
-      {showPodcasts && (
-        <section className="mb-20">
-          <div className="flex items-end justify-between mb-8 gap-6 flex-wrap">
-            <p className="eyebrow">Podcasts</p>
-            <span className="text-[13px] text-muted">{podcasts.length} total</span>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {podcasts.map(renderCard)}
-          </div>
-        </section>
-      )}
-
-      {/* Articles, Newsletters & Blogs */}
-      {showReading && (
-        <section className="mb-20">
-          <div className="flex items-end justify-between mb-8 gap-6 flex-wrap">
-            <p className="eyebrow">Articles, newsletters &amp; blogs</p>
-            <span className="text-[13px] text-muted">{articleCards.length} total</span>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {articlesHead.map(renderCard)}
-          </div>
-          <div
-            className="overflow-hidden transition-[max-height] duration-500 ease-in-out"
-            style={{ maxHeight: showAllArticles ? '8000px' : '0px' }}
-          >
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-5">
-              {articlesTail.map((a, i) => renderCard(a, i + initialCount))}
-            </div>
-          </div>
-          {articlesTail.length > 0 && (
-            <div className="mt-8">
-              <button
-                type="button"
-                onClick={() => setShowAllArticles(!showAllArticles)}
-                className="btn-secondary text-[13px]"
+          {/* Books */}
+          {showBooks && (
+            <section className="mb-20" data-reveal-stagger>
+              <div className="flex items-end justify-between mb-8 gap-6 flex-wrap">
+                <span className="eyebrow">Books</span>
+                <span className="text-[13px] text-[var(--grey-text)]">{books.length} total</span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {booksHead.map(renderCard)}
+              </div>
+              <div
+                className="overflow-hidden transition-[max-height] duration-500 ease-in-out"
+                style={{ maxHeight: showAllBooks ? '8000px' : '0px' }}
               >
-                {showAllArticles ? 'Show less' : `Show all ${articleCards.length}`}
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ transform: showAllArticles ? 'rotate(180deg)' : 'none', transition: 'transform 0.3s' }}>
-                  <path d="M6 9l6 6 6-6" />
-                </svg>
-              </button>
-            </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+                  {booksTail.map((b, i) => renderCard(b, i + initialCount))}
+                </div>
+              </div>
+              {booksTail.length > 0 && (
+                <div className="mt-8">
+                  <button
+                    type="button"
+                    onClick={() => setShowAllBooks(!showAllBooks)}
+                    className="btn-secondary text-[13px]"
+                  >
+                    {showAllBooks ? 'Show less' : `Show all ${books.length}`}
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ transform: showAllBooks ? 'rotate(180deg)' : 'none', transition: 'transform 0.3s' }}>
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
+                  </button>
+                </div>
+              )}
+            </section>
           )}
-        </section>
-      )}
 
-    </div>
+          {/* Podcasts */}
+          {showPodcasts && (
+            <section className="mb-20" data-reveal-stagger>
+              <div className="flex items-end justify-between mb-8 gap-6 flex-wrap">
+                <span className="eyebrow">Podcasts</span>
+                <span className="text-[13px] text-[var(--grey-text)]">{podcasts.length} total</span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {podcasts.map(renderCard)}
+              </div>
+            </section>
+          )}
+
+          {/* Blogs (articles, newsletters, blogs) */}
+          {showBlogs && (
+            <section className="mb-20" data-reveal-stagger>
+              <div className="flex items-end justify-between mb-8 gap-6 flex-wrap">
+                <span className="eyebrow">Blogs</span>
+                <span className="text-[13px] text-[var(--grey-text)]">{articleCards.length} total</span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {articlesHead.map(renderCard)}
+              </div>
+              <div
+                className="overflow-hidden transition-[max-height] duration-500 ease-in-out"
+                style={{ maxHeight: showAllArticles ? '8000px' : '0px' }}
+              >
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+                  {articlesTail.map((a, i) => renderCard(a, i + initialCount))}
+                </div>
+              </div>
+              {articlesTail.length > 0 && (
+                <div className="mt-8">
+                  <button
+                    type="button"
+                    onClick={() => setShowAllArticles(!showAllArticles)}
+                    className="btn-secondary text-[13px]"
+                  >
+                    {showAllArticles ? 'Show less' : `Show all ${articleCards.length}`}
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ transform: showAllArticles ? 'rotate(180deg)' : 'none', transition: 'transform 0.3s' }}>
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
+                  </button>
+                </div>
+              )}
+            </section>
+          )}
+        </div>
+      </section>
+    </>
   )
 }

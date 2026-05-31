@@ -2,64 +2,49 @@ import { Link } from 'react-router-dom'
 
 export default function Footer() {
   return (
-    <footer
-      className="mt-24 border-t"
-      style={{ borderColor: 'var(--border)' }}
-    >
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
-          {/* Wordmark + blurb */}
-          <div className="md:col-span-5">
-            <Link to="/" className="inline-flex items-center gap-3 mb-5">
-              <img src="/logo.png" alt="" className="h-10 w-auto logo-img" />
-              <span className="font-display text-[20px] font-medium tracking-tight text-ink leading-none">
-                Eddystone Mersey<br />
-                <span className="text-[14px] font-normal text-muted tracking-normal">Consulting</span>
-              </span>
+    <footer className="section-navy-deep on-dark">
+      <div className="max-w-[1200px] mx-auto px-6 lg:px-10 pt-20 pb-12">
+        <div className="flex flex-wrap justify-between gap-12 pb-12 border-b" style={{ borderColor: 'var(--border-dark)' }}>
+          {/* Brand */}
+          <div className="max-w-sm">
+            <Link to="/" className="inline-block">
+              <img src="/logo-white.png" alt="Eddystone Mersey Consulting" className="h-16 w-auto" />
             </Link>
-            <p className="text-[15px] text-muted leading-relaxed max-w-sm">
-              Service-led transformation for UK government and higher education. Based in Plymouth. Working wherever the problem is.
+            <p className="italic text-[#A9B4C6] mt-5 text-[16px] leading-relaxed max-w-[320px]">
+              A senior consultancy for public-sector delivery.
             </p>
           </div>
 
-          {/* Nav columns */}
-          <div className="md:col-span-3">
-            <p className="eyebrow mb-4">Explore</p>
-            <ul className="flex flex-col gap-2.5">
-              <li><Link to="/experience" className="text-[14px] text-ink-soft hover:text-accent transition-colors">Experience</Link></li>
-              <li><Link to="/articles" className="text-[14px] text-ink-soft hover:text-accent transition-colors">Writing</Link></li>
-              <li><Link to="/projects" className="text-[14px] text-ink-soft hover:text-accent transition-colors">Side Projects</Link></li>
-              <li><Link to="/resources" className="text-[14px] text-ink-soft hover:text-accent transition-colors">Resources</Link></li>
-            </ul>
+          {/* Explore */}
+          <div className="flex flex-col gap-2.5">
+            <span className="text-[12px] font-semibold tracking-[0.12em] uppercase text-[var(--gold)] mb-2">Explore</span>
+            <Link to="/articles" className="text-[15px] text-[#A9B4C6] hover:text-white transition-colors">Writing</Link>
+            <Link to="/about" className="text-[15px] text-[#A9B4C6] hover:text-white transition-colors">About</Link>
+            <Link to="/resources" className="text-[15px] text-[#A9B4C6] hover:text-white transition-colors">Resources</Link>
           </div>
 
-          <div className="md:col-span-4">
-            <p className="eyebrow mb-4">Get in touch</p>
-            <ul className="flex flex-col gap-2.5">
-              <li>
-                <a href="mailto:Samuel.Field@eddystonemersey.com" className="text-[14px] text-ink-soft hover:text-accent transition-colors">
-                  Samuel.Field@eddystonemersey.com
-                </a>
-              </li>
-              <li>
-                <a href="https://www.linkedin.com/company/eddystone-mersey-consulting" target="_blank" rel="noopener noreferrer" className="text-[14px] text-ink-soft hover:text-accent transition-colors">
-                  LinkedIn
-                </a>
-              </li>
-              <li>
-                <a href="https://wa.me/447876853872" target="_blank" rel="noopener noreferrer" className="text-[14px] text-ink-soft hover:text-accent transition-colors">
-                  WhatsApp
-                </a>
-              </li>
-            </ul>
+          {/* Get in touch */}
+          <div className="flex flex-col gap-2.5">
+            <span className="text-[12px] font-semibold tracking-[0.12em] uppercase text-[var(--gold)] mb-2">Get in touch</span>
+            <span className="text-[18px] font-semibold text-white">New enquiries</span>
+            <a href="mailto:samuel.field@eddystonemersey.com" className="text-[15px] text-[#A9B4C6] hover:text-white transition-colors inline-flex items-center gap-2.5">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
+              samuel.field@eddystonemersey.com
+            </a>
+            <a href="https://eddystonemersey.com" className="text-[15px] text-[#A9B4C6] hover:text-white transition-colors inline-flex items-center gap-2.5">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>
+              eddystonemersey.com
+            </a>
+            <a href="https://www.linkedin.com/company/eddystone-mersey-consulting" target="_blank" rel="noopener noreferrer" className="text-[15px] text-[#A9B4C6] hover:text-white transition-colors inline-flex items-center gap-2.5">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              LinkedIn
+            </a>
           </div>
         </div>
 
-        <div
-          className="mt-14 pt-6 border-t text-[13px] text-muted"
-          style={{ borderColor: 'var(--border)' }}
-        >
-          <p>&copy; 2026 Eddystone Mersey Consulting Limited. Company 16665724. Registered in England.</p>
+        <div className="pt-6 flex flex-wrap justify-between gap-3 text-[13px] text-[#A9B4C6]">
+          <span>&copy; 2026 Eddystone Mersey Consulting Limited. Company 16665724.</span>
+          <span>Registered in England</span>
         </div>
       </div>
     </footer>

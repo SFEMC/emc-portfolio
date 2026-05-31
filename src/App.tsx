@@ -1,29 +1,49 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { useEffect } from 'react'
 import Home from './pages/Home'
+import About from './pages/About'
+import DesignAuthority from './pages/DesignAuthority'
 import Resources from './pages/Resources'
 import Articles from './pages/Articles'
 import Article from './pages/Article'
-import Experience from './pages/Experience'
-import HowIWork from './pages/HowIWork'
 import Projects from './pages/Projects'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import PageTransition from './components/PageTransition'
+
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior })
+  }, [pathname])
+  return null
+}
+
+function AnimatedRoutes() {
+  const location = useLocation()
+  return (
+    <PageTransition>
+      <Routes location={location}>
+        <Route path="/" element={<Home />} />
+        <Route path="/design-authority" element={<DesignAuthority />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/articles" element={<Articles />} />
+        <Route path="/articles/:slug" element={<Article />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/resources" element={<Resources />} />
+      </Routes>
+    </PageTransition>
+  )
+}
 
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <div className="bg-bg min-h-screen flex flex-col">
         <Navbar />
         <main className="flex-1">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/experience" element={<Experience />} />
-            <Route path="/how-i-work" element={<HowIWork />} />
-            <Route path="/articles" element={<Articles />} />
-            <Route path="/articles/:slug" element={<Article />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/resources" element={<Resources />} />
-          </Routes>
+          <AnimatedRoutes />
         </main>
         <Footer />
       </div>
