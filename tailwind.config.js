@@ -4,12 +4,13 @@ export default {
     extend: {
       fontFamily: {
         sans: ["'Inter'", 'system-ui', 'sans-serif'],
-        display: ["'Fraunces'", 'Georgia', 'serif'],
       },
       colors: {
         bg: 'var(--bg)',
         'bg-elevated': 'var(--bg-elevated)',
         surface: 'var(--surface)',
+        navy: 'var(--navy)',
+        'navy-deep': 'var(--navy-deep)',
         ink: 'var(--text)',
         'ink-soft': 'var(--text-soft)',
         muted: 'var(--muted)',
@@ -17,8 +18,7 @@ export default {
         'border-strong': 'var(--border-strong)',
         accent: 'var(--accent)',
         'accent-hover': 'var(--accent-hover)',
-        'btn-bg': 'var(--btn-bg)',
-        'btn-text': 'var(--btn-text)',
+        'accent-light': 'var(--accent-light)',
       },
       maxWidth: {
         'reading': '68ch',

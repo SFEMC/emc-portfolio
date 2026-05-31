@@ -1,39 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Light (default) — paper */
-:root, [data-theme="light"] {
-  --bg: #FAFAF5;
-  --bg-elevated: #F3F1E9;
-  --surface: #F0EDE2;
-  --text: #121211;
-  --text-soft: #2B2A27;
-  --muted: #6B6861;
-  --border: #E4E0D4;
+/* EMC palette — navy leads, gold accents */
+:root {
+  --bg: #F5F5F2;           /* warm white page */
+  --bg-elevated: #FFFFFF;  /* cards, surfaces */
+  --surface: #FFFFFF;
+  --navy: #1B2A4A;         /* primary navy */
+  --navy-deep: #0F1A30;    /* hero, statement bands */
+  --text: #1B2A4A;
+  --text-soft: #1B2A4A;
+  --muted: #555555;        /* secondary body */
+  --border: #E0E0E0;
   --border-strong: #C9C3B3;
-  --accent: #B9502E;
-  --accent-hover: #9A3F22;
-  --btn-bg: #121211;
-  --btn-text: #FAFAF5;
-}
-
-/* Dark */
-[data-theme="dark"] {
-  --bg: #111110;
-  --bg-elevated: #1A1A18;
-  --surface: #1D1D1B;
-  --text: #ECEAE3;
-  --text-soft: #C9C6BD;
-  --muted: #8A8780;
-  --border: #2C2A26;
-  --border-strong: #4A4741;
-  --accent: #E28058;
-  --accent-hover: #F29870;
-  --btn-bg: #ECEAE3;
-  --btn-text: #111110;
+  --accent: #C9A44B;       /* gold */
+  --accent-hover: #B8943A;
+  --accent-light: #F0D880;
+  --btn-bg: #C9A44B;
+  --btn-text: #1B2A4A;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -51,47 +38,45 @@ body {
   font-weight: 400;
   font-size: 17px;
   line-height: 1.6;
-  font-feature-settings: 'ss01', 'cv11';
 }
 
 ::selection {
   background: var(--accent);
-  color: var(--bg);
+  color: var(--navy);
 }
 
-/* Logo colour inversion */
-.logo-img {
-  filter: brightness(0);
-}
-[data-theme="dark"] .logo-img {
-  filter: brightness(0) invert(1);
-}
-
-/* Display/serif class */
-.font-display {
-  font-family: 'Fraunces', Georgia, serif;
-  font-optical-sizing: auto;
-  font-variation-settings: "SOFT" 50, "WONK" 0;
-  letter-spacing: -0.015em;
-}
-
-/* Eyebrow label */
+/* Eyebrow label — gold small caps with leading dash */
 .eyebrow {
   font-family: 'Inter', sans-serif;
   font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.14em;
+  font-weight: 600;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 1.5px;
+  background: var(--accent);
+}
+
+/* Section headlines — navy display weight */
+.headline {
+  font-family: 'Inter', sans-serif;
+  color: var(--navy);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
 }
 
 /* Link baseline */
-a {
-  color: inherit;
-  text-decoration: none;
-}
+a { color: inherit; text-decoration: none; }
 
-/* Accent link hover */
 .link-accent {
   color: var(--accent);
   text-decoration: underline;
@@ -112,52 +97,59 @@ a {
     transform: translateY(0);
   }
 
+  /* Primary CTA — gold pill, navy text */
   .btn-primary {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.75rem 1.25rem;
+    padding: 0.85rem 1.5rem;
     font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 15px;
+    font-weight: 600;
     letter-spacing: 0.01em;
-    background: var(--btn-bg);
-    color: var(--btn-text);
-    border: 1px solid var(--btn-bg);
-    border-radius: 999px;
-    transition: opacity 0.15s ease, transform 0.15s ease;
+    background: var(--accent);
+    color: var(--navy);
+    border: 1px solid var(--accent);
+    border-radius: 6px;
+    transition: background 0.15s ease, border-color 0.15s ease;
+    cursor: pointer;
   }
-  .btn-primary:hover { opacity: 0.85; }
+  .btn-primary:hover {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+  }
 
+  /* Secondary CTA — navy outline */
   .btn-secondary {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.75rem 1.25rem;
+    padding: 0.85rem 1.5rem;
     font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 15px;
+    font-weight: 600;
     letter-spacing: 0.01em;
-    color: var(--text);
+    color: var(--navy);
     background: transparent;
-    border: 1px solid var(--border-strong);
-    border-radius: 999px;
-    transition: border-color 0.15s ease, background 0.15s ease;
+    border: 1px solid var(--navy);
+    border-radius: 6px;
+    transition: background 0.15s ease, color 0.15s ease;
+    cursor: pointer;
   }
   .btn-secondary:hover {
-    border-color: var(--text);
-    background: var(--bg-elevated);
+    background: var(--navy);
+    color: #FFFFFF;
   }
 
   .chip {
     display: inline-flex;
     align-items: center;
-    padding: 0.25rem 0.625rem;
+    padding: 0.3rem 0.75rem;
     font-size: 12px;
     font-weight: 500;
-    letter-spacing: 0.01em;
-    color: var(--text-soft);
-    background: var(--bg-elevated);
+    letter-spacing: 0.02em;
+    color: var(--navy);
+    background: var(--bg);
     border: 1px solid var(--border);
     border-radius: 999px;
   }
@@ -167,27 +159,39 @@ a {
     background: var(--border);
     width: 100%;
   }
+
+  /* Card surface — white with subtle border */
+  .emc-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 2rem;
+  }
 }
 
-/* Article reading typography */
+/* Section rhythm helpers */
+.section-light { background: var(--bg); }
+.section-navy { background: var(--navy); color: #FFFFFF; }
+.section-navy-deep { background: var(--navy-deep); color: #FFFFFF; }
+
+/* Article reading typography — Inter throughout per brand brief */
 .article-content {
   font-family: 'Inter', sans-serif;
   font-size: 18px;
   line-height: 1.75;
-  color: var(--text-soft);
+  color: var(--navy);
 }
 
 .article-content h1,
 .article-content h2,
 .article-content h3 {
-  font-family: 'Fraunces', Georgia, serif;
-  font-optical-sizing: auto;
-  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  color: var(--navy);
   letter-spacing: -0.015em;
+  font-weight: 700;
 }
 
 .article-content h1 {
-  font-weight: 500;
   font-size: 2.25rem;
   margin-top: 2.5rem;
   margin-bottom: 1rem;
@@ -195,7 +199,6 @@ a {
 }
 
 .article-content h2 {
-  font-weight: 500;
   font-size: 1.625rem;
   margin-top: 2.25rem;
   margin-bottom: 0.75rem;
@@ -203,7 +206,6 @@ a {
 }
 
 .article-content h3 {
-  font-weight: 500;
   font-size: 1.25rem;
   margin-top: 1.75rem;
   margin-bottom: 0.5rem;
@@ -211,16 +213,12 @@ a {
 
 .article-content p {
   margin-bottom: 1.35rem;
-}
-
-.article-content em {
-  font-style: italic;
-  color: var(--text);
+  color: var(--muted);
 }
 
 .article-content strong {
   font-weight: 600;
-  color: var(--text);
+  color: var(--navy);
 }
 
 .article-content a {
@@ -229,45 +227,39 @@ a {
   text-underline-offset: 3px;
   text-decoration-thickness: 1px;
 }
-
-.article-content a:hover {
-  opacity: 0.75;
-}
+.article-content a:hover { opacity: 0.75; }
 
 .article-content ul,
 .article-content ol {
   margin-bottom: 1.35rem;
   padding-left: 1.5rem;
+  color: var(--muted);
 }
 
-.article-content li {
-  margin-bottom: 0.5rem;
-}
-
+.article-content li { margin-bottom: 0.5rem; }
 .article-content ul li { list-style-type: disc; }
 .article-content ol li { list-style-type: decimal; }
 
 .article-content blockquote {
-  border-left: 2px solid var(--accent);
+  border-left: 3px solid var(--accent);
   padding: 0.25rem 0 0.25rem 1.25rem;
   margin: 1.75rem 0;
-  color: var(--text);
-  font-family: 'Fraunces', Georgia, serif;
-  font-style: italic;
-  font-size: 1.25rem;
+  color: var(--navy);
+  font-size: 1.15rem;
   line-height: 1.5;
+  font-weight: 500;
 }
 
 .article-content code {
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
-  background: var(--bg-elevated);
+  font-family: ui-monospace, monospace;
+  background: var(--bg);
   padding: 0.1em 0.4em;
   border-radius: 4px;
   font-size: 0.9em;
 }
 
 .article-content pre {
-  background: var(--bg-elevated);
+  background: var(--bg);
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 1rem;
