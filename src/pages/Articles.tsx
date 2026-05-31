@@ -110,10 +110,10 @@ export default function Articles() {
       <div className="grid grid-cols-12 gap-6 mb-16 md:mb-20">
         <div className="col-span-12 md:col-span-10">
           <p className="eyebrow mb-6">Writing</p>
-          <h1 className="font-display text-[44px] md:text-[64px] lg:text-[80px] leading-[1.02] tracking-tight text-ink font-medium mb-8">
+          <h1 className="font-display text-[44px] md:text-[64px] lg:text-[80px] leading-[1.02] tracking-tight text-navy font-bold mb-8">
             Notes on services, delivery and how organisations change.
           </h1>
-          <p className="text-[18px] md:text-[19px] text-ink-soft leading-relaxed max-w-2xl">
+          <p className="text-[18px] md:text-[19px] text-muted leading-relaxed max-w-2xl">
             Short pieces from the work. Some published here, some on LinkedIn. Click a piece to read in place, or follow the link for the original.
           </p>
         </div>

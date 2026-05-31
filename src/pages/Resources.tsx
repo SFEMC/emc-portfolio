@@ -150,11 +150,11 @@ export default function Resources() {
       <div className="grid grid-cols-12 gap-6 mb-12 md:mb-14">
         <div className="col-span-12 md:col-span-10">
           <p className="eyebrow mb-6">Resources</p>
-          <h1 className="font-display text-[44px] md:text-[64px] lg:text-[80px] leading-[1.02] tracking-tight text-ink font-medium mb-8">
-            The sources I come back to.
+          <h1 className="font-display text-[44px] md:text-[64px] lg:text-[80px] leading-[1.02] tracking-tight text-navy font-bold mb-8">
+            The sources we come back to.
           </h1>
-          <p className="text-[18px] md:text-[19px] text-ink-soft leading-relaxed max-w-2xl">
-            Books, newsletters and blogs that shape how I think and work.
+          <p className="text-[18px] md:text-[19px] text-muted leading-relaxed max-w-2xl">
+            Books, newsletters and blogs that shape how we think and work.
           </p>
         </div>
       </div>
@@ -186,8 +186,8 @@ export default function Resources() {
             <p className="eyebrow">Start here</p>
             <span className="text-[13px] text-muted">{startHere.length} essentials</span>
           </div>
-          <p className="text-[15px] text-ink-soft leading-relaxed max-w-2xl mb-8">
-            Five books that shaped how I think about services, transformation and strategy. Read these first.
+          <p className="text-[15px] text-muted leading-relaxed max-w-2xl mb-8">
+            Five books that shape how we think about services, transformation and strategy. Read these first.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {startHere.map(renderCard)}

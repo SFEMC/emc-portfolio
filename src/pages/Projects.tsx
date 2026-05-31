@@ -43,12 +43,12 @@ export default function Projects() {
       {/* Header */}
       <div className="grid grid-cols-12 gap-6 mb-16 md:mb-20">
         <div className="col-span-12 md:col-span-10">
-          <p className="eyebrow mb-6">Side Projects</p>
-          <h1 className="font-display text-[44px] md:text-[64px] lg:text-[80px] leading-[1.02] tracking-tight text-ink font-medium mb-8">
-            Things I've built for the fun of it.
+          <p className="eyebrow mb-6">Side projects</p>
+          <h1 className="font-display text-[44px] md:text-[64px] lg:text-[80px] leading-[1.02] tracking-tight text-navy font-bold mb-8">
+            Things we build for the fun of it.
           </h1>
-          <p className="text-[18px] md:text-[19px] text-ink-soft leading-relaxed max-w-2xl">
-            I build things outside of client work to stay sharp and learn new tools. These are hobby projects, experiments with AI-assisted development that keep me close to the technology my delivery teams work with.
+          <p className="text-[18px] md:text-[19px] text-muted leading-relaxed max-w-2xl">
+            We build things outside client work to stay sharp and learn new tools. These are hobby projects, experiments with AI-assisted development that keep us close to the technology our delivery teams work with.
           </p>
         </div>
       </div>

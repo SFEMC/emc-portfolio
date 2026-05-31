@@ -111,10 +111,16 @@ export default function Article() {
         {/* Header */}
         <header className="col-span-12 md:col-span-10 md:col-start-2 mb-14">
           <div className="flex items-center gap-3 flex-wrap mb-8">
+            <span className="text-[13px] font-semibold text-navy">
+              Written by Samuel Field, Founder of Eddystone Mersey Consulting
+            </span>
             {article.meta.date && (
-              <time className="text-[13px] text-muted">
-                {format(parseISO(article.meta.date), 'MMMM yyyy')}
-              </time>
+              <>
+                <span className="h-1 w-1 rounded-full" style={{ background: 'var(--muted)' }} />
+                <time className="text-[13px] text-muted">
+                  {format(parseISO(article.meta.date), 'MMMM yyyy')}
+                </time>
+              </>
             )}
             <span className="h-1 w-1 rounded-full" style={{ background: 'var(--muted)' }} />
             <span className="text-[13px] text-muted">{mins} min read</span>
