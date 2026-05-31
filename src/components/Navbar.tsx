@@ -4,23 +4,14 @@ import CalendlyButton from './CalendlyButton'
 
 const navItems = [
   { label: 'Home', path: '/' },
-  { label: 'Experience', path: '/experience' },
-  { label: 'How I work', path: '/how-i-work' },
   { label: 'Writing', path: '/articles' },
-  { label: 'Resources', path: '/resources' },
+  { label: 'About', path: '/about' },
 ]
 
 export default function Navbar() {
   const { pathname } = useLocation()
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [theme, setTheme] = useState<'light' | 'dark'>('light')
   const [scrolled, setScrolled] = useState(false)
-
-  useEffect(() => {
-    const saved = (localStorage.getItem('emc-theme') as 'light' | 'dark') || 'light'
-    setTheme(saved)
-    document.documentElement.setAttribute('data-theme', saved)
-  }, [])
 
   useEffect(() => {
     function onScroll() {
@@ -31,49 +22,43 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  function toggleTheme() {
-    const next = theme === 'light' ? 'dark' : 'light'
-    setTheme(next)
-    document.documentElement.setAttribute('data-theme', next)
-    localStorage.setItem('emc-theme', next)
-  }
-
   function isActive(path: string) {
     return pathname === path || (path !== '/' && pathname.startsWith(path))
   }
 
   return (
     <nav
-      className={`sticky top-0 z-50 transition-all duration-300 ${
-        scrolled ? 'backdrop-blur-md' : ''
+      className={`sticky top-0 z-50 transition-all duration-200 ${
+        scrolled ? 'backdrop-blur-sm shadow-sm' : ''
       }`}
       style={{
-        backgroundColor: scrolled ? 'color-mix(in srgb, var(--bg) 85%, transparent)' : 'var(--bg)',
+        backgroundColor: scrolled ? 'rgba(245,245,242,0.92)' : 'var(--bg)',
         borderBottom: scrolled ? '1px solid var(--border)' : '1px solid transparent',
       }}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
-        {/* Wordmark */}
-        <Link to="/" className="group">
-          <span className="font-display text-[18px] font-medium tracking-tight text-ink">
+        {/* Logo + wordmark */}
+        <Link to="/" className="flex items-center gap-3 group">
+          <img src="/logo-navy.jpg" alt="Eddystone Mersey Consulting" className="h-9 w-auto mix-blend-multiply" />
+          <span className="hidden sm:inline text-[15px] font-semibold text-navy tracking-tight">
             Eddystone Mersey
           </span>
         </Link>
 
         {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-1">
+        <div className="hidden md:flex items-center gap-2">
           {navItems.map((item) => (
             <Link
               key={item.path}
               to={item.path}
-              className={`px-3.5 py-2 text-[14px] font-medium transition-colors relative ${
-                isActive(item.path) ? 'text-ink' : 'text-muted hover:text-ink'
+              className={`px-4 py-2 text-[14px] font-medium transition-colors relative ${
+                isActive(item.path) ? 'text-navy' : 'text-muted hover:text-navy'
               }`}
             >
               {item.label}
               {isActive(item.path) && (
                 <span
-                  className="absolute left-3.5 right-3.5 -bottom-[1px] h-[2px]"
+                  className="absolute left-4 right-4 -bottom-[1px] h-[2px]"
                   style={{ background: 'var(--accent)' }}
                 />
               )}
@@ -82,27 +67,9 @@ export default function Navbar() {
         </div>
 
         {/* Right cluster */}
-        <div className="flex items-center gap-2">
-          <button
-            onClick={toggleTheme}
-            aria-label="Toggle theme"
-            className="w-9 h-9 flex items-center justify-center rounded-full transition-colors hover:bg-bg-elevated"
-            title={theme === 'light' ? 'Switch to dark' : 'Switch to light'}
-          >
-            {theme === 'light' ? (
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-              </svg>
-            ) : (
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="4" />
-                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
-              </svg>
-            )}
-          </button>
-
+        <div className="flex items-center gap-3">
           <CalendlyButton className="hidden md:inline-flex btn-primary">
-            Talk to me
+            Book a call
           </CalendlyButton>
 
           {/* Mobile hamburger */}
@@ -114,18 +81,18 @@ export default function Navbar() {
             <span
               className="block w-5 h-[1.5px] transition-transform"
               style={{
-                backgroundColor: 'var(--text)',
+                backgroundColor: 'var(--navy)',
                 transform: mobileOpen ? 'rotate(45deg) translate(3px, 3px)' : '',
               }}
             />
             <span
               className="block w-5 h-[1.5px] transition-opacity"
-              style={{ backgroundColor: 'var(--text)', opacity: mobileOpen ? 0 : 1 }}
+              style={{ backgroundColor: 'var(--navy)', opacity: mobileOpen ? 0 : 1 }}
             />
             <span
               className="block w-5 h-[1.5px] transition-transform"
               style={{
-                backgroundColor: 'var(--text)',
+                backgroundColor: 'var(--navy)',
                 transform: mobileOpen ? 'rotate(-45deg) translate(3px, -3px)' : '',
               }}
             />
@@ -146,7 +113,7 @@ export default function Navbar() {
                 to={item.path}
                 onClick={() => setMobileOpen(false)}
                 className={`px-3 py-3 text-[15px] font-medium rounded-md transition-colors ${
-                  isActive(item.path) ? 'text-accent bg-bg-elevated' : 'text-ink'
+                  isActive(item.path) ? 'text-accent bg-bg-elevated' : 'text-navy'
                 }`}
               >
                 {item.label}
@@ -156,7 +123,7 @@ export default function Navbar() {
               className="btn-primary mt-3 justify-center"
               onAfter={() => setMobileOpen(false)}
             >
-              Talk to me
+              Book a call
             </CalendlyButton>
           </div>
         </div>
