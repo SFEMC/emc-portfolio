@@ -240,7 +240,7 @@ export default function DesignAuthority() {
             Design Authority.
           </h1>
           <p className="text-white text-[20px] md:text-[24px] font-semibold mb-3" data-reveal>
-            Service design and delivery for higher education.
+            Service Design and Delivery for Higher Education.
           </p>
           <p className="italic text-[18px] md:text-[20px] text-[var(--gold)] max-w-2xl mx-auto mb-12" data-reveal>
             Ensuring the success of your transformation portfolio.
