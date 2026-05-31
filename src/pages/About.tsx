@@ -5,12 +5,12 @@ export default function About() {
     <>
       {/* Header */}
       <section className="section-light">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 pt-20 md:pt-28 pb-16">
-          <p className="eyebrow mb-6">About us</p>
-          <h1 className="text-navy text-[44px] md:text-[64px] font-bold tracking-tight leading-[1.05] mb-10">
+        <div className="max-w-[1200px] mx-auto px-6 lg:px-10 pt-20 md:pt-28 pb-16">
+          <span className="eyebrow mb-6">About us</span>
+          <h1 className="text-navy text-[44px] md:text-[56px] font-semibold tracking-[-0.025em] leading-[1.06] mt-5 mb-10 max-w-3xl">
             About us.
           </h1>
-          <div className="max-w-3xl text-muted text-[17px] md:text-[18px] leading-relaxed space-y-5">
+          <div className="max-w-[680px] text-[var(--grey-text)] text-[18px] md:text-[19px] leading-relaxed space-y-5">
             <p>
               Eddystone Mersey Consulting works across UK central government and higher education. We research user needs, map end-to-end journeys across every channel and handoff, build blueprints and deliver through to live.
             </p>
@@ -25,17 +25,17 @@ export default function About() {
       </section>
 
       {/* Samuel Field */}
-      <section className="section-light border-t border-border/60">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 py-20 md:py-24">
+      <section className="section-surface border-t border-[color:var(--border-light)]">
+        <div className="max-w-[1200px] mx-auto px-6 lg:px-10 py-20 md:py-[110px]">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
             <div className="md:col-span-4">
-              <p className="eyebrow mb-6">Founder</p>
-              <h2 className="text-navy text-[28px] md:text-[36px] font-bold tracking-tight leading-tight">
+              <span className="eyebrow mb-6">Founder</span>
+              <h2 className="text-navy text-[28px] md:text-[36px] font-semibold tracking-[-0.015em] mt-5 leading-tight">
                 Samuel Field
               </h2>
-              <p className="text-muted text-[14px] mt-3">Founder, Eddystone Mersey Consulting</p>
+              <p className="italic text-[var(--grey-text)] text-[16px] mt-3">Founder, Eddystone Mersey Consulting</p>
             </div>
-            <div className="md:col-span-8 text-muted text-[17px] md:text-[18px] leading-relaxed space-y-5">
+            <div className="md:col-span-8 text-[var(--grey-text)] text-[18px] md:text-[19px] leading-relaxed space-y-5">
               <p>
                 Samuel founded Eddystone Mersey Consulting after seven years at HM Land Registry, where he progressed from apprentice to product owner for a workstream that changed how a national service processes applications. That work won a RITA award for delivering operational efficiencies. He moved into consulting to bring GDS service standards and delivery discipline to higher education.
               </p>
@@ -48,21 +48,22 @@ export default function About() {
       </section>
 
       {/* Contact CTA */}
-      <section className="section-navy">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 py-20 md:py-24 text-center">
-          <h2 className="text-white text-[32px] md:text-[44px] font-bold tracking-tight leading-tight mb-6">
+      <section className="section-navy on-dark">
+        <div className="max-w-[1200px] mx-auto px-6 lg:px-10 py-20 md:py-24 text-center">
+          <span className="eyebrow justify-center mb-6">Start a conversation</span>
+          <h2 className="text-white text-[32px] md:text-[44px] font-semibold tracking-[-0.02em] leading-tight mb-6">
             Talk to us.
           </h2>
           <CalendlyButton className="btn-primary">
             Book a call
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </CalendlyButton>
-          <p className="text-white/70 text-[14px] mt-8">
-            <a href="mailto:samuel.field@eddystonemersey.com" className="hover:text-accent transition-colors">
+          <p className="text-[#A9B4C6] text-[14px] mt-8">
+            <a href="mailto:samuel.field@eddystonemersey.com" className="hover:text-[var(--gold)] transition-colors">
               samuel.field@eddystonemersey.com
             </a>
           </p>
-          <p className="text-white/50 text-[13px] mt-10 max-w-md mx-auto">
+          <p className="text-[#A9B4C6]/70 text-[13px] mt-10 max-w-md mx-auto">
             Eddystone Mersey Consulting Limited. Company 16665724. Registered in England.
           </p>
         </div>
