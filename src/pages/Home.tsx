@@ -30,10 +30,7 @@ export default function Home() {
       {/* 1. HERO — full viewport, deep navy */}
       <section className="section-navy-deep on-dark min-h-[calc(100vh-84px)] flex items-center">
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10 py-20 text-center w-full">
-          <img src="/mark-white.png" alt="" className="h-24 w-auto mx-auto mb-8" data-reveal />
-          <p className="text-[12px] font-semibold tracking-[0.22em] uppercase text-[var(--gold)] mb-6" data-reveal>
-            Eddystone Mersey Consulting
-          </p>
+          <img src="/logo-white.png" alt="Eddystone Mersey Consulting" className="h-28 md:h-36 w-auto mx-auto mb-10" data-reveal />
           <div ref={heroLine} className="w-16 h-[2px] bg-[var(--gold)] mx-auto mb-8" />
           <h1 className="text-white text-[44px] sm:text-[56px] md:text-[68px] font-semibold leading-[1.06] tracking-[-0.025em] max-w-4xl mx-auto mb-6" data-reveal>
             Service design and delivery for the public sector.
@@ -155,7 +152,13 @@ export default function Home() {
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </Link>
           </div>
-          <LatestArticles limit={3} />
+          <LatestArticles
+            slugs={[
+              'thinking-in-services',
+              'test-before-you-transform',
+              'your-service-map-is-wrong',
+            ]}
+          />
         </div>
       </section>
 

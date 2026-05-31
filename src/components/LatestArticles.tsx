@@ -35,7 +35,13 @@ function parseFrontmatter(content: string): ArticleMeta | null {
 
 const mdModules = import.meta.glob('/src/content/articles/*.md', { query: '?raw', import: 'default' })
 
-export default function LatestArticles({ limit = 3 }: { limit?: number }) {
+interface Props {
+  limit?: number
+  /** If provided, show these specific articles by slug, in this order. */
+  slugs?: string[]
+}
+
+export default function LatestArticles({ limit = 3, slugs }: Props) {
   const [articles, setArticles] = useState<ArticleMeta[]>([])
 
   useEffect(() => {
@@ -46,10 +52,16 @@ export default function LatestArticles({ limit = 3 }: { limit?: number }) {
       })
     ).then((all) => {
       const valid = all.filter((a): a is ArticleMeta => a !== null && !!a.date)
+      if (slugs && slugs.length) {
+        // Manual curation: keep brief order, drop any not found
+        const bySlug = new Map(valid.map((a) => [a.slug, a]))
+        setArticles(slugs.map((s) => bySlug.get(s)).filter((a): a is ArticleMeta => !!a))
+        return
+      }
       valid.sort((a, b) => (a.date < b.date ? 1 : -1))
       setArticles(valid.slice(0, limit))
     })
-  }, [limit])
+  }, [limit, slugs])
 
   if (!articles.length) return null
 

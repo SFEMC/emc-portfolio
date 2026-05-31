@@ -235,9 +235,7 @@ export default function DesignAuthority() {
       {/* 1. HERO */}
       <section className="section-navy-deep on-dark min-h-[calc(100vh-84px)] flex items-center">
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10 py-20 text-center w-full">
-          <p className="text-[12px] font-semibold tracking-[0.22em] uppercase text-[var(--gold)] mb-6" data-reveal>
-            Eddystone Mersey Consulting
-          </p>
+          <img src="/logo-white.png" alt="Eddystone Mersey Consulting" className="h-24 md:h-28 w-auto mx-auto mb-10" data-reveal />
           <h1 className="text-white text-[56px] sm:text-[72px] md:text-[88px] font-semibold leading-[1.04] tracking-[-0.03em] mb-6" data-reveal>
             Design Authority.
           </h1>
@@ -629,7 +627,6 @@ export default function DesignAuthority() {
               <p className="text-[var(--gold)] text-[120px] md:text-[140px] font-semibold leading-none tracking-[-0.03em]">14</p>
               <p className="text-white text-[16px] font-semibold tracking-wide mt-3">Service Standard points</p>
               <p className="text-[#A9B4C6] text-[14px] mt-2">we apply to every engagement</p>
-              <img src="/mark-white.png" alt="" className="h-12 w-auto mx-auto mt-8 opacity-80" />
             </div>
           </div>
         </div>
