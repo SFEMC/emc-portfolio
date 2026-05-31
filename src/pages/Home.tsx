@@ -88,7 +88,7 @@ export default function Home() {
           </h2>
           <div className="max-w-[680px] text-[var(--grey-text)] text-[18px] md:text-[19px] leading-relaxed space-y-5 mb-14">
             <p data-reveal>
-              Samuel won a Real Innovation Technology Award for his work transforming how a government department processes applications. He spent seven years working on transformation at that department, starting as an apprentice in operations and leaving as an established product owner. He went on to lead service design and delivery at a major government department.
+              Samuel won a Real Innovation Technology Award for his work transforming how a government department processes applications. He spent seven years working on transformation at that department, starting as an apprentice in operations and leaving as an established product owner. He went on to manage service design and delivery at a major government department.
             </p>
             <p data-reveal>
               He is passionate about human-centred design. He maps the full service because what breaks happens in the handoffs between teams. He prototypes and iterates before anyone commits resource. He builds the operating model, develops strategy and stays until the service goes live, ensuring successful service design and transition.
