@@ -176,10 +176,10 @@ export default function DesignAuthority() {
     }
 
     // ----- Loop animation -----
+    // Circle stays dashed throughout (decorative). We just fade it in.
     if (loopCircleRef.current && loopContainerRef.current && loopNodesRef.current) {
       const c = loopCircleRef.current
-      const len = 2 * Math.PI * 100
-      gsap.set(c, { strokeDasharray: len, strokeDashoffset: len })
+      gsap.set(c, { opacity: 0 })
       const nodes = loopNodesRef.current.querySelectorAll('[data-loop-node]')
       gsap.set(nodes, { opacity: 0, scale: 0.8, transformOrigin: 'center' })
       if (loopCommitRef.current) gsap.set(loopCommitRef.current, { opacity: 0, x: 20 })
@@ -194,8 +194,8 @@ export default function DesignAuthority() {
           once: true,
           onEnter: () => {
             const tl = gsap.timeline()
-            tl.to(nodes, { opacity: 1, scale: 1, duration: 0.3, stagger: 0.3, ease: 'back.out(2)' })
-              .to(c, { strokeDashoffset: 0, duration: 1.2, ease: 'power2.inOut' }, '-=0.4')
+            tl.to(c, { opacity: 1, duration: 0.6, ease: 'power2.out' })
+              .to(nodes, { opacity: 1, scale: 1, duration: 0.3, stagger: 0.25, ease: 'back.out(2)' }, '-=0.3')
             if (loopArrowRef.current) {
               tl.to(loopArrowRef.current, { strokeDashoffset: 0, duration: 0.6, ease: 'power2.inOut' }, '+=0.1')
             }
@@ -439,24 +439,24 @@ export default function DesignAuthority() {
           <p className="max-w-[680px] text-[var(--grey-text)] text-[18px] md:text-[19px] leading-relaxed mb-16" data-reveal>
             We run controlled prototypes to test assumptions before teams commit resource. Each cycle teaches you what to change before you start the next. You build the right thing first time and avoid rework and wasted spend.
           </p>
-          <div ref={loopContainerRef} className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
-            <div className="relative w-[360px] h-[280px]">
-              <svg viewBox="0 0 360 280" className="absolute inset-0 w-full h-full" aria-hidden="true">
-                <circle ref={loopCircleRef} cx="180" cy="140" r="100" fill="none" stroke="var(--navy)" strokeWidth="1.5" strokeDasharray="4 4" opacity="0.5" />
-                <text x="180" y="135" textAnchor="middle" fill="var(--gold)" fontSize="12" fontWeight="600" fontFamily="Inter" letterSpacing="0.1em">REPEAT UNTIL</text>
-                <text x="180" y="152" textAnchor="middle" fill="var(--gold)" fontSize="12" fontWeight="600" fontFamily="Inter" letterSpacing="0.1em">CONFIDENT</text>
+          <div ref={loopContainerRef} className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10">
+            <div className="relative w-[320px] h-[320px] shrink-0">
+              <svg viewBox="0 0 320 320" className="absolute inset-0 w-full h-full" aria-hidden="true">
+                <circle ref={loopCircleRef} cx="160" cy="160" r="120" fill="none" stroke="var(--navy)" strokeWidth="1.5" strokeDasharray="5 6" opacity="0.45" />
+                <text x="160" y="155" textAnchor="middle" fill="var(--gold)" fontSize="12" fontWeight="600" fontFamily="Inter" letterSpacing="0.1em">REPEAT UNTIL</text>
+                <text x="160" y="172" textAnchor="middle" fill="var(--gold)" fontSize="12" fontWeight="600" fontFamily="Inter" letterSpacing="0.1em">CONFIDENT</text>
               </svg>
               <div ref={loopNodesRef}>
-                <div data-loop-node className="absolute top-0 left-1/2 -translate-x-1/2 bg-white border border-navy rounded-md px-5 py-2.5">
+                <div data-loop-node className="absolute left-1/2 top-[calc(50%-120px)] -translate-x-1/2 -translate-y-1/2 bg-white border border-navy rounded-md px-5 py-2.5">
                   <span className="text-[15px] font-semibold text-navy">Prototype</span>
                 </div>
-                <div data-loop-node className="absolute top-1/2 right-0 -translate-y-1/2 bg-white border border-navy rounded-md px-5 py-2.5">
+                <div data-loop-node className="absolute top-1/2 left-[calc(50%+120px)] -translate-x-1/2 -translate-y-1/2 bg-white border border-navy rounded-md px-5 py-2.5">
                   <span className="text-[15px] font-semibold text-navy">Test</span>
                 </div>
-                <div data-loop-node className="absolute bottom-0 left-1/2 -translate-x-1/2 bg-white border border-navy rounded-md px-5 py-2.5">
+                <div data-loop-node className="absolute left-1/2 top-[calc(50%+120px)] -translate-x-1/2 -translate-y-1/2 bg-white border border-navy rounded-md px-5 py-2.5">
                   <span className="text-[15px] font-semibold text-navy">Learn</span>
                 </div>
-                <div data-loop-node className="absolute top-1/2 left-0 -translate-y-1/2 bg-white border border-navy rounded-md px-5 py-2.5">
+                <div data-loop-node className="absolute top-1/2 left-[calc(50%-120px)] -translate-x-1/2 -translate-y-1/2 bg-white border border-navy rounded-md px-5 py-2.5">
                   <span className="text-[15px] font-semibold text-navy">Refine</span>
                 </div>
               </div>
