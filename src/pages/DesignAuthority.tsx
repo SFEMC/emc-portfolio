@@ -620,13 +620,17 @@ export default function DesignAuthority() {
                 About us.
               </h2>
               <p className="text-[var(--grey-text)] text-[18px] md:text-[19px] leading-relaxed" data-reveal>
-                Eddystone Mersey Consulting delivers products and services across UK central government and higher education. Our founder, Samuel Field, spent years delivering in central government under GDS service standards, where teams assess every service against 14 points from user research through to live performance. We apply that same discipline to higher education.
+                Eddystone Mersey Consulting delivers products and services across UK central government and higher education. Our founder, Samuel Field, learned his craft delivering in central government under GDS service standards. We bring that discipline to every institution we work with, then write the principles and standards your organisation needs.
               </p>
             </div>
-            <div className="md:col-span-5 bg-navy rounded-lg p-10 text-center" data-reveal>
-              <p className="text-[var(--gold)] text-[120px] md:text-[140px] font-semibold leading-none tracking-[-0.03em]">14</p>
-              <p className="text-white text-[16px] font-semibold tracking-wide mt-3">Service Standard points</p>
-              <p className="text-[#A9B4C6] text-[14px] mt-2">we apply to every engagement</p>
+            <div className="md:col-span-5 bg-navy rounded-lg p-10 text-left" data-reveal>
+              <p className="text-[var(--gold)] text-[14px] font-semibold tracking-[0.18em] uppercase mb-5">Yours, not ours</p>
+              <p className="text-white text-[28px] md:text-[32px] font-semibold leading-[1.15] tracking-[-0.015em] mb-5">
+                We write the principles and standards your institution adopts as its own.
+              </p>
+              <p className="text-[#A9B4C6] text-[15px] leading-relaxed">
+                Bespoke to your context. Drawn from GDS, Public Digital and CDPS Wales. Owned by you after we leave.
+              </p>
             </div>
           </div>
         </div>
