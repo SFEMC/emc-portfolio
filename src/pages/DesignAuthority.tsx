@@ -417,15 +417,15 @@ export default function DesignAuthority() {
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10 py-24 md:py-[110px]">
           <span className="eyebrow mb-6" data-reveal>The principle</span>
           <h2 className="text-navy text-[36px] md:text-[44px] font-semibold tracking-[-0.02em] leading-[1.12] mt-5 mb-6 max-w-[760px]" data-reveal>
-            Start with the student.
+            Start with the end user.
           </h2>
           <p className="max-w-[680px] text-[var(--grey-text)] text-[18px] md:text-[19px] leading-relaxed mb-16" data-reveal>
-            Human-centred service design sits at the core of everything we do. Every governance decision starts from the student and works back through the teams who deliver the service. We write design and delivery principles the institution adopts as its standard. Teams check their work against these principles across every workstream.
+            Human-centred service design sits at the core of everything we do. Every governance decision starts from the end user and works back through the teams who deliver the service. We write design and delivery principles the institution adopts as its standard. Teams check their work against these principles across every workstream.
           </p>
           <div className="text-center max-w-4xl mx-auto pt-6 pb-2">
             <p className="text-[32px] md:text-[48px] font-semibold tracking-[-0.02em] leading-tight">
               <span className="text-navy" data-reveal>Every governance decision </span>
-              <span className="text-[var(--gold)]" data-reveal>starts from the student.</span>
+              <span className="text-[var(--gold)]" data-reveal>starts from the end user.</span>
             </p>
           </div>
         </div>
