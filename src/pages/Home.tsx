@@ -62,10 +62,10 @@ export default function Home() {
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10 py-24 md:py-[110px]">
           <span className="eyebrow mb-6" data-reveal>Our offer</span>
           <h2 className="text-navy text-[36px] md:text-[44px] font-semibold tracking-[-0.02em] leading-[1.12] mt-5 mb-6 max-w-[760px]" data-reveal>
-            Design Authority for Higher Education.
+            Design Authority for your Transformation.
           </h2>
           <p className="max-w-[680px] text-[var(--grey-text)] text-[18px] md:text-[19px] leading-relaxed mb-12" data-reveal>
-            We combine governance and delivery to ensure your transformation invests in the right thing. We prototype, test and refine before you commit resource at scale. Design Authority is our structured approach to filling the gap between strategy and workstream delivery, the design and service-level view that most institutions lack.
+            We combine governance and delivery to ensure your transformation invests in the right thing. We prototype, test and refine before you commit resource at scale. Design Authority is our structured approach to filling the gap between strategy and workstream delivery, the design and service-level view that most organisations lack.
           </p>
           <div data-reveal>
             <TheGap />
@@ -107,7 +107,7 @@ export default function Home() {
               },
               {
                 title: 'Service design',
-                body: 'We research user needs, map end-to-end journeys and blueprint the service across every channel and handoff. We design around the student, not around the org chart.',
+                body: 'We research user needs, map end-to-end journeys and blueprint the service across every channel and handoff. We design around the user, not around the org chart.',
                 icon: (
                   <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                     <circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/>
@@ -170,7 +170,7 @@ export default function Home() {
             Let's talk.
           </h2>
           <p className="text-[#A9B4C6] text-[18px] md:text-[19px] leading-relaxed max-w-2xl mx-auto mb-10" data-reveal>
-            If your institution is transforming and nobody holds the design and service view, we should have a conversation.
+            If your organisation is transforming and nobody holds the design and service view, we should have a conversation.
           </p>
           <CalendlyButton className="btn-primary">
             Book a call

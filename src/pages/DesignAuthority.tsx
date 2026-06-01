@@ -16,7 +16,7 @@ const scenarios = [
         'Future state operating model',
         'End-to-end service blueprints',
         'User-centred requirements for your delivery teams',
-        'Design and delivery principles the institution adopts as its standard',
+        'Design and delivery principles the organisation adopts as its standard',
         'A trained successor who carries the capability forward',
       ],
       shape: 'Full-time contract. Duration depends on the transformation scope. We scope this together.',
@@ -240,7 +240,7 @@ export default function DesignAuthority() {
             Design Authority.
           </h1>
           <p className="text-white text-[20px] md:text-[24px] font-semibold mb-3" data-reveal>
-            Service Design and Delivery for Higher Education.
+            Service Design and Delivery for Complex Transformation.
           </p>
           <p className="italic text-[18px] md:text-[20px] text-[var(--gold)] max-w-2xl mx-auto mb-12" data-reveal>
             Ensuring the success of your transformation portfolio.
@@ -266,10 +266,10 @@ export default function DesignAuthority() {
           </h2>
           <div className="max-w-[680px] text-[var(--grey-text)] text-[18px] md:text-[19px] leading-relaxed space-y-5 mb-16">
             <p data-reveal>
-              Universities organise around teams and systems, not around the services students use. Your admissions team runs admissions. A student's experience of admissions crosses multiple teams, external bodies and systems that no single department controls. Nobody maps that journey end to end.
+              Organisations organise around teams and systems, not around the services their users experience. Each team runs its part. The user's journey crosses multiple teams, external bodies and systems that no single department controls. Nobody maps the journey end to end.
             </p>
             <p data-reveal>
-              When you start thinking in services, you see how wide they are. You see the handoffs between teams, the gaps where students wait and the decisions that land on someone in a different part of the organisation.
+              Take a university. Admissions owns admissions. But a student's experience of admitting to a course crosses the admissions team, academic programme teams, finance, IT, accommodation, accreditation bodies and partner institutions. When you start thinking in services, you see the handoffs, the gaps where users wait and the decisions that land on someone in a different part of the organisation.
             </p>
           </div>
 
@@ -418,7 +418,7 @@ export default function DesignAuthority() {
             Start with the end user.
           </h2>
           <p className="max-w-[680px] text-[var(--grey-text)] text-[18px] md:text-[19px] leading-relaxed mb-16" data-reveal>
-            Human-centred service design sits at the core of everything we do. Every governance decision starts from the end user and works back through the teams who deliver the service. We write design and delivery principles the institution adopts as its standard. Teams check their work against these principles across every workstream.
+            Human-centred service design sits at the core of everything we do. Every governance decision starts from the end user and works back through the teams who deliver the service. We write design and delivery principles the organisation adopts as its standard. Teams check their work against these principles across every workstream.
           </p>
           <div className="text-center max-w-4xl mx-auto pt-6 pb-2">
             <p className="text-[32px] md:text-[48px] font-semibold tracking-[-0.02em] leading-tight">
@@ -482,7 +482,7 @@ export default function DesignAuthority() {
             Build for the future.
           </h2>
           <p className="max-w-[680px] text-[var(--grey-text)] text-[18px] md:text-[19px] leading-relaxed mb-16" data-reveal>
-            We write the principles your institution adopts as its standard, coach your staff on human-centred service design and train a successor. Your teams think in services, your governance catches conflicts and your investment delivers what students need.
+            We write the principles your organisation adopts as its standard, coach your staff on human-centred service design and train a successor. Your teams think in services, your governance catches conflicts and your investment delivers what users need.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-6 md:gap-8 items-stretch">
             <div ref={handoverLeftRef} className="bg-navy rounded-lg p-8 flex flex-col">
@@ -505,7 +505,7 @@ export default function DesignAuthority() {
               <p className="text-[var(--gold)] text-[12px] font-semibold tracking-[0.18em] uppercase mb-4">After</p>
               <h3 className="text-navy text-[24px] font-semibold mb-3">Your capability</h3>
               <p className="text-[var(--grey-text)] text-[15px] leading-relaxed">
-                A trained successor holds the role. The principles, artefacts and methodology stay with your institution and keep working.
+                A trained successor holds the role. The principles, artefacts and methodology stay with your organisation and keep working.
               </p>
             </div>
           </div>
@@ -516,7 +516,7 @@ export default function DesignAuthority() {
       <section className="section-navy on-dark min-h-[60vh] flex items-center">
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10 py-20 text-center w-full">
           <p className="text-white text-[28px] md:text-[48px] font-semibold tracking-[-0.02em] leading-tight" data-reveal>
-            The student experience.
+            The user experience.
           </p>
           <div className="w-14 h-[2px] bg-[var(--gold)] mx-auto my-8" data-reveal />
           <p className="text-white text-[28px] md:text-[48px] font-semibold tracking-[-0.02em] leading-tight" data-reveal>
@@ -533,7 +533,7 @@ export default function DesignAuthority() {
             How we work with you.
           </h2>
           <p className="text-[var(--grey-text)] text-[18px] md:text-[19px] leading-relaxed mb-12" data-reveal>
-            What does your institution need?
+            What does your organisation need?
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10" data-reveal-stagger>
@@ -605,7 +605,7 @@ export default function DesignAuthority() {
           })}
 
           <p className="text-[var(--grey-text)] text-[15px] text-center mt-10 max-w-2xl mx-auto">
-            Your institution may need support in a different shape. We are happy to discuss how we might work with your programme or organisation in other ways.
+            Your organisation may need support in a different shape. We are happy to discuss how we might work with your programme in other ways.
           </p>
         </div>
       </section>
@@ -620,13 +620,13 @@ export default function DesignAuthority() {
                 About us.
               </h2>
               <p className="text-[var(--grey-text)] text-[18px] md:text-[19px] leading-relaxed" data-reveal>
-                Eddystone Mersey Consulting delivers products and services across UK central government and higher education. Our founder, Samuel Field, learned his craft delivering in central government under GDS service standards. We bring that discipline to every institution we work with, then write the principles and standards your organisation needs.
+                Eddystone Mersey Consulting delivers products and services across the UK public sector, including central government and higher education. Our founder, Samuel Field, learned his craft delivering in central government under GDS service standards. We bring that discipline to every organisation we work with, then write the principles and standards your context needs.
               </p>
             </div>
             <div className="md:col-span-5 bg-navy rounded-lg p-10 text-left" data-reveal>
               <p className="text-[var(--gold)] text-[14px] font-semibold tracking-[0.18em] uppercase mb-5">Yours, not ours</p>
               <p className="text-white text-[28px] md:text-[32px] font-semibold leading-[1.15] tracking-[-0.015em] mb-5">
-                We write the principles and standards your institution adopts as its own.
+                We write the principles and standards your organisation adopts as its own.
               </p>
               <p className="text-[#A9B4C6] text-[15px] leading-relaxed">
                 Bespoke to your context. Drawn from GDS, Public Digital and CDPS Wales. Owned by you after we leave.
