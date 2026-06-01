@@ -36,7 +36,7 @@ export default function Home() {
             Service Design and Delivery.
           </h1>
           <p className="italic text-[20px] md:text-[22px] text-[#A9B4C6] max-w-2xl mx-auto mb-10" data-reveal>
-            Product management. Service design. Delivery leadership.
+            Product Management. Service Design. Delivery Leadership.
           </p>
           <div className="flex items-center justify-center gap-4 flex-wrap" data-reveal>
             <Link to="/design-authority" className="btn-primary">
