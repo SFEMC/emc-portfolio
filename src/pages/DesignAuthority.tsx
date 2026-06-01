@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import CalendlyButton from '../components/CalendlyButton'
+import TouchpointMatrix from '../components/diagrams/TouchpointMatrix'
 import { useRevealOnScroll, gsap, ScrollTrigger, prefersReducedMotion } from '../hooks/useScrollAnim'
 
 const scenarios = [
@@ -78,11 +79,6 @@ export default function DesignAuthority() {
   const [selected, setSelected] = useState<string>('role')
 
   // ===== Animated diagrams =====
-  const journeyLineRef = useRef<SVGLineElement | null>(null)
-  const journeyDotsRef = useRef<SVGGElement | null>(null)
-  const journeyLabelsRef = useRef<HTMLDivElement | null>(null)
-  const journeyContainerRef = useRef<HTMLDivElement | null>(null)
-
   const gapTopRef = useRef<HTMLDivElement | null>(null)
   const gapBottomRef = useRef<HTMLDivElement | null>(null)
   const gapMiddleRef = useRef<HTMLDivElement | null>(null)
@@ -107,29 +103,8 @@ export default function DesignAuthority() {
 
     const triggers: ScrollTrigger[] = []
 
-    // ----- Journey line + dots + labels -----
-    if (journeyLineRef.current && journeyContainerRef.current) {
-      const line = journeyLineRef.current
-      const length = line.getTotalLength?.() ?? 400
-      gsap.set(line, { strokeDasharray: length, strokeDashoffset: length })
-      const dots = journeyDotsRef.current?.querySelectorAll('circle') ?? []
-      const labels = journeyLabelsRef.current?.querySelectorAll('[data-journey-label]') ?? []
-      gsap.set(dots, { opacity: 0, scale: 0, transformOrigin: 'center' })
-      gsap.set(labels, { opacity: 0, y: 8 })
-      triggers.push(
-        ScrollTrigger.create({
-          trigger: journeyContainerRef.current,
-          start: 'top 70%',
-          once: true,
-          onEnter: () => {
-            const tl = gsap.timeline()
-            tl.to(line, { strokeDashoffset: 0, duration: 1.2, ease: 'power2.inOut' })
-              .to(dots, { opacity: 1, scale: 1, duration: 0.3, stagger: 0.2, ease: 'back.out(2)' }, '-=0.4')
-              .to(labels, { opacity: 1, y: 0, duration: 0.4, stagger: 0.2, ease: 'power2.out' }, '-=0.6')
-          },
-        })
-      )
-    }
+    // (Section 2's diagram is now the TouchpointMatrix component, which
+    // relies on the global useRevealOnScroll pass for entrance animation.)
 
     // ----- Gap layers -----
     if (gapContainerRef.current && gapTopRef.current && gapBottomRef.current && gapMiddleRef.current) {
@@ -273,53 +248,7 @@ export default function DesignAuthority() {
             </p>
           </div>
 
-          {/* Two panels */}
-          <div ref={journeyContainerRef} className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-            {/* Left: teams */}
-            <div>
-              <div className="flex items-center gap-3 mb-6">
-                <span className="w-7 h-7 rounded-full border border-[var(--gold)] flex items-center justify-center text-[12px] font-semibold text-[var(--gold)]">A</span>
-                <span className="text-[15px] font-semibold text-navy">Thinking in teams</span>
-              </div>
-              <div className="grid grid-cols-2 gap-4" data-reveal-stagger>
-                {['Admissions', 'IT', 'Accommodation', 'Finance'].map((t) => (
-                  <div key={t} className="bg-white border border-navy rounded-lg py-12 flex items-center justify-center" data-reveal>
-                    <span className="text-[16px] font-semibold text-navy">{t}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            {/* Right: services with overlay line */}
-            <div className="lg:border-l lg:border-[color:var(--border-light)] lg:pl-12">
-              <div className="flex items-center gap-3 mb-6">
-                <span className="w-7 h-7 rounded-full border border-[var(--gold)] flex items-center justify-center text-[12px] font-semibold text-[var(--gold)]">B</span>
-                <span className="text-[15px] font-semibold text-navy">Thinking in services</span>
-              </div>
-              <div className="relative">
-                <div className="grid grid-cols-2 gap-4">
-                  {['Admissions', 'IT', 'Accommodation', 'Finance'].map((t) => (
-                    <div key={t} className="bg-white border border-[color:var(--border-card)] rounded-lg py-12 flex items-center justify-center">
-                      <span className="text-[16px] font-semibold text-navy opacity-60">{t}</span>
-                    </div>
-                  ))}
-                </div>
-                <svg viewBox="0 0 400 40" className="absolute left-0 right-0 top-1/2 -translate-y-1/2 w-full h-10 pointer-events-none" preserveAspectRatio="none">
-                  <line ref={journeyLineRef} x1="20" y1="20" x2="380" y2="20" stroke="var(--gold)" strokeWidth="2" />
-                  <g ref={journeyDotsRef}>
-                    {[40, 140, 260, 360].map((cx) => (
-                      <circle key={cx} cx={cx} cy="20" r="5" fill="var(--gold)" />
-                    ))}
-                  </g>
-                </svg>
-                <div ref={journeyLabelsRef} className="grid grid-cols-4 gap-2 absolute left-0 right-0 top-1/2 -translate-y-[260%] text-[11px] font-semibold text-navy uppercase tracking-wider pointer-events-none">
-                  <span className="text-left pl-2" data-journey-label>Apply</span>
-                  <span className="text-center" data-journey-label>Offer</span>
-                  <span className="text-center" data-journey-label>Enrol</span>
-                  <span className="text-right pr-2" data-journey-label>Arrive</span>
-                </div>
-              </div>
-            </div>
-          </div>
+          <TouchpointMatrix />
         </div>
       </section>
 
