@@ -33,7 +33,7 @@ export default function Home() {
           <img src="/logo-white.png" alt="Eddystone Mersey Consulting" className="h-28 md:h-36 w-auto mx-auto mb-10" data-reveal />
           <div ref={heroLine} className="w-16 h-[2px] bg-[var(--gold)] mx-auto mb-8" />
           <h1 className="text-white text-[44px] sm:text-[56px] md:text-[68px] font-semibold leading-[1.06] tracking-[-0.025em] max-w-4xl mx-auto mb-6" data-reveal>
-            Service design and delivery for the public sector.
+            Service Design and Delivery.
           </h1>
           <p className="italic text-[20px] md:text-[22px] text-[#A9B4C6] max-w-2xl mx-auto mb-10" data-reveal>
             Product management. Service design. Delivery leadership.
