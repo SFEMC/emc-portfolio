@@ -1,19 +1,20 @@
 import { useEffect, useRef, useState } from 'react'
 import CalendlyButton from '../components/CalendlyButton'
 import TouchpointMatrix from '../components/diagrams/TouchpointMatrix'
+import SystemRings from '../components/diagrams/SystemRings'
 import { useRevealOnScroll, gsap, ScrollTrigger, prefersReducedMotion } from '../hooks/useScrollAnim'
 
 const scenarios = [
   {
     key: 'role',
     headline: 'We need someone in the role',
-    blurb: 'Nobody holds the design view across our workstreams. We need someone to fill it and deliver.',
+    blurb: 'Nobody holds the service and system view across our workstreams. We need someone to fill it and deliver.',
     tier: {
       name: 'Embedded design authority',
       ol: 'Tier 1',
-      what: 'Our consultant embeds across your workstreams as product manager and service design lead while holding the governance view across all of them. We design the future state operating model and blueprint end-to-end journeys. We write the user-centred requirements your delivery teams build from and test the riskiest assumptions through controlled prototypes before you commit resource. We coach your staff on human-centred service design and train a successor so you keep the capability after we leave.',
+      what: 'Our consultant embeds across your workstreams as product manager and service design lead while holding the governance view across all of them. We design the future state operating model and blueprint end-to-end journeys. We trace what breaks back to the incentives, governance structures and feedback loops that produce it. We write the user-centred requirements your delivery teams build from and test the riskiest assumptions through controlled prototypes before you commit resource. We coach your staff on systemic service design and train a successor so you keep the capability after we leave.',
       get: [
-        'Governance and delivery in one role',
+        'Governance and delivery in one role, with the systemic service view',
         'Future state operating model',
         'End-to-end service blueprints',
         'User-centred requirements for your delivery teams',
@@ -35,11 +36,11 @@ const scenarios = [
     tier: {
       name: 'Framework and coaching',
       ol: 'Tier 2',
-      what: 'We design your governance framework and build the artefacts: intake records, recommendation templates, change register and authority levels. We write the design and delivery principles and coach your teams on service ownership and delivery. We hand over the methodology and you run it from there.',
+      what: 'We design your governance framework and build the artefacts: intake records, recommendation templates, change register and authority levels. We write the design and delivery principles and coach your teams on systemic service design, service ownership and delivery. We hand over the methodology and you run it from there.',
       get: [
         'A complete governance framework with ready-to-use artefacts',
         'Design and delivery principles',
-        'Coached teams who understand service ownership',
+        'Coached teams who understand systemic service design and ownership',
         'The methodology to run it independently',
       ],
       shape: 'Shorter engagement, typically weeks to a few months. We design, coach and hand over.',
@@ -53,14 +54,14 @@ const scenarios = [
   {
     key: 'review',
     headline: "We've invested but the service has come unstuck",
-    blurb: "We've put resource into a transformation or technology programme and need to understand where it breaks.",
+    blurb: "We've put resource into a transformation or technology programme and need to understand where it breaks and why it keeps breaking.",
     tier: {
       name: 'Service design review',
       ol: 'Tier 3',
-      what: 'We review your existing transformation, technology programme or service redesign through a service design lens. We map the end-to-end user journey and identify where handoffs fail and where teams work around the system rather than through it.',
+      what: 'We review your existing transformation, technology programme or service redesign through a systemic service design lens. We map the end-to-end user journey and identify where handoffs fail. We trace those failures back to the structural forces that produce them: incentive misalignments, missing feedback loops, accumulated workarounds and institutional resistance.',
       get: [
         'End-to-end user journey map',
-        'Identification of where handoffs break',
+        'Identification of where handoffs break and why they keep breaking',
         'A findings report with prioritised recommendations you can act on',
         'Clear view of what to fix before committing more resource',
       ],
@@ -215,7 +216,7 @@ export default function DesignAuthority() {
             Design Authority.
           </h1>
           <p className="text-white text-[20px] md:text-[24px] font-semibold mb-3" data-reveal>
-            Service Design and Delivery for Complex Transformation.
+            Systemic Service Design for Complex Transformation.
           </p>
           <p className="italic text-[18px] md:text-[20px] text-[var(--gold)] max-w-2xl mx-auto mb-12" data-reveal>
             Ensuring the success of your transformation portfolio.
@@ -252,6 +253,32 @@ export default function DesignAuthority() {
         </div>
       </section>
 
+      {/* 2b. THINKING IN SYSTEMS */}
+      <section className="section-light border-t border-[color:var(--border-light)]">
+        <div className="max-w-[1200px] mx-auto px-6 lg:px-10 py-24 md:py-[110px]">
+          <span className="eyebrow mb-6" data-reveal>The system view</span>
+          <h2 className="text-navy text-[36px] md:text-[44px] font-semibold tracking-[-0.02em] leading-[1.12] mt-5 mb-6 max-w-[760px]" data-reveal>
+            Thinking in systems.
+          </h2>
+          <div className="max-w-[680px] text-[var(--grey-text)] text-[18px] md:text-[19px] leading-relaxed space-y-5 mb-16">
+            <p data-reveal>
+              Thinking in services shows you where the problems are. Thinking in systems shows you why they keep happening.
+            </p>
+            <p data-reveal>
+              Every service runs inside a system, and that system sits inside others. The targets teams work to, the governance that decides who owns what, the funding model that shapes where resource goes, the technology that constrains what's possible and the reporting lines that determine who talks to whom. These all come from different systems acting on the same service at the same time.
+            </p>
+            <p data-reveal>
+              When two teams face conflicting targets, each team optimises for its own metric. When nobody sees the full picture of how a service performs, everyone assumes it works. When staff build workarounds because the formal process doesn't serve them, the gap between the designed service and the lived service grows until they share almost nothing.
+            </p>
+            <p data-reveal>
+              A service blueprint starts to surface these dependencies. Thinking in systems traces them far enough to find what drives the behaviour.
+            </p>
+          </div>
+
+          <SystemRings />
+        </div>
+      </section>
+
       {/* 3. THE GAP */}
       <section className="section-light border-t border-[color:var(--border-light)]">
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10 py-24 md:py-[110px]">
@@ -259,8 +286,11 @@ export default function DesignAuthority() {
           <h2 className="text-navy text-[36px] md:text-[44px] font-semibold tracking-[-0.02em] leading-[1.12] mt-5 mb-6 max-w-[760px]" data-reveal>
             The gap.
           </h2>
-          <p className="max-w-[680px] text-[var(--grey-text)] text-[18px] md:text-[19px] leading-relaxed mb-16" data-reveal>
-            Project teams manage their own workstreams. Boards oversee strategy. Between those two layers, nobody holds the design and service-level view. One team changes a process and creates a dependency that another team discovers too late. Each programme has its own governance and nobody checks whether decisions in one area conflict with or undermine work in another.
+          <p className="max-w-[680px] text-[var(--grey-text)] text-[18px] md:text-[19px] leading-relaxed mb-6" data-reveal>
+            Project teams manage their own workstreams. Boards oversee strategy. Between those two layers, nobody holds the service and system view. One team changes a process and creates a dependency that another team discovers too late. Each programme has its own governance and nobody checks whether decisions in one area conflict with or undermine work in another.
+          </p>
+          <p className="max-w-[680px] text-navy text-[18px] md:text-[19px] font-semibold leading-relaxed mb-16" data-reveal>
+            Teams see their step. Leaders see strategy. Nobody sees the service and the system together.
           </p>
           <div ref={gapContainerRef} className="flex flex-col gap-5 max-w-4xl mx-auto">
             <div ref={gapTopRef} className="bg-navy rounded-lg px-8 py-7 flex items-center justify-between">
@@ -270,8 +300,8 @@ export default function DesignAuthority() {
             <div ref={gapMiddleRef}>
               <p className="eyebrow inline-flex justify-center w-full mb-4">Nobody holds this view</p>
               <div className="border-2 border-dashed border-[var(--gold)] rounded-lg px-8 py-7 flex items-center justify-between">
-                <span className="text-[var(--gold)] font-semibold text-[18px]">Design and service-level view</span>
-                <span className="text-[var(--grey-text)] text-[14px] hidden sm:block">No owner. Conflicts surface too late.</span>
+                <span className="text-[var(--gold)] font-semibold text-[18px]">The service and system view</span>
+                <span className="text-[var(--grey-text)] text-[14px] hidden sm:block">No owner. Problems repeat. Conflicts surface too late.</span>
               </div>
             </div>
             <div ref={gapBottomRef} className="bg-navy rounded-lg px-8 py-7 flex items-center justify-between">
@@ -287,7 +317,7 @@ export default function DesignAuthority() {
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10 py-20 text-center w-full">
           <div className="w-14 h-[2px] bg-[var(--gold)] mx-auto mb-8" data-reveal />
           <p className="text-white text-[36px] md:text-[60px] font-semibold tracking-[-0.02em] leading-[1.08] max-w-3xl mx-auto" data-reveal>
-            Design authority fills the gap.
+            Design authority holds both views.
           </p>
           <div className="w-14 h-[2px] bg-[var(--gold)] mx-auto mt-8" data-reveal />
         </div>
@@ -301,7 +331,7 @@ export default function DesignAuthority() {
             How design authority works.
           </h2>
           <p className="max-w-[680px] text-[var(--grey-text)] text-[18px] md:text-[19px] leading-relaxed mb-16" data-reveal>
-            We funnel every design and service decision through a single point. We catch what comes in and check it against active delivery and the operating model. We route it to the right table with a written recommendation. We make the decisions we can and log them. Where we cannot, we hold the change and escalate with a recommendation for the appropriate board.
+            We funnel every design and service decision through a single point. We read the system around each decision: which teams does it affect, which incentives does it change, which feedback loops does it create or break. We check it against active delivery and the operating model. We route it to the right table with a written recommendation. We make the decisions we can and log them. Where we cannot, we hold the change and escalate with a recommendation for the appropriate board.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
             <div ref={funnelInputsRef} className="md:col-span-4 flex flex-col gap-3">
@@ -347,7 +377,7 @@ export default function DesignAuthority() {
             Start with the end user.
           </h2>
           <p className="max-w-[680px] text-[var(--grey-text)] text-[18px] md:text-[19px] leading-relaxed mb-16" data-reveal>
-            Human-centred service design sits at the core of everything we do. Every governance decision starts from the end user and works back through the teams who deliver the service. We write design and delivery principles the organisation adopts as its standard. Teams check their work against these principles across every workstream.
+            Human-centred service design sits at the core of everything we do. Every governance decision starts from the end user and works back through the teams who deliver the service and the systems those teams operate within. We write design and delivery principles the organisation adopts as its standard. Teams check their work against these principles across every workstream.
           </p>
           <div className="text-center max-w-4xl mx-auto pt-6 pb-2">
             <p className="text-[32px] md:text-[48px] font-semibold tracking-[-0.02em] leading-tight">
@@ -411,7 +441,7 @@ export default function DesignAuthority() {
             Build for the future.
           </h2>
           <p className="max-w-[680px] text-[var(--grey-text)] text-[18px] md:text-[19px] leading-relaxed mb-16" data-reveal>
-            We write the principles your organisation adopts as its standard, coach your staff on human-centred service design and train a successor. Your teams think in services, your governance catches conflicts and your investment delivers what users need.
+            We write the principles your organisation adopts as its standard, coach your staff on systemic service design and train a successor. Your teams think in services and systems, your governance catches conflicts and your investment delivers what users need.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-6 md:gap-8 items-stretch">
             <div ref={handoverLeftRef} className="bg-navy rounded-lg p-8 flex flex-col">
@@ -549,7 +579,7 @@ export default function DesignAuthority() {
                 About us.
               </h2>
               <p className="text-[var(--grey-text)] text-[18px] md:text-[19px] leading-relaxed" data-reveal>
-                Eddystone Mersey Consulting delivers products and services across the UK public sector, including central government and higher education. Our founder, Samuel Field, learned his craft delivering in central government under GDS service standards. We bring that discipline to every organisation we work with, then write the principles and standards your context needs.
+                Eddystone Mersey Consulting designs services and the systems they run inside, across UK central government and higher education. Our founder, Samuel Field, learned his craft delivering in central government under GDS service standards. We bring that discipline to every organisation we work with, then write the principles and standards your context needs.
               </p>
             </div>
             <div className="md:col-span-5 bg-navy rounded-lg p-10 text-left" data-reveal>

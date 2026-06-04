@@ -11,6 +11,7 @@ type BookCard = {
 
 const startHere: BookCard[] = [
   { category: 'Service Design', title: 'Good Services', author: 'Lou Downe', description: 'Lou Downe, former Head of Design at GDS, sets out 15 principles for designing services that work for users.', url: 'https://good.services/' },
+  { category: 'Systems & Org Design', title: 'Thinking in Systems', author: 'Donella Meadows', description: 'Meadows gives you the mental models for feedback loops, delays and leverage points. Read it to understand why a service keeps producing the same outcome and why fixing one part can break another.', url: 'https://donellameadows.org/thinking-in-systems-book/' },
   { category: 'Transformation', title: 'Digital Transformation at Scale', author: 'Greenway, Terrett, Bracken, Loosemore', description: 'Written by the team who built GDS. What leaders need to know about digital transformation in large institutions.', url: 'https://public.digital/pd-books' },
   { category: 'Transformation', title: 'Escaping the Build Trap', author: 'Melissa Perri', description: 'How organisations move from shipping features to delivering outcomes.', url: 'https://melissaperri.com/books/escaping-build-trap' },
   { category: 'Strategy', title: 'Good Strategy Bad Strategy', author: 'Richard Rumelt', description: 'Distinguishes real strategy (a diagnosis, a guiding policy and coherent actions) from aspirational goal-setting.', url: 'https://goodbadstrategy.com/' },
