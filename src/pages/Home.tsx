@@ -33,7 +33,7 @@ export default function Home() {
           <img src="/logo-white.png" alt="Eddystone Mersey Consulting" className="h-28 md:h-36 w-auto mx-auto mb-10" data-reveal />
           <div ref={heroLine} className="w-16 h-[2px] bg-[var(--gold)] mx-auto mb-8" />
           <h1 className="text-white text-[44px] sm:text-[56px] md:text-[68px] font-semibold leading-[1.06] tracking-[-0.025em] max-w-4xl mx-auto mb-6" data-reveal>
-            Service Design and Delivery.
+            Systemic Service Design and Delivery.
           </h1>
           <p className="italic text-[20px] md:text-[22px] text-[#A9B4C6] max-w-2xl mx-auto mb-10" data-reveal>
             Product Management. Service Design. Delivery Leadership.
@@ -65,7 +65,7 @@ export default function Home() {
             Design Authority for your Transformation.
           </h2>
           <p className="max-w-[680px] text-[var(--grey-text)] text-[18px] md:text-[19px] leading-relaxed mb-12" data-reveal>
-            We combine governance and delivery to ensure your transformation invests in the right thing. We prototype, test and refine before you commit resource at scale. Design Authority is our structured approach to filling the gap between strategy and workstream delivery, the design and service-level view that most organisations lack.
+            We combine governance, delivery and the systemic service view to ensure your transformation invests in the right thing. We prototype, test and refine before you commit resource at scale. Design Authority fills the gap between strategy and workstream delivery by holding the service view and the system view at the same time.
           </p>
           <div data-reveal>
             <TheGap />
@@ -91,7 +91,7 @@ export default function Home() {
               Samuel won a Real Innovation Technology Award for his work transforming how a government department processes applications. He spent seven years working on transformation at that department, starting as an apprentice in operations and leaving as an established product owner. He went on to manage service design and delivery at a major government department.
             </p>
             <p data-reveal>
-              He is passionate about human-centred design. He maps the full service because what breaks happens in the handoffs between teams. He prototypes and iterates before anyone commits resource. He builds the operating model, develops strategy and stays until the service goes live, ensuring successful service design and transition.
+              Through his work, he designs services and the systems they run inside. He traces what breaks back to the incentives, governance structures and feedback loops that produce it. He prototypes and iterates before anyone commits resource. He builds the operating model, develops strategy and stays until the service goes live.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-7" data-reveal-stagger>
@@ -106,8 +106,8 @@ export default function Home() {
                 ),
               },
               {
-                title: 'Service design',
-                body: 'We research user needs, map end-to-end journeys and blueprint the service across every channel and handoff. We design around the user, not around the org chart.',
+                title: 'Systemic service design',
+                body: 'We research user needs, map end-to-end journeys and trace the problems we find back to the structural forces that produce them. We design the service and the system around it.',
                 icon: (
                   <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                     <circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/>
@@ -144,7 +144,7 @@ export default function Home() {
                 Thinking out loud.
               </h2>
               <p className="text-[var(--grey-text)] text-[18px] leading-relaxed max-w-[600px]" data-reveal>
-                Samuel writes about service design, delivery and transformation. Three recent articles below.
+                Samuel writes about service design, systems thinking, delivery and transformation. Three recent articles below.
               </p>
             </div>
             <Link to="/articles" className="btn-secondary" data-reveal>
@@ -155,8 +155,8 @@ export default function Home() {
           <LatestArticles
             slugs={[
               'thinking-in-services',
+              'why-services-keep-breaking',
               'test-before-you-transform',
-              'your-service-map-is-wrong',
             ]}
           />
         </div>
@@ -170,7 +170,7 @@ export default function Home() {
             Let's talk.
           </h2>
           <p className="text-[#A9B4C6] text-[18px] md:text-[19px] leading-relaxed max-w-2xl mx-auto mb-10" data-reveal>
-            If your organisation is transforming and nobody holds the design and service view, we should have a conversation.
+            If your organisation is transforming and nobody holds the service and system view, we should have a conversation.
           </p>
           <CalendlyButton className="btn-primary">
             Book a call

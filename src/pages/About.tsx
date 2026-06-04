@@ -12,7 +12,7 @@ export default function About() {
           </h1>
           <div className="max-w-[680px] text-[var(--grey-text)] text-[18px] md:text-[19px] leading-relaxed space-y-5">
             <p>
-              Eddystone Mersey Consulting works across UK central government and higher education. We research user needs, map end-to-end journeys across every channel and handoff, build blueprints and deliver through to live.
+              Eddystone Mersey Consulting designs services and the systems they run inside, across UK central government and higher education. We research user needs, map end-to-end journeys across every channel and handoff and trace what breaks back to the incentives, governance structures and feedback loops that produce it.
             </p>
             <p>
               We also work upstream. Before blueprints and technology, we help leadership teams define roles, governance and decision-making structures. An operating model built on unclear ownership will fail. So will any service blueprint built on top of it.
@@ -40,7 +40,7 @@ export default function About() {
                 Samuel won a Real Innovation Technology Award for his work transforming how a government department processes applications. He spent seven years working on transformation at that department, starting as an apprentice in operations and leaving as an established product owner. He went on to manage service design and delivery at a major government department.
               </p>
               <p>
-                He is passionate about human-centred design. He maps the full service because what breaks happens in the handoffs between teams. He prototypes and iterates before anyone commits resource. He builds the operating model, develops strategy and stays until the service goes live, ensuring successful service design and transition.
+                Through his work, he designs services and the systems they run inside. He traces what breaks back to the incentives, governance structures and feedback loops that produce it. He prototypes and iterates before anyone commits resource. He builds the operating model, develops strategy and stays until the service goes live.
               </p>
             </div>
           </div>

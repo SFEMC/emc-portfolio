@@ -43,6 +43,7 @@ const mdModules = import.meta.glob('/src/content/articles/*.md', { query: '?raw'
 const TOPIC_FILTERS = [
   'All',
   'Service Design',
+  'Systems Thinking',
   'Delivery',
   'Higher Education',
   'Transformation',
@@ -52,6 +53,7 @@ const TOPIC_FILTERS = [
 
 const PINNED_SLUGS = new Set([
   'thinking-in-services',
+  'why-services-keep-breaking',
   'test-before-you-transform',
   'first-6-months-higher-education',
 ])
@@ -98,7 +100,7 @@ export default function Articles() {
             Thinking out loud.
           </h1>
           <p className="text-[var(--grey-text)] text-[18px] md:text-[19px] leading-relaxed max-w-[680px]">
-            Samuel writes about service design, delivery and transformation in higher education and government.
+            Samuel writes about service design, systems thinking, delivery and transformation in higher education and government.
           </p>
         </div>
       </section>

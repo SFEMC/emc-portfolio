@@ -17,8 +17,8 @@ export default function TheGap() {
         <p className="eyebrow inline-flex mb-3">Nobody holds this view</p>
       </div>
       <div className="border-2 border-dashed border-accent rounded-lg px-8 py-6 flex items-center justify-between">
-        <span className="text-accent font-semibold text-[18px]">Design and service-level view</span>
-        <span className="text-muted text-[14px] hidden sm:block">No owner. Conflicts surface too late.</span>
+        <span className="text-accent font-semibold text-[18px]">The service and system view</span>
+        <span className="text-muted text-[14px] hidden sm:block">No owner. Problems repeat. Conflicts surface too late.</span>
       </div>
 
       {/* Bottom navy band */}
