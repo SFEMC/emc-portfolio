@@ -79,21 +79,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3. LEAD CONSULTANT — Samuel + 3 capability cards */}
+      {/* 3. CAPABILITIES — 3 capability cards */}
       <section className="section-surface border-t border-[color:var(--border-light)]">
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10 py-24 md:py-[110px]">
-          <span className="eyebrow mb-6" data-reveal>Lead consultant</span>
+          <span className="eyebrow mb-6" data-reveal>What we do</span>
           <h2 className="text-navy text-[36px] md:text-[44px] font-semibold tracking-[-0.02em] leading-[1.12] mt-5 mb-6" data-reveal>
-            Samuel Field.
+            Capabilities.
           </h2>
-          <div className="max-w-[680px] text-[var(--grey-text)] text-[18px] md:text-[19px] leading-relaxed space-y-5 mb-14">
-            <p data-reveal>
-              Samuel won a Real Innovation Technology Award for his work transforming how a government department processes applications. He spent seven years working on transformation at that department, starting as an apprentice in operations and leaving as an established product owner. He went on to manage service design and delivery at a major government department.
-            </p>
-            <p data-reveal>
-              Through his work, he designs services and the systems they run inside. He traces what breaks back to the incentives, governance structures and feedback loops that produce it. He prototypes and iterates before anyone commits resource. He builds the operating model, develops strategy and stays until the service goes live.
-            </p>
-          </div>
+          <p className="max-w-[680px] text-[var(--grey-text)] text-[18px] md:text-[19px] leading-relaxed mb-14" data-reveal>
+            The capabilities we bring to every engagement.
+          </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-7" data-reveal-stagger>
             {[
               {
