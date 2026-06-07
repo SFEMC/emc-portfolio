@@ -1,5 +1,5 @@
 ---
-title: "Philosophy Is a Tool Not a Hobby"
+title: "Philosophy Is a Tool, Not a Hobby"
 collection: "Eyes Wide Open"
 status: "draft"
 type: "essay"

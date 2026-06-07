@@ -54,7 +54,7 @@ export const ewoEssays: EWOEssay[] = [
   { order: 4, slug: 'written-by-the-victor-rewritten-by-the-feed', title: 'Written by the Victor, Rewritten by the Feed', status: 'draft', type: 'essay' },
   { order: 5, slug: 'propaganda-lives-in-your-pocket', title: 'Propaganda Lives in Your Pocket', status: 'draft', type: 'essay' },
   { order: 6, slug: 'the-ancient-world-is-still-talking', title: 'The Ancient World Is Still Talking', status: 'draft', type: 'essay' },
-  { order: 7, slug: 'philosophy-is-a-tool-not-a-hobby', title: 'Philosophy Is a Tool Not a Hobby', status: 'draft', type: 'essay' },
+  { order: 7, slug: 'philosophy-is-a-tool-not-a-hobby', title: 'Philosophy Is a Tool, Not a Hobby', status: 'draft', type: 'essay' },
   { order: 8, slug: 'green-lights', title: 'Green Lights', status: 'draft', type: 'essay' },
   { order: 9, slug: 'bring-back-chalance', title: 'Bring Back Chalance', status: 'draft', type: 'essay' },
 ]
