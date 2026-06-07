@@ -7,6 +7,9 @@ import Resources from './pages/Resources'
 import Articles from './pages/Articles'
 import Article from './pages/Article'
 import Projects from './pages/Projects'
+// Private essay series. Reachable by direct link only; not linked from any nav.
+import ArtOfSystemicDesign from './pages/ArtOfSystemicDesign'
+import ArtOfSystemicDesignArticle from './pages/ArtOfSystemicDesignArticle'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import PageTransition from './components/PageTransition'
@@ -31,6 +34,9 @@ function AnimatedRoutes() {
         <Route path="/articles/:slug" element={<Article />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/resources" element={<Resources />} />
+        {/* Private series — direct link only, noindex/nofollow, no nav entry */}
+        <Route path="/art-of-systemic-design" element={<ArtOfSystemicDesign />} />
+        <Route path="/art-of-systemic-design/:slug" element={<ArtOfSystemicDesignArticle />} />
       </Routes>
     </PageTransition>
   )

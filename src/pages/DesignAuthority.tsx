@@ -416,7 +416,7 @@ export default function DesignAuthority() {
                   <span className="text-[15px] font-semibold text-navy">Learn</span>
                 </div>
                 <div data-loop-node className="absolute top-1/2 left-[calc(50%-120px)] -translate-x-1/2 -translate-y-1/2 bg-white border border-navy rounded-md px-5 py-2.5">
-                  <span className="text-[15px] font-semibold text-navy">Refine</span>
+                  <span className="text-[15px] font-semibold text-navy">Grow</span>
                 </div>
               </div>
             </div>
