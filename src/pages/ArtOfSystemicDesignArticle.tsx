@@ -5,17 +5,16 @@ import { useNoIndex } from '../hooks/useNoIndex'
 import {
   SERIES_TITLE,
   AOSD_BASE,
-  aosdBySlug,
-  aosdNeighbours,
+  aosdLocate,
   aosdDisplayTitle,
 } from '../content/art-of-systemic-design/manifest'
 
 /**
  * The Art of Systemic Design — one private essay.
  *
- * The slug, the heading, the part number and the previous/next links all come
- * from the manifest. The body comes from the matching markdown file. Carries
- * noindex/nofollow and is not linked from anywhere on the site.
+ * The slug, the heading, the part number, the theme and the previous/next
+ * links all come from the manifest. The body comes from the matching markdown
+ * file. Carries noindex/nofollow and is not linked from anywhere on the site.
  */
 
 // Every essay markdown file in the series folder.
@@ -28,16 +27,15 @@ function stripFrontmatter(raw: string): string {
 
 export default function ArtOfSystemicDesignArticle() {
   const { slug } = useParams<{ slug: string }>()
-  const entry = slug ? aosdBySlug(slug) : undefined
-  const { prev, next } = slug ? aosdNeighbours(slug) : { prev: null, next: null }
+  const located = slug ? aosdLocate(slug) : null
 
   const [html, setHtml] = useState<string | null>(null)
-  useNoIndex(entry ? `${aosdDisplayTitle(entry.title)} — ${SERIES_TITLE}` : SERIES_TITLE)
+  useNoIndex(located ? `${aosdDisplayTitle(located.essay.title)} — ${SERIES_TITLE}` : SERIES_TITLE)
 
   useEffect(() => {
-    if (!entry) return
+    if (!located) return
     let live = true
-    const path = `/src/content/art-of-systemic-design/${entry.slug}.md`
+    const path = `/src/content/art-of-systemic-design/${located.essay.slug}.md`
     const loader = mdModules[path]
     if (!loader) { setHtml(''); return }
     loader().then(async (raw) => {
@@ -45,9 +43,9 @@ export default function ArtOfSystemicDesignArticle() {
       if (live) setHtml(out)
     })
     return () => { live = false }
-  }, [entry])
+  }, [located])
 
-  if (!entry) {
+  if (!located) {
     return (
       <section className="section-light">
         <div className="max-w-[760px] mx-auto px-6 lg:px-10 py-24 text-center">
@@ -57,6 +55,8 @@ export default function ArtOfSystemicDesignArticle() {
       </section>
     )
   }
+
+  const { essay, group, prev, next } = located
 
   return (
     <section className="section-light">
@@ -73,10 +73,10 @@ export default function ArtOfSystemicDesignArticle() {
         {/* Header */}
         <header className="mb-12">
           <span className="text-[12px] font-semibold tracking-[0.16em] uppercase text-[var(--gold)]">
-            Part {entry.part}
+            {group.title} &middot; Part {essay.part}
           </span>
           <h1 className="text-navy text-[34px] md:text-[46px] font-semibold tracking-[-0.02em] leading-[1.1] mt-4">
-            {aosdDisplayTitle(entry.title)}
+            {aosdDisplayTitle(essay.title)}
           </h1>
         </header>
 
@@ -90,7 +90,7 @@ export default function ArtOfSystemicDesignArticle() {
           />
         )}
 
-        {/* Foot navigation — previous and next from the manifest */}
+        {/* Foot navigation — previous and next within this theme */}
         <nav className="border-t border-[color:var(--border-light)] mt-16 pt-10 grid grid-cols-1 sm:grid-cols-2 gap-8">
           <div>
             {prev && (
@@ -116,7 +116,7 @@ export default function ArtOfSystemicDesignArticle() {
           </div>
         </nav>
 
-        {/* Always a link back to the series index */}
+        {/* Always a link back to the series home */}
         <div className="mt-12 text-center">
           <Link to={AOSD_BASE} className="link-accent text-[14px] font-medium">
             Back to the series
