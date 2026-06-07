@@ -1,14 +1,18 @@
 ---
 title: "An Introduction"
 collection: "Eyes Wide Open"
-status: "draft"
+status: "published"
 type: "foreword"
 ---
 
-These essays come from a simple itch. Once you see how something works, you cannot unsee it. How incentives shape what people do. How a feed decides what you believe. How an old idea still runs under a new one.
+I am writing these for myself.
 
-Eyes Wide Open is my name for that state. Not cynicism, which shuts the eyes in its own way, but attention. You look at the thing in front of you and you ask what holds it up.
+Somewhere in the last few years I noticed how much of what I believe arrived ready-made. Look at the news I read, the views I held, the things I wanted. Something that knows what keeps me looking had a hand in all of it. It sorts the world for me before I wake. It does the same for you. It shows us each a different version. I started to wonder how much of my own mind was my own.
 
-The essays are short and they stand alone. Read them in order or follow the one that pulls you. They cover power and persuasion, history and philosophy, the maps we trust and the ground they leave out. I do not write them to settle the question. I write them to hold the moment open a little longer, so you decide with your eyes on it.
+So this is where I work it out. Eyes Wide Open is a private collection of stories, ideas and half-formed thoughts. Some are essays. One is a poem. One is a story I am not sure I can pull off. I am not writing them to be shared or to be right. I am writing them to see straight.
 
-Welcome. Look twice.
+A few things I keep circling. How to think for yourself in a world built to think for you. Why the people who came before us, the ancients and the philosophers, still hand us the better tools. What the feed costs us, in attention and in each other. And how to live awake anyway, chasing the green lights and blessing the red ones.
+
+None of this is settled. I will be wrong in here. I would rather be wrong on the page than certain in my head.
+
+Samuel Field
