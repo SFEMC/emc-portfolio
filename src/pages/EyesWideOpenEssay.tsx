@@ -48,19 +48,26 @@ export default function EyesWideOpenEssay() {
   const essay = slug ? ewoBySlug(slug) : undefined
   const { prev, next } = slug ? ewoNeighbours(slug) : { prev: null, next: null }
 
-  const [content, setContent] = useState<{ body: string; note: string | null } | null>(null)
+  const [content, setContent] = useState<{ body: string | null; note: string | null; poem: string | null } | null>(null)
   useNoIndex(essay ? `${essay.title} — ${COLLECTION_TITLE}` : COLLECTION_TITLE)
 
   useEffect(() => {
     if (!essay) return
     let live = true
     const loader = mdModules[`/src/content/eyes-wide-open/${essay.slug}.md`]
-    if (!loader) { setContent({ body: '', note: null }); return }
+    if (!loader) { setContent({ body: '', note: null, poem: null }); return }
     loader().then(async (raw) => {
-      const parts = splitSourceNote(stripFrontmatter(raw as string))
+      const text = stripFrontmatter(raw as string)
+      // A poem keeps its exact line breaks and stanzas; we do not run it through
+      // markdown so nothing reflows it as prose.
+      if (essay.type === 'poem') {
+        if (live) setContent({ body: null, note: null, poem: text.replace(/^\n+/, '').replace(/\s+$/, '') })
+        return
+      }
+      const parts = splitSourceNote(text)
       const body = await marked(parts.body, { gfm: true, breaks: true })
       const note = parts.note ? await marked(parts.note, { gfm: true, breaks: true }) : null
-      if (live) setContent({ body, note })
+      if (live) setContent({ body, note, poem: null })
     })
     return () => { live = false }
   }, [essay])
@@ -101,9 +108,11 @@ export default function EyesWideOpenEssay() {
         {/* Body — comfortable 65 to 75 character measure */}
         {content === null ? (
           <p className="text-[var(--grey-text)] text-[15px]">Loading…</p>
+        ) : content.poem !== null ? (
+          <div className="poem max-w-[70ch]">{content.poem}</div>
         ) : (
           <div className="max-w-[70ch]">
-            <article className="article-content" dangerouslySetInnerHTML={{ __html: content.body }} />
+            <article className="article-content" dangerouslySetInnerHTML={{ __html: content.body! }} />
             {content.note && (
               <>
                 <hr className="mt-12 mb-6" style={{ border: 'none', borderTop: '1px solid var(--border)' }} />

@@ -23,7 +23,8 @@ export interface EWOEssay {
   slug: string
   title: string
   status: 'draft' | 'published'
-  type: 'essay'
+  /** 'poem' renders with line breaks and stanzas preserved, not reflowed as prose */
+  type: 'essay' | 'poem'
 }
 
 export interface EWOForeword {
@@ -48,15 +49,33 @@ export const ewoForeword: EWOForeword = {
 // written yet; the list below stays in this order and the page logic skips any
 // whose markdown file is absent, so prev/next chain through what is present.
 export const ewoEssays: EWOEssay[] = [
-  { order: 1, slug: 'follow-the-incentive', title: 'Follow the Incentive', status: 'draft', type: 'essay' },
-  { order: 2, slug: 'the-map-is-not-the-territory', title: 'The Map Is Not the Territory', status: 'draft', type: 'essay' },
-  { order: 3, slug: 'sapere-aude', title: 'Sapere Aude', status: 'draft', type: 'essay' },
-  { order: 4, slug: 'written-by-the-victor-rewritten-by-the-feed', title: 'Written by the Victor, Rewritten by the Feed', status: 'draft', type: 'essay' },
-  { order: 5, slug: 'propaganda-lives-in-your-pocket', title: 'Propaganda Lives in Your Pocket', status: 'draft', type: 'essay' },
-  { order: 6, slug: 'the-ancient-world-is-still-talking', title: 'The Ancient World Is Still Talking', status: 'draft', type: 'essay' },
-  { order: 7, slug: 'philosophy-is-a-tool-not-a-hobby', title: 'Philosophy Is a Tool, Not a Hobby', status: 'draft', type: 'essay' },
-  { order: 8, slug: 'green-lights', title: 'Green Lights', status: 'draft', type: 'essay' },
-  { order: 9, slug: 'bring-back-chalance', title: 'Bring Back Chalance', status: 'draft', type: 'essay' },
+  { order: 1, slug: 'the-highlight-reel', title: 'The Highlight Reel', status: 'draft', type: 'essay' },
+  { order: 2, slug: 'everyone-at-our-fingertips-nobody-in-reach', title: 'Everyone at Our Fingertips, Nobody in Reach', status: 'draft', type: 'essay' },
+  { order: 3, slug: 'attention-is-the-whole-game', title: 'Attention Is the Whole Game', status: 'draft', type: 'essay' },
+  { order: 4, slug: 'in-praise-of-boredom', title: 'In Praise of Boredom', status: 'draft', type: 'essay' },
+  { order: 5, slug: 'sapere-aude', title: 'Sapere Aude', status: 'draft', type: 'essay' },
+  { order: 6, slug: 'the-map-is-not-the-territory', title: 'The Map Is Not the Territory', status: 'draft', type: 'essay' },
+  { order: 7, slug: 'follow-the-incentive', title: 'Follow the Incentive', status: 'draft', type: 'essay' },
+  { order: 8, slug: 'and-then-what', title: 'And Then What', status: 'draft', type: 'essay' },
+  { order: 9, slug: 'the-planes-that-came-back', title: 'The Planes That Came Back', status: 'draft', type: 'essay' },
+  { order: 10, slug: 'written-by-the-victor-rewritten-by-the-feed', title: 'Written by the Victor, Rewritten by the Feed', status: 'draft', type: 'essay' },
+  { order: 11, slug: 'propaganda-lives-in-your-pocket', title: 'Propaganda Lives in Your Pocket', status: 'draft', type: 'essay' },
+  { order: 12, slug: 'bread-and-circuses', title: 'Bread and Circuses', status: 'draft', type: 'essay' },
+  { order: 13, slug: 'the-ancient-world-is-still-talking', title: 'The Ancient World Is Still Talking', status: 'draft', type: 'essay' },
+  { order: 14, slug: 'philosophy-is-a-tool-not-a-hobby', title: 'Philosophy Is a Tool, Not a Hobby', status: 'draft', type: 'essay' },
+  { order: 15, slug: 'money-is-a-shared-story', title: 'Money Is a Shared Story', status: 'draft', type: 'essay' },
+  { order: 16, slug: 'the-forest-was-the-first-system', title: 'The Forest Was the First System', status: 'draft', type: 'essay' },
+  { order: 17, slug: 'the-lottery-of-birth', title: 'The Lottery of Birth', status: 'draft', type: 'essay' },
+  { order: 18, slug: 'faith', title: 'Faith', status: 'draft', type: 'essay' },
+  { order: 19, slug: 'memento-mori', title: 'Memento Mori', status: 'draft', type: 'essay' },
+  { order: 20, slug: 'the-case-for-hard-things', title: 'The Case for Hard Things', status: 'draft', type: 'essay' },
+  { order: 21, slug: 'learning-is-the-whole-point', title: 'Learning Is the Whole Point', status: 'draft', type: 'essay' },
+  { order: 22, slug: 'writing-for-no-one', title: 'Writing for No One', status: 'draft', type: 'essay' },
+  { order: 23, slug: 'on-being-alone', title: 'On Being Alone', status: 'draft', type: 'essay' },
+  { order: 24, slug: 'green-lights', title: 'Green Lights', status: 'draft', type: 'essay' },
+  { order: 25, slug: 'bring-back-chalance', title: 'Bring Back Chalance', status: 'draft', type: 'essay' },
+  { order: 26, slug: 'touch-grass', title: 'Touch Grass', status: 'draft', type: 'essay' },
+  { order: 27, slug: 'what-is-life', title: 'What Is Life', status: 'draft', type: 'poem' },
 ]
 
 /** Full canonical order, written or not. */
