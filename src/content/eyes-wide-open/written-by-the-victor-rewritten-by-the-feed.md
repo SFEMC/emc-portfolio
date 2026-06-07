@@ -1,5 +1,5 @@
 ---
-title: "Written by the Victor Rewritten by the Feed"
+title: "Written by the Victor, Rewritten by the Feed"
 collection: "Eyes Wide Open"
 status: "draft"
 type: "essay"

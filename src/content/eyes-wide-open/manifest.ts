@@ -51,7 +51,7 @@ export const ewoEssays: EWOEssay[] = [
   { order: 1, slug: 'follow-the-incentive', title: 'Follow the Incentive', status: 'draft', type: 'essay' },
   { order: 2, slug: 'the-map-is-not-the-territory', title: 'The Map Is Not the Territory', status: 'draft', type: 'essay' },
   { order: 3, slug: 'sapere-aude', title: 'Sapere Aude', status: 'draft', type: 'essay' },
-  { order: 4, slug: 'written-by-the-victor-rewritten-by-the-feed', title: 'Written by the Victor Rewritten by the Feed', status: 'draft', type: 'essay' },
+  { order: 4, slug: 'written-by-the-victor-rewritten-by-the-feed', title: 'Written by the Victor, Rewritten by the Feed', status: 'draft', type: 'essay' },
   { order: 5, slug: 'propaganda-lives-in-your-pocket', title: 'Propaganda Lives in Your Pocket', status: 'draft', type: 'essay' },
   { order: 6, slug: 'the-ancient-world-is-still-talking', title: 'The Ancient World Is Still Talking', status: 'draft', type: 'essay' },
   { order: 7, slug: 'philosophy-is-a-tool-not-a-hobby', title: 'Philosophy Is a Tool Not a Hobby', status: 'draft', type: 'essay' },
