@@ -12,6 +12,7 @@ import ArtOfSystemicDesign from './pages/ArtOfSystemicDesign'
 import ArtOfSystemicDesignArticle from './pages/ArtOfSystemicDesignArticle'
 import EyesWideOpen from './pages/EyesWideOpen'
 import EyesWideOpenEssay from './pages/EyesWideOpenEssay'
+import Collections from './pages/Collections'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import PageTransition from './components/PageTransition'
@@ -37,6 +38,7 @@ function AnimatedRoutes() {
         <Route path="/projects" element={<Projects />} />
         <Route path="/resources" element={<Resources />} />
         {/* Private sections — direct link only, noindex/nofollow, no nav entry */}
+        <Route path="/collections" element={<Collections />} />
         <Route path="/art-of-systemic-design" element={<ArtOfSystemicDesign />} />
         <Route path="/art-of-systemic-design/:slug" element={<ArtOfSystemicDesignArticle />} />
         <Route path="/eyes-wide-open" element={<EyesWideOpen />} />
