@@ -7,6 +7,7 @@ import {
   EWO_BASE,
   ewoBySlug,
   ewoNeighbours,
+  ewoNumber,
 } from '../content/eyes-wide-open/manifest'
 
 /**
@@ -117,7 +118,7 @@ export default function EyesWideOpenEssay() {
           <div>
             {prev && (
               <Link to={`${EWO_BASE}/${prev.slug}`} className="group block">
-                <span className="text-[11px] font-semibold tracking-[0.16em] uppercase text-[var(--gold)] tabular-nums">{String(prev.order).padStart(2, '0')}</span>
+                <span className="text-[11px] font-semibold tracking-[0.16em] uppercase text-[var(--gold)] tabular-nums">{String(ewoNumber(prev.slug)).padStart(2, '0')}</span>
                 <span className="mt-2 flex items-center gap-2 text-navy text-[18px] font-semibold leading-snug group-hover:text-[var(--gold)] transition-colors">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
                   {prev.title}
@@ -128,7 +129,7 @@ export default function EyesWideOpenEssay() {
           <div className="sm:text-right">
             {next && (
               <Link to={`${EWO_BASE}/${next.slug}`} className="group block">
-                <span className="text-[11px] font-semibold tracking-[0.16em] uppercase text-[var(--gold)] tabular-nums">{String(next.order).padStart(2, '0')}</span>
+                <span className="text-[11px] font-semibold tracking-[0.16em] uppercase text-[var(--gold)] tabular-nums">{String(ewoNumber(next.slug)).padStart(2, '0')}</span>
                 <span className="mt-2 flex items-center sm:justify-end gap-2 text-navy text-[18px] font-semibold leading-snug group-hover:text-[var(--gold)] transition-colors">
                   {next.title}
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0"><path d="M5 12h14M13 6l6 6-6 6"/></svg>

@@ -7,7 +7,7 @@ import {
   COLLECTION_TITLE,
   EWO_BASE,
   ewoForeword,
-  ewoOrdered,
+  ewoPresent,
 } from '../content/eyes-wide-open/manifest'
 
 /**
@@ -63,11 +63,11 @@ export default function EyesWideOpen() {
         <div className="mt-16" data-reveal>
           <p className="eyebrow mb-4">The essays</p>
           <ol className="flex flex-col" data-reveal-stagger>
-            {ewoOrdered.map((entry) => (
+            {ewoPresent.map((entry, i) => (
               <li key={entry.slug} data-reveal className="border-t border-[color:var(--border-light)] last:border-b">
                 <Link to={`${EWO_BASE}/${entry.slug}`} className="group flex items-baseline gap-5 py-6">
                   <span className="text-[12px] font-semibold tracking-[0.14em] uppercase text-[var(--gold)] shrink-0 w-[34px] pt-1 tabular-nums">
-                    {String(entry.order).padStart(2, '0')}
+                    {String(i + 1).padStart(2, '0')}
                   </span>
                   <span className="text-navy text-[22px] md:text-[24px] font-semibold leading-snug group-hover:text-[var(--gold)] transition-colors">
                     {entry.title}

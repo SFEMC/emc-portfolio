@@ -44,27 +44,52 @@ export const ewoForeword: EWOForeword = {
   type: 'foreword',
 }
 
+// Canonical reading order for the whole collection. Some entries may not be
+// written yet; the list below stays in this order and the page logic skips any
+// whose markdown file is absent, so prev/next chain through what is present.
 export const ewoEssays: EWOEssay[] = [
-  { order: 1, slug: 'sapere-aude', title: 'Sapere Aude', status: 'draft', type: 'essay' },
-  { order: 2, slug: 'written-by-the-victor-rewritten-by-the-feed', title: 'Written by the Victor Rewritten by the Feed', status: 'draft', type: 'essay' },
-  { order: 3, slug: 'propaganda-lives-in-your-pocket', title: 'Propaganda Lives in Your Pocket', status: 'draft', type: 'essay' },
-  { order: 4, slug: 'the-ancient-world-is-still-talking', title: 'The Ancient World Is Still Talking', status: 'draft', type: 'essay' },
-  { order: 5, slug: 'philosophy-is-a-tool-not-a-hobby', title: 'Philosophy Is a Tool Not a Hobby', status: 'draft', type: 'essay' },
+  { order: 1, slug: 'follow-the-incentive', title: 'Follow the Incentive', status: 'draft', type: 'essay' },
+  { order: 2, slug: 'the-map-is-not-the-territory', title: 'The Map Is Not the Territory', status: 'draft', type: 'essay' },
+  { order: 3, slug: 'sapere-aude', title: 'Sapere Aude', status: 'draft', type: 'essay' },
+  { order: 4, slug: 'written-by-the-victor-rewritten-by-the-feed', title: 'Written by the Victor Rewritten by the Feed', status: 'draft', type: 'essay' },
+  { order: 5, slug: 'propaganda-lives-in-your-pocket', title: 'Propaganda Lives in Your Pocket', status: 'draft', type: 'essay' },
+  { order: 6, slug: 'the-ancient-world-is-still-talking', title: 'The Ancient World Is Still Talking', status: 'draft', type: 'essay' },
+  { order: 7, slug: 'philosophy-is-a-tool-not-a-hobby', title: 'Philosophy Is a Tool Not a Hobby', status: 'draft', type: 'essay' },
+  { order: 8, slug: 'green-lights', title: 'Green Lights', status: 'draft', type: 'essay' },
+  { order: 9, slug: 'bring-back-chalance', title: 'Bring Back Chalance', status: 'draft', type: 'essay' },
 ]
 
-/** Essays in reading order. The landing list and the routes read this. */
+/** Full canonical order, written or not. */
 export const ewoOrdered: EWOEssay[] = [...ewoEssays].sort((a, b) => a.order - b.order)
 
+// Slugs that actually have a markdown file present in the folder.
+const presentFiles = import.meta.glob('/src/content/eyes-wide-open/*.md', { query: '?raw', import: 'default' })
+const presentSlugs = new Set(
+  Object.keys(presentFiles).map((p) => p.split('/').pop()!.replace(/\.md$/, '')),
+)
+
+/**
+ * Essays that are present, in canonical order. The landing list, the routes
+ * and the prev/next links all read this, so missing pieces drop out and the
+ * chain closes over what exists.
+ */
+export const ewoPresent: EWOEssay[] = ewoOrdered.filter((e) => presentSlugs.has(e.slug))
+
 export function ewoBySlug(slug: string): EWOEssay | undefined {
-  return ewoOrdered.find((e) => e.slug === slug)
+  return ewoPresent.find((e) => e.slug === slug)
 }
 
-/** Previous and next essays for a slug; null at the ends. */
+/** 1-based position of an essay within the present list (for display). */
+export function ewoNumber(slug: string): number {
+  return ewoPresent.findIndex((e) => e.slug === slug) + 1
+}
+
+/** Previous and next present essays for a slug; null at the ends. */
 export function ewoNeighbours(slug: string): { prev: EWOEssay | null; next: EWOEssay | null } {
-  const i = ewoOrdered.findIndex((e) => e.slug === slug)
+  const i = ewoPresent.findIndex((e) => e.slug === slug)
   if (i === -1) return { prev: null, next: null }
   return {
-    prev: i > 0 ? ewoOrdered[i - 1] : null,
-    next: i < ewoOrdered.length - 1 ? ewoOrdered[i + 1] : null,
+    prev: i > 0 ? ewoPresent[i - 1] : null,
+    next: i < ewoPresent.length - 1 ? ewoPresent[i + 1] : null,
   }
 }
