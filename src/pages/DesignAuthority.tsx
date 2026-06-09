@@ -396,8 +396,9 @@ export default function DesignAuthority() {
             Test before you commit.
           </h2>
           <p className="max-w-[680px] text-[var(--grey-text)] text-[18px] md:text-[19px] leading-relaxed mb-16" data-reveal>
-            We run controlled prototypes to test assumptions before teams commit resource. Each cycle teaches you what to change before you start the next. You build the right thing first time and avoid rework and wasted spend.
+            We run controlled prototypes to test assumptions before teams commit resource. We test, learn and grow each idea until the evidence is there. Each cycle teaches you what to change before you start the next, so you build the right thing first time and avoid rework and wasted spend.
           </p>
+          <p className="text-[12px] font-semibold tracking-[0.18em] uppercase text-[var(--gold)] text-center mb-8" data-reveal>The prototype mindset</p>
           <div ref={loopContainerRef} className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10">
             <div className="relative w-[320px] h-[320px] shrink-0">
               <svg viewBox="0 0 320 320" className="absolute inset-0 w-full h-full" aria-hidden="true">
