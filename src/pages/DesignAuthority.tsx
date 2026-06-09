@@ -406,16 +406,14 @@ export default function DesignAuthority() {
                 <text x="160" y="172" textAnchor="middle" fill="var(--gold)" fontSize="12" fontWeight="600" fontFamily="Inter" letterSpacing="0.1em">CONFIDENT</text>
               </svg>
               <div ref={loopNodesRef}>
+                {/* Three steps of the prototype mindset, spaced evenly round the loop */}
                 <div data-loop-node className="absolute left-1/2 top-[calc(50%-120px)] -translate-x-1/2 -translate-y-1/2 bg-white border border-navy rounded-md px-5 py-2.5">
-                  <span className="text-[15px] font-semibold text-navy">Prototype</span>
-                </div>
-                <div data-loop-node className="absolute top-1/2 left-[calc(50%+120px)] -translate-x-1/2 -translate-y-1/2 bg-white border border-navy rounded-md px-5 py-2.5">
                   <span className="text-[15px] font-semibold text-navy">Test</span>
                 </div>
-                <div data-loop-node className="absolute left-1/2 top-[calc(50%+120px)] -translate-x-1/2 -translate-y-1/2 bg-white border border-navy rounded-md px-5 py-2.5">
+                <div data-loop-node className="absolute left-[calc(50%+104px)] top-[calc(50%+60px)] -translate-x-1/2 -translate-y-1/2 bg-white border border-navy rounded-md px-5 py-2.5">
                   <span className="text-[15px] font-semibold text-navy">Learn</span>
                 </div>
-                <div data-loop-node className="absolute top-1/2 left-[calc(50%-120px)] -translate-x-1/2 -translate-y-1/2 bg-white border border-navy rounded-md px-5 py-2.5">
+                <div data-loop-node className="absolute left-[calc(50%-104px)] top-[calc(50%+60px)] -translate-x-1/2 -translate-y-1/2 bg-white border border-navy rounded-md px-5 py-2.5">
                   <span className="text-[15px] font-semibold text-navy">Grow</span>
                 </div>
               </div>
